@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import { LoginScreen } from '../components/auth/LoginScreen';
+import { RegisterScreen } from '../components/auth/RegisterScreen'
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
@@ -37,6 +38,13 @@ export const AppRouter = () => {
                         exact 
                         path="/login" 
                         component={ LoginScreen }
+                        isAuthenticated={ !!uid }
+                    />
+
+                    <PublicRoute 
+                        exact 
+                        path="/register" 
+                        component={ RegisterScreen }
                         isAuthenticated={ !!uid }
                     />
 
