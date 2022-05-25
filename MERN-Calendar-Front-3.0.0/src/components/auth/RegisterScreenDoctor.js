@@ -61,6 +61,26 @@ export const RegisterScreenDoctor = () => {
                         </div>
                         <div className="form-group">
                             <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Cedula"
+                                name="rCedula"
+                                /*value={ rCedula }*/
+                                onChange={ handleRegisterInputChange }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Especialidades"
+                                name="rEspecialidad"
+                                /*value={ rCedula }*/
+                                onChange={ handleRegisterInputChange }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
                                 type="password"
                                 className="form-control"
                                 placeholder="Contraseña" 
