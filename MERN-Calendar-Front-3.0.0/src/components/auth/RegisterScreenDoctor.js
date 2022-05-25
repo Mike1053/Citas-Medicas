@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
-import { startLogin, startRegister } from '../../actions/auth';
+import { startLogin, startRegisterMedic } from '../../actions/auth';
 import Swal from 'sweetalert2';
 
 import './login.css';
@@ -14,10 +14,12 @@ export const RegisterScreenDoctor = () => {
         rName: 'Nando',
         rEmail: 'nando@gmail.com',
         rPassword1: '123456',
-        rPassword2: '123456'
+        rPassword2: '123456',
+        rCedula: '123456',
+        rEspecialidad: 'Tanatologo',
     });
     
-    const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues;
+    const { rName, rEmail, rPassword1, rPassword2, rCedula, rEspecialidad} = formRegisterValues;
 
     const handleRegister = ( e ) => {
         e.preventDefault();
@@ -26,7 +28,7 @@ export const RegisterScreenDoctor = () => {
             return Swal.fire('Error', 'Las contraseñas deben de ser iguales','error');
         }
         console.log('?')
-        dispatch( startRegister( rEmail, rPassword1, rName ) );
+        dispatch( startRegisterMedic( rEmail, rPassword1, rName, rCedula, rEspecialidad) );
     }
 
     const doctorRegister = (props) =>{
@@ -65,7 +67,7 @@ export const RegisterScreenDoctor = () => {
                                 className="form-control"
                                 placeholder="Cedula"
                                 name="rCedula"
-                                /*value={ rCedula }*/
+                                value={ rCedula }
                                 onChange={ handleRegisterInputChange }
                             />
                         </div>
@@ -75,7 +77,7 @@ export const RegisterScreenDoctor = () => {
                                 className="form-control"
                                 placeholder="Especialidades"
                                 name="rEspecialidad"
-                                /*value={ rCedula }*/
+                                value={ rEspecialidad }
                                 onChange={ handleRegisterInputChange }
                             />
                         </div>

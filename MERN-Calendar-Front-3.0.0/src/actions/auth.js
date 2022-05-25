@@ -49,6 +49,28 @@ export const startRegister = ( email, password, name ) => {
     }
 }
 
+export const startRegisterMedic = ( email, password, name , cedula, especialidad) => {
+    return async( dispatch ) => {
+
+        const resp = await fetchSinToken( 'auth/newDoctor', { email, password, name , cedula, especialidad}, 'POST' );
+        const body = await resp.json();
+
+        if( body.ok ) {
+            localStorage.setItem('token', body.token );
+            localStorage.setItem('token-init-date', new Date().getTime() );
+
+            dispatch( login({
+                uid: body.uid,
+                name: body.name
+            }) )
+        } else {
+            Swal.fire('Error', body.msg, 'error');
+        }
+
+
+    }
+}
+
 export const startChecking = () => {
     return async(dispatch) => {
 
