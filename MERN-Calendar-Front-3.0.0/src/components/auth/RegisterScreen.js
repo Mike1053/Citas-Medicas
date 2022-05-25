@@ -10,12 +10,6 @@ export const RegisterScreen = () => {
 
     const dispatch = useDispatch();
 
-    
-    const [ formLoginValues, handleLoginInputChange ] = useForm({
-        lEmail: 'fernando@gmail.com',
-        lPassword: '123456'
-    });
-
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
         rName: 'Nando',
         rEmail: 'nando@gmail.com',
@@ -23,13 +17,7 @@ export const RegisterScreen = () => {
         rPassword2: '123456'
     });
     
-    const { lEmail, lPassword } = formLoginValues;
     const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues;
-
-    const handleLogin = ( e ) => {
-        e.preventDefault();
-        dispatch( startLogin( lEmail, lPassword ) );
-    }
 
     const handleRegister = ( e ) => {
         e.preventDefault();
@@ -41,6 +29,9 @@ export const RegisterScreen = () => {
         dispatch( startRegister( rEmail, rPassword1, rName ) );
     }
 
+    const doctorRegister = (props) =>{
+
+    }
 
     return (
         <div className="container login-container">
@@ -88,6 +79,10 @@ export const RegisterScreen = () => {
                                 value={ rPassword2 }
                                 onChange={ handleRegisterInputChange }
                             />
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" onChange={()=>console.log("Cambia")}/>
+                            <label class="form-check-label" for="exampleCheck1">Soy médico</label>
                         </div>
 
                         <div className="form-group">
