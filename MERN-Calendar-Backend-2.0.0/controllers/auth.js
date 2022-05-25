@@ -1,6 +1,6 @@
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
-const Usuario = require('../models/Usuario');
+const UsuarioPaciente = require('../models/Usuario');
 const { generarJWT } = require('../helpers/jwt');
  
 const crearUsuarioPaciente = async(req, res = response ) => {
@@ -8,7 +8,7 @@ const crearUsuarioPaciente = async(req, res = response ) => {
     const { email, password } = req.body;
 
     try {
-        let usuario = await Usuario.findOne({ email });
+        let usuario = await UsuarioPaciente.findOne({ email });
 
         if ( usuario ) {
             return res.status(400).json({
@@ -17,7 +17,7 @@ const crearUsuarioPaciente = async(req, res = response ) => {
             });
         }
 
-        usuario = new Usuario( req.body );
+        usuario = new UsuarioPaciente( req.body );
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
