@@ -93,7 +93,7 @@ export const RegisterScreen = () => {
                         </div>
                         <a href='/login'>Ya tienes una cuenta</a>
                         <br></br>
-                        <a href='/registerDoctor'>Eres doctor jejej</a>
+                        <a href='/registerDoctor'>Eres doctor jejej chingue a su madre el America</a>
                     </form>
                 </div>
             </div>
