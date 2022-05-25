@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 import './login.css';
 
-export const RegisterScreen = () => {
+export const RegisterScreenDoctor = () => {
 
     const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ export const RegisterScreen = () => {
     return (
         <div className="container login-container">
                 <div className="col-md-6 login-form-2">
-                    <h3>Registro</h3>
+                    <h3>Registro Doctor</h3>
                     <form onSubmit={ handleRegister }>
                         
                         <div className="form-group">
@@ -90,10 +90,8 @@ export const RegisterScreen = () => {
                                 type="submit" 
                                 className="btnSubmit" 
                                 value="Crear cuenta" />
-                        </div>
+                        </div> 
                         <a href='/login'>Ya tienes una cuenta</a>
-                        <br></br>
-                        <a href='/registerDoctor'>Eres doctor jejej</a>
                     </form>
                 </div>
             </div>
