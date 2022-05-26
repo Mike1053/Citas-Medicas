@@ -5,11 +5,12 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
-const { crearUsuarioPaciente, loginUsuario, revalidarToken, crearUsuarioMedico } = require('../controllers/auth');
+const { crearUsuario, loginUsuario, revalidarToken, crearDoctor } = require('../controllers/auth');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
 
 const router = Router();
+
 
 
 router.post(
@@ -20,7 +21,7 @@ router.post(
         check('password', 'El password debe de ser de 6 caracteres').isLength({ min: 6 }),
         validarCampos
     ],
-    crearUsuarioPaciente 
+    crearUsuario 
 );
 
 router.post(
@@ -31,7 +32,7 @@ router.post(
         check('password', 'El password debe de ser de 6 caracteres').isLength({ min: 6 }),
         validarCampos
     ],
-    crearUsuarioMedico 
+    crearDoctor
 );
 
 router.post(

@@ -1,14 +1,15 @@
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
-const UsuarioPaciente = require('../models/Usuario');
+const Usuario = require('../models/Usuario');
+const Doctor = require('../models/Doctor');
 const { generarJWT } = require('../helpers/jwt');
  
-const crearUsuarioPaciente = async(req, res = response ) => {
+const crearUsuario = async(req, res = response ) => {
 
     const { email, password } = req.body;
 
     try {
-        let usuario = await UsuarioPaciente.findOne({ email });
+        let usuario = await Usuario.findOne({ email });
 
         if ( usuario ) {
             return res.status(400).json({
@@ -17,7 +18,7 @@ const crearUsuarioPaciente = async(req, res = response ) => {
             });
         }
 
-        usuario = new UsuarioPaciente( req.body );
+        usuario = new Usuario( req.body );
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
@@ -45,6 +46,48 @@ const crearUsuarioPaciente = async(req, res = response ) => {
     }
 }
 
+
+const crearDoctor = async(req, res = response ) => {
+
+    const { email, password } = req.body;
+
+    try {
+        let doctor = await Doctor.findOne({ email });
+
+        if ( doctor ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'El usuario ya existe'
+            });
+        }
+
+        doctor = new Doctor( req.body );
+    
+        // Encriptar contraseña
+        const salt = bcrypt.genSaltSync();
+        doctor.password = bcrypt.hashSync( password, salt );
+
+
+        await doctor.save();
+
+        // Generar JWT
+        const token = await generarJWT( doctor.id, doctor.name );
+    
+        res.status(201).json({
+            ok: true,
+            uid: doctor.id,
+            name: doctor.name,
+            token
+        })
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador'
+        });
+    }
+}
 
 const loginUsuario = async(req, res = response ) => {
 
@@ -106,64 +149,12 @@ const revalidarToken = async (req, res = response ) => {
     })
 }
 
-const crearUsuarioMedico = async(req, res = response ) => {
-
-    const { name, NombreCompleto, Cedula, Especialidad, email, password } = req.body;
-
-    res.json({
-        ok: true,
-        msg: "Se creo un nuevo usuario de Medico.",
-        NombreCompleto,
-        name,
-        Cedula,
-        Especialidad,
-        email,
-        password
-    })
-    /*
-    try {
-        let usuario = await Usuario.findOne({ email });
-
-        if ( usuario ) {
-            return res.status(400).json({
-                ok: false,
-                msg: 'El usuario ya existe'
-            });
-        }
-
-        usuario = new Usuario( req.body );
-    
-        // Encriptar contraseña
-        const salt = bcrypt.genSaltSync();
-        usuario.password = bcrypt.hashSync( password, salt );
-
-
-        await usuario.save();
-
-        // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name );
-    
-        res.status(201).json({
-            ok: true,
-            uid: usuario.id,
-            name: usuario.name,
-            token
-        })
-        
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({
-            ok: false,
-            msg: 'Por favor hable con el administrador'
-        });
-    } */
-}
 
 
 
 module.exports = {
-    crearUsuarioPaciente,
+    crearUsuario,
     loginUsuario,
     revalidarToken,
-    crearUsuarioMedico
+    crearDoctor
 }
