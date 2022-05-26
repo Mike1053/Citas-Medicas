@@ -14,6 +14,7 @@ import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
+import Map from '../components/map/Map';
 
 export const AppRouter = () => {
 
@@ -61,6 +62,12 @@ export const AppRouter = () => {
                         path="/" 
                         component={ CalendarScreen } 
                         isAuthenticated={ !!uid }
+                    />
+
+                    <PublicRoute 
+                        exact 
+                        path="/map" 
+                        component={ Map }
                     />
 
                     <Redirect to="/" />   
