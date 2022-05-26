@@ -1,14 +1,14 @@
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
-const Usuario = require('../models/Usuario');
+const UsuarioPaciente = require('../models/Usuario');
 const { generarJWT } = require('../helpers/jwt');
  
-const crearUsuario = async(req, res = response ) => {
+const crearUsuarioPaciente = async(req, res = response ) => {
 
     const { email, password } = req.body;
 
     try {
-        let usuario = await Usuario.findOne({ email });
+        let usuario = await UsuarioPaciente.findOne({ email });
 
         if ( usuario ) {
             return res.status(400).json({
@@ -17,7 +17,7 @@ const crearUsuario = async(req, res = response ) => {
             });
         }
 
-        usuario = new Usuario( req.body );
+        usuario = new UsuarioPaciente( req.body );
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
@@ -106,11 +106,64 @@ const revalidarToken = async (req, res = response ) => {
     })
 }
 
+const crearUsuarioMedico = async(req, res = response ) => {
+
+    const { name, NombreCompleto, Cedula, Especialidad, email, password } = req.body;
+
+    res.json({
+        ok: true,
+        msg: "Se creo un nuevo usuario de Medico.",
+        NombreCompleto,
+        name,
+        Cedula,
+        Especialidad,
+        email,
+        password
+    })
+    /*
+    try {
+        let usuario = await Usuario.findOne({ email });
+
+        if ( usuario ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'El usuario ya existe'
+            });
+        }
+
+        usuario = new Usuario( req.body );
+    
+        // Encriptar contraseña
+        const salt = bcrypt.genSaltSync();
+        usuario.password = bcrypt.hashSync( password, salt );
+
+
+        await usuario.save();
+
+        // Generar JWT
+        const token = await generarJWT( usuario.id, usuario.name );
+    
+        res.status(201).json({
+            ok: true,
+            uid: usuario.id,
+            name: usuario.name,
+            token
+        })
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador'
+        });
+    } */
+}
 
 
 
 module.exports = {
-    crearUsuario,
+    crearUsuarioPaciente,
     loginUsuario,
-    revalidarToken
+    revalidarToken,
+    crearUsuarioMedico
 }
