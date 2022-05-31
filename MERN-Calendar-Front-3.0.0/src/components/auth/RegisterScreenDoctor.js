@@ -17,9 +17,10 @@ export const RegisterScreenDoctor = () => {
         rPassword2: '123456',
         rCedula: '123456',
         rEspecialidad: 'Tanatologo',
+        rFullName: 'Nando Macias'
     });
     
-    const { rName, rEmail, rPassword1, rPassword2, rCedula, rEspecialidad} = formRegisterValues;
+    const { rName, rEmail, rPassword1, rPassword2, rCedula, rEspecialidad, rFullName} = formRegisterValues;
 
     const handleRegister = ( e ) => {
         e.preventDefault();
@@ -28,7 +29,7 @@ export const RegisterScreenDoctor = () => {
             return Swal.fire('Error', 'Las contraseñas deben de ser iguales','error');
         }
         console.log('?')
-        dispatch( startRegisterMedic( rEmail, rPassword1, rName, rCedula, rEspecialidad) );
+        dispatch( startRegisterMedic( rEmail, rPassword1, rName, rCedula, rEspecialidad , rFullName) );
     }
 
     const doctorRegister = (props) =>{
@@ -78,6 +79,16 @@ export const RegisterScreenDoctor = () => {
                                 placeholder="Especialidades"
                                 name="rEspecialidad"
                                 value={ rEspecialidad }
+                                onChange={ handleRegisterInputChange }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Nombre completo"
+                                name="rFullName"
+                                value={ rFullName }
                                 onChange={ handleRegisterInputChange }
                             />
                         </div>
