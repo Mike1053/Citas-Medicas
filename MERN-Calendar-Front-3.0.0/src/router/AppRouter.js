@@ -45,15 +45,15 @@ export const AppRouter = () => {
 
                     <PublicRoute 
                         exact 
-                        path="/register" 
-                        component={ RegisterScreen }
+                        path="/registerDoctor" 
+                        component={ RegisterScreenDoctor }
                         isAuthenticated={ !!uid }
                     />
 
                     <PublicRoute 
                         exact 
-                        path="/registerDoctor" 
-                        component={ RegisterScreenDoctor }
+                        path="/register" 
+                        component={ RegisterScreen }
                         isAuthenticated={ !!uid }
                     />
 
