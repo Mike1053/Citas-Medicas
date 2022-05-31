@@ -49,10 +49,10 @@ export const startRegister = ( email, password, name ) => {
     }
 }
 
-export const startRegisterMedic = ( email, password, name , cedula, especialidad) => {
+export const startRegisterMedic = ( email, password, name , license, speciality, fullName) => {
     return async( dispatch ) => {
 
-        const resp = await fetchSinToken( 'auth/newDoctor', { email, password, name , cedula, especialidad}, 'POST' );
+        const resp = await fetchSinToken( 'auth/newDoctor', { email, password, name , license, speciality, fullName}, 'POST' );
         const body = await resp.json();
 
         if( body.ok ) {
