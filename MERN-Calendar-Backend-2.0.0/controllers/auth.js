@@ -7,15 +7,23 @@ const { generarJWT } = require('../helpers/jwt');
  
 const crearUsuario = async(req, res = response ) => {
 
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
     try {
-        let usuario = await Usuario.findOne({ email });
+        let correo = await Usuario.findOne({ email });
+        let nombre = await Usuario.findOne({ name });
 
-        if ( usuario ) {
+        if ( correo ) {
             return res.status(400).json({
                 ok: false,
-                msg: 'El usuario ya existe'
+                msg: 'El correo de usuario ya existe'
+            });
+        }
+
+        if ( nombre ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'El nombre de usuario ya existe'
             });
         }
 
