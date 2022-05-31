@@ -10,20 +10,37 @@ const crearUsuario = async(req, res = response ) => {
     const { name, email, password } = req.body;
 
     try {
-        let correo = await Usuario.findOne({ email });
-        let nombre = await Usuario.findOne({ name });
+        
+        let correoPaciente = await Usuario.findOne({ email });
+        let nombrePaciente = await Usuario.findOne({ name });
+        let correoDoctor = await Doctor.findOne({ email });
+        let nombreDoctor = await Doctor.findOne({ name });
 
-        if ( correo ) {
+        if ( correoPaciente ) {
             return res.status(400).json({
                 ok: false,
-                msg: 'El correo de usuario ya existe'
+                msg: 'El correo de usuario de Paciente ya existe'
             });
         }
 
-        if ( nombre ) {
+        if ( nombrePaciente ) {
             return res.status(400).json({
                 ok: false,
-                msg: 'El nombre de usuario ya existe'
+                msg: 'El nombre de usuario de Paciente ya existe'
+            });
+        }
+
+        if ( correoDoctor ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'El correo de usuario de Doctor ya existe'
+            });
+        }
+
+        if ( nombreDoctor ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'El nombre de usuario de Doctor ya existe'
             });
         }
 
