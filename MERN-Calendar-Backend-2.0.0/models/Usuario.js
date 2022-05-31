@@ -16,8 +16,6 @@ const UsuarioSchema = Schema({
     }
 });
 
-<<<<<<< Updated upstream
-=======
 const UsuarioMedicoSchema = Schema({
     name: {
         type: String,
@@ -48,7 +46,6 @@ const UsuarioMedicoSchema = Schema({
         required: true  
     }
 });
->>>>>>> Stashed changes
 
 module.exports = model('Usuario', UsuarioSchema );
 
