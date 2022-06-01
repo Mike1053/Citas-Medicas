@@ -74,7 +74,7 @@ export const LoginScreen = () => {
                                 value="Login" 
                             />
                         </div>
-                        <a href='/register'>Ir al registro</a>
+                        <a href='/registerDoctor'>Ir al registro</a>
                     </form>
                     
                 </div>

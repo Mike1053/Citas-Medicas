@@ -15,6 +15,7 @@ import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import Map from '../components/map/Map';
+import Dashboard from '../components/dashboard/Dashboard';
 
 export const AppRouter = () => {
 
@@ -60,7 +61,7 @@ export const AppRouter = () => {
                     <PrivateRoute 
                         exact 
                         path="/" 
-                        component={ CalendarScreen } 
+                        component={ Dashboard } 
                         isAuthenticated={ !!uid }
                     />
 

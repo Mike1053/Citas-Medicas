@@ -32,10 +32,6 @@ export const RegisterScreenDoctor = () => {
         dispatch( startRegisterMedic( rEmail, rPassword1, rName, rCedula, rEspecialidad , rFullName) );
     }
 
-    const doctorRegister = (props) =>{
-
-    }
-
     return (
         <div className="container login-container">
                 <div className="col-md-6 login-form-2">
@@ -113,10 +109,12 @@ export const RegisterScreenDoctor = () => {
                                 onChange={ handleRegisterInputChange }
                             />
                         </div>
+                        {/**
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1" onChange={()=>console.log("Cambia")}/>
                             <label class="form-check-label" for="exampleCheck1">Soy médico</label>
-                        </div>
+                        </div> 
+                        */}
 
                         <div className="form-group">
                             <input 

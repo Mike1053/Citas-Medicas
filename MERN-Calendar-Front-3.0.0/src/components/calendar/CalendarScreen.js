@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
-import { Navbar } from '../ui/Navbar';
+
 import { messages } from '../../helpers/calendar-messages-es';
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarModal } from './CalendarModal';
@@ -73,7 +73,7 @@ export const CalendarScreen = () => {
 
     return (
         <div className="calendar-screen">
-            <Navbar />
+            
             
 
             <Calendar
