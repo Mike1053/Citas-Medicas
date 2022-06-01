@@ -30,7 +30,7 @@ export const startLogin = ( email, password ) => {
 export const startRegister = ( email, password, name ) => {
     return async( dispatch ) => {
 
-        const resp = await fetchSinToken( 'auth/new', { email, password, name }, 'POST' );
+        const resp = await fetchSinToken( 'auth/newPatient', { email, password, name }, 'POST' );
         const body = await resp.json();
 
         if( body.ok ) {
