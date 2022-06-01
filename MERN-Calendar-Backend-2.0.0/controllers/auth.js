@@ -44,7 +44,7 @@ const crearUsuario = async(req, res = response ) => {
             });
         }
 
-        usuario = new Usuario( req.body );
+        let usuario = new Usuario( req.body );
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
@@ -113,7 +113,7 @@ const crearDoctor = async(req, res = response ) => {
         }
 
 
-        doctor = new Doctor( req.body );
+        let doctor = new Doctor( req.body );
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
@@ -147,35 +147,61 @@ const loginUsuario = async(req, res = response ) => {
 
     try {
         
-        const usuario = await Usuario.findOne({ email });
+        const usuarioPaciente = await Usuario.findOne({ email });
+        const usuarioDoctor = await Doctor.findOne({ email });
 
-        if ( !usuario ) {
+        if ( usuarioPaciente ) {
+            
+            // Confirmar los passwords
+            const validPassword = bcrypt.compareSync( password, usuarioPaciente.password );
+
+            if ( !validPassword ) {
+                return res.status(400).json({
+                    ok: false,
+                    msg: 'Password incorrecto'
+                });
+            }
+
+            // Generar JWT
+            const token = await generarJWT( usuarioPaciente.id, usuarioPaciente.name );
+
+            res.json({
+                ok: true,
+                uid: usuarioPaciente.id,
+                name: usuarioPaciente.name,
+                token
+            })
+        }
+
+        if ( usuarioDoctor ) {
+            
+            // Confirmar los passwords
+            const validPassword = bcrypt.compareSync( password, usuarioDoctor.password );
+
+            if ( !validPassword ) {
+                return res.status(400).json({
+                    ok: false,
+                    msg: 'Password incorrecto'
+                });
+            }
+
+            // Generar JWT
+            const token = await generarJWT( usuarioDoctor.id, usuarioDoctor.name );
+
+            res.json({
+                ok: true,
+                uid: usuarioDoctor.id,
+                name: usuarioDoctor.name,
+                token
+            })
+        }
+
+        if ( !usuarioPaciente && !usuarioDoctor ) {
             return res.status(400).json({
                 ok: false,
                 msg: 'El usuario no existe con ese email'
             });
         }
-
-        // Confirmar los passwords
-        const validPassword = bcrypt.compareSync( password, usuario.password );
-
-        if ( !validPassword ) {
-            return res.status(400).json({
-                ok: false,
-                msg: 'Password incorrecto'
-            });
-        }
-
-        // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name );
-
-        res.json({
-            ok: true,
-            uid: usuario.id,
-            name: usuario.name,
-            token
-        })
-
 
     } catch (error) {
         console.log(error);
