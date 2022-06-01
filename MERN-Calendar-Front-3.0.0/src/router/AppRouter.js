@@ -15,6 +15,7 @@ import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import Map from '../components/map/Map';
+import Dashboard from '../components/dashboard/Dashboard';
 
 export const AppRouter = () => {
 
@@ -45,22 +46,22 @@ export const AppRouter = () => {
 
                     <PublicRoute 
                         exact 
-                        path="/registerDoctor" 
-                        component={ RegisterScreenDoctor }
+                        path="/register" 
+                        component={ RegisterScreen }
                         isAuthenticated={ !!uid }
                     />
 
                     <PublicRoute 
                         exact 
-                        path="/register" 
-                        component={ RegisterScreen }
+                        path="/registerDoctor" 
+                        component={ RegisterScreenDoctor }
                         isAuthenticated={ !!uid }
                     />
 
                     <PrivateRoute 
                         exact 
                         path="/" 
-                        component={ CalendarScreen } 
+                        component={ Dashboard } 
                         isAuthenticated={ !!uid }
                     />
 
