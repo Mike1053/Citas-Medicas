@@ -11,7 +11,7 @@ moment.locale('es');
 
 const DashboardAjustes = () => {
     const dispatch = useDispatch();
-    const { email } = useSelector( state => state.auth );
+    const { name } = useSelector( state => state.auth );
     const handleLogout = () => {
         dispatch( startLogout() );
     }
@@ -24,7 +24,7 @@ const DashboardAjustes = () => {
 <div className="page">
   
   <div class="pageHeader">
-    <div class="title">Bienvenido {email} <img src={pic} width="40" height="40"/></div>
+    <div class="title">Bienvenido {name} <img src={pic} width="40" height="40"/></div>
     <div class="userPanel"><span class="username"><button 
                 className="btn btn-danger"
                 onClick={ handleLogout }
