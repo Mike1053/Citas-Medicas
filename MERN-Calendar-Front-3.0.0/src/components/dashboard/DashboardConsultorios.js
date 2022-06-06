@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
-import { CalendarScreen } from '../calendar/CalendarScreen';
 
 moment.locale('es');
 
 
-const Dashboard = () => {
+const DashboardConsultorios = () => {
     const dispatch = useDispatch();
     const { email } = useSelector( state => state.auth );
     const handleLogout = () => {
@@ -39,8 +38,8 @@ const Dashboard = () => {
 
           {/* Aqui van a ir los componentes del dashboard */}
 
-          <li class="active"><i class="fa fa-calendar"></i>Calendario</li>
-          <li><a href='/consultorios'><i class="fa fa-thumb-tack"></i> Consultorios</a></li>
+          <li class="active"><a href='/'><i class="fa fa-calendar"></i>Calendario</a></li>
+          <li class="active"><i class="fa fa-thumb-tack"></i> Consultorios</li>
           <li><a href='/pacientes'><i class="fa fa-group"></i>Pacientes</a></li>
           <li><a href='/videochat'><i class="fa fa-video-camera"></i>Video Chat</a></li>
           <li><a href='/mensajes'><i class="fa fa-envelope"></i>Mensajes</a></li>
@@ -53,7 +52,7 @@ const Dashboard = () => {
     </div>
     <div class="view">
       <br></br>
-      <CalendarScreen/>
+      <h1>Consultorios</h1>
        
     </div>
   </div>
@@ -65,4 +64,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashboardConsultorios

@@ -16,6 +16,11 @@ import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import Map from '../components/map/Map';
 import Dashboard from '../components/dashboard/Dashboard';
+import DashboardConsultorios from '../components/dashboard/DashboardConsultorios';
+import DashboardPacientes from '../components/dashboard/DashboardPacientes';
+import DashboardVideoChat from '../components/dashboard/DashboardVideoChat';
+import DashboardMensajes from '../components/dashboard/DashboardMensajes';
+import DashboardAjustes from '../components/dashboard/DashboardAjustes';
 
 export const AppRouter = () => {
 
@@ -65,6 +70,36 @@ export const AppRouter = () => {
                         isAuthenticated={ !!uid }
                     />
 
+                    <PrivateRoute 
+                        exact 
+                        path="/consultorios" 
+                        component={ DashboardConsultorios } 
+                        isAuthenticated={ !!uid }
+                    />
+                    <PrivateRoute 
+                        exact 
+                        path="/pacientes" 
+                        component={ DashboardPacientes } 
+                        isAuthenticated={ !!uid }
+                    />
+                     <PrivateRoute 
+                        exact 
+                        path="/videochat" 
+                        component={ DashboardVideoChat } 
+                        isAuthenticated={ !!uid }
+                    />
+                       <PrivateRoute 
+                        exact 
+                        path="/mensajes" 
+                        component={ DashboardMensajes } 
+                        isAuthenticated={ !!uid }
+                    />
+                    <PrivateRoute 
+                        exact 
+                        path="/ajustes" 
+                        component={ DashboardAjustes } 
+                        isAuthenticated={ !!uid }
+                    />
                     <PublicRoute 
                         exact 
                         path="/map" 
