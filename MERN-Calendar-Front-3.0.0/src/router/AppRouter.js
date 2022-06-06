@@ -17,6 +17,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { UploadImage } from '../components/auth/UploadImage';
 import Map from '../components/map/Map';
 import Dashboard from '../components/dashboard/Dashboard';
+import { ProfileEdit } from '../components/DashboardComponents/ProfileEdit';
 
 export const AppRouter = () => {
 
@@ -56,6 +57,13 @@ export const AppRouter = () => {
                         exact 
                         path="/registerDoctor" 
                         component={ RegisterScreenDoctor }
+                        isAuthenticated={ !!uid }
+                    />
+
+                    <PublicRoute 
+                        exact 
+                        path="/profileEdit" 
+                        component={ ProfileEdit }
                         isAuthenticated={ !!uid }
                     />
 

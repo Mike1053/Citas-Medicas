@@ -29,10 +29,6 @@ export const RegisterScreen = () => {
         dispatch( startRegister( rEmail, rPassword1, rName ) );
     }
 
-    const doctorRegister = (props) =>{
-
-    }
-
     return (
         <div className="container login-container">
                 <div className="col-md-6 login-form-2">
