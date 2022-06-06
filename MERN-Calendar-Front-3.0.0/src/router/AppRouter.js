@@ -14,6 +14,7 @@ import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { UploadImage } from '../components/auth/UploadImage';
 import Map from '../components/map/Map';
 import Dashboard from '../components/dashboard/Dashboard';
 
@@ -55,6 +56,13 @@ export const AppRouter = () => {
                         exact 
                         path="/registerDoctor" 
                         component={ RegisterScreenDoctor }
+                        isAuthenticated={ !!uid }
+                    />
+
+                    <PublicRoute 
+                        exact 
+                        path="/uploadImage" 
+                        component={ UploadImage }
                         isAuthenticated={ !!uid }
                     />
 

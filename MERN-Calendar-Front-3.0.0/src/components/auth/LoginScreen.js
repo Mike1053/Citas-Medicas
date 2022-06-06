@@ -75,6 +75,8 @@ export const LoginScreen = () => {
                             />
                         </div>
                         <a href='/registerDoctor'>Ir al registro</a>
+                        <br></br>
+                        <a href='/uploadImage'>Ir subir imagen</a>
                     </form>
                     
                 </div>
