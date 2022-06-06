@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
+import { ProfileEdit } from '../DashboardComponents/ProfileEdit';
 
 
 moment.locale('es');
@@ -53,7 +54,8 @@ const DashboardAjustes = () => {
     </div>
     <div class="view">
       <br></br>
-      <h1>Ajustes</h1>
+      
+      <ProfileEdit/>
        
     </div>
   </div>

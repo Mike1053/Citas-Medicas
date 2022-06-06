@@ -17,6 +17,11 @@ import { PrivateRoute } from './PrivateRoute';
 import { UploadImage } from '../components/auth/UploadImage';
 import Map from '../components/map/Map';
 import Dashboard from '../components/dashboard/Dashboard';
+import DashboardConsultorios from '../components/dashboard/DashboardConsultorios';
+import DashboardPacientes from '../components/dashboard/DashboardPacientes';
+import DashboardVideoChat from '../components/dashboard/DashboardVideoChat';
+import DashboardMensajes from '../components/dashboard/DashboardMensajes';
+import DashboardAjustes from '../components/dashboard/DashboardAjustes';
 import { ProfileEdit } from '../components/DashboardComponents/ProfileEdit';
 
 export const AppRouter = () => {
@@ -99,7 +104,7 @@ export const AppRouter = () => {
                         component={ DashboardVideoChat } 
                         isAuthenticated={ !!uid }
                     />
-                       <PrivateRoute 
+                    <PrivateRoute 
                         exact 
                         path="/mensajes" 
                         component={ DashboardMensajes } 
