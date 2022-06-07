@@ -10,44 +10,45 @@ export const ProfileEdit = () => {
         nEmail: 'nando@gmail.com',
         nFullName: 'Nando Macias',
         nEspeciality: 'Tanatologo',
+        nCountry: 'México',
+        nAddress: 'La marmol',
+        nPhone: '123456',
     });
-
-    const { nName, nEmail, nFullName, nEspeciality} = formRegisterValues;
-
+    const { nName, nEmail, nFullName, nEspeciality, nCountry, nAddress, nPhone} = formRegisterValues;
+    console.log(formRegisterValues);
   return (
     <>
-    <div class="container rounded bg-white mt-5">
-    <div class="row">
-        <div class="col-md-4 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src={pic} width="90"/>
-            <span class="font-weight-bold">{nFullName}</span>
-            <span class="text-black-50">{nEmail}</span>
+    <div className="container rounded bg-white mt-5">
+    <div className="row">
+        <div className="col-md-4 border-right">
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="90"/>
+            <span className="font-weight-bold">{nFullName}</span>
+            <span className="text-black-50">{nEmail}</span>
             </div>
         </div>
-        <div class="col-md-8">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                        <h6>Back to home</h6>
-                    </div>
-                    <h6 class="text-right">Edit Profile</h6>
+        <div className="col-md-8">
+            <div className="p-3 py-5">
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h6 className="text-right">Edit Profile</h6>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="userName" value={nName}/></div>
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Nombre completo" value={nFullName}/></div>
+                <form>
+                <div className="row mt-2">
+                    <div className="col-md-6"><input type="text" className="form-control" placeholder="userName" name='nName' value={nName} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control" placeholder="Nombre completo" name='nFullName' value={nFullName} onChange={handleRegisterInputChange}/></div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value={nEmail}/></div>
-                    <div class="col-md-6"><input type="text" class="form-control" value="+19685969668" placeholder="Phone number"/></div>
+                <div className="row mt-3">
+                    <div className="col-md-6"><input type="email" className="form-control" placeholder="Email" name='nEmail' value={nEmail} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control" placeholder="Phone number" name='nPhone' value={nPhone} onChange={handleRegisterInputChange}/></div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="address" value="D-113, right avenue block, CA,USA"/></div>
-                    <div class="col-md-6"><input type="text" class="form-control" value="USA" placeholder="Country"/></div>
+                <div className="row mt-3">
+                    <div className="col-md-6"><input type="text" className="form-control" placeholder="address" name='nAddress' value={nAddress} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control" placeholder="Country" name='nCountry' value={nCountry} onChange={handleRegisterInputChange}/></div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="address" value="D-113, right avenue block, CA,USA"/></div>
+                <div className="row mt-3">
+                    <div className="col-md-6"><input type="text" className="form-control" placeholder="especiality" name='nEspeciality' value={nEspeciality} onChange={handleRegisterInputChange}/></div>
                 </div>
-                <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div className="mt-5 text-right"><input className="btnSubmit" type="submit" value="Actualizar"/></div>
+                </form>
             </div>
         </div>
     </div>

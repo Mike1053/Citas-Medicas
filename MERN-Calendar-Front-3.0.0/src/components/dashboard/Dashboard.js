@@ -36,11 +36,18 @@ const Dashboard = () => {
       <div className="menu">
         <div class="title">Navegación</div>
         <ul>
-          <li> <i class="fa fa-calendar"></i>Calendario</li>
-          <li><i class="fa fa-group"></i>Pacientes</li>
-          <li class="active"> <i class="fa fa-tasks"></i>Tareas</li>
-          <li> <i class="fa fa-envelope"></i>Mensajes</li>
-          <li> <i class="fa fa-gear"></i>Ajustes</li>
+
+          {/* Aqui van a ir los componentes del dashboard */}
+
+          <li class="active"><i class="fa fa-calendar"></i>Calendario</li>
+          <li><a href='/consultorios'><i class="fa fa-thumb-tack"></i> Consultorios</a></li>
+          <li><a href='/pacientes'><i class="fa fa-group"></i>Pacientes</a></li>
+          <li><a href='/videochat'><i class="fa fa-video-camera"></i>Video Chat</a></li>
+          <li><a href='/mensajes'><i class="fa fa-envelope"></i>Mensajes</a></li>
+          <li><a href='/ajustes'><i class="fa fa-gear"></i>Ajustes</a></li>
+
+
+
         </ul>
       </div>
     </div>
