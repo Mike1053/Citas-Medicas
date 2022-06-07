@@ -1,0 +1,27 @@
+const { Schema, model } = require('mongoose');
+
+const ConsultaSchema = Schema({
+    fecha: {
+        type: Date,
+        required: true   
+    },
+    diagnostico: {
+        type: String
+    },
+    comentario: {
+        type: String
+    },
+    userPaciente: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required: true
+    },
+    userMedico: {
+        type: Schema.Types.ObjectId,
+        ref: 'Doctor',
+        required: true
+    }
+});
+
+
+module.exports = model('Consulta', ConsultaSchema );

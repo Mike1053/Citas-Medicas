@@ -1,6 +1,6 @@
 const { response } = require('express');
 
-const subirHistorial = async(req, res = response ) => {
+const actHistorial = async(req, res = response ) => {
     try {
         await ListItem.findByIdAndUpdate(req.params.id, {
             itemname: req.body.itemname,
