@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux';
+import { uploadImage } from '../../actions/uploadImage';
 
 import React from 'react'
 
 	export const UploadImage = ({ isOpen, close }) => {
+
+	const dispatch = useDispatch();
     const [fileName, setFileName] = useState("Subir una imagen")
 	const [selectedFile, setSelectedFile] = useState(null)
 
@@ -31,7 +35,7 @@ import React from 'react'
 	
 	const handleUpdateProfilePic = () => {
 		if(!selectedFile) return toast.error('Debes seleccionar una nueva imagen');
-		//updateUser({ profilePic: selectedFile })
+		dispatch( uploadImage( selectedFile ) );
 		close()
 	}
 

@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const Usuario = require('../models/Usuario');
 const Doctor = require('../models/Doctor');
 const {UsuarioPaciente, UsuarioMedico} = require('../models/Usuario');
-const { generarJWT } = require('../helpers/jwt');       
+const { generarJWT } = require('../helpers/jwt');
  
 const crearUsuario = async(req, res = response ) => {
 
@@ -54,12 +54,13 @@ const crearUsuario = async(req, res = response ) => {
         await usuario.save();
 
         // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name );
+        const token = await generarJWT( usuario.id, usuario.name, usuario.email );
     
         res.status(201).json({
             ok: true,
             uid: usuario.id,
             name: usuario.name,
+            email: usuario.email,
             token
         })
         
@@ -123,12 +124,13 @@ const crearDoctor = async(req, res = response ) => {
         await doctor.save();
 
         // Generar JWT
-        const token = await generarJWT( doctor.id, doctor.name );
+        const token = await generarJWT( doctor.id, doctor.name, doctor.email );
     
         res.status(201).json({
             ok: true,
             uid: doctor.id,
             name: doctor.name,
+            email: doctor.email,
             token
         })
         
@@ -216,13 +218,16 @@ const loginUsuario = async(req, res = response ) => {
 
 const revalidarToken = async (req, res = response ) => {
 
-    const { uid, name } = req;
+    const { uid, name, email } = req;
 
     // Generar JWT
-    const token = await generarJWT( uid, name );
+    const token = await generarJWT( uid, name, email );
 
     res.json({
         ok: true,
+        uid,
+        name,
+        email,
         token
     })
 }

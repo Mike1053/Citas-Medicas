@@ -9,6 +9,8 @@ const app = express();
 // Base de datos
 dbConnection();
 
+
+
 // CORS
 app.use(cors())
 
@@ -21,8 +23,7 @@ app.use( express.json() );
 // Rutas
 app.use('/api/auth', require('./routes/auth') );
 app.use('/api/events', require('./routes/events') );
-//app.use('/api/info', require('./routes/infomgmt') );
-
+app.use('/api/foto', require('./routes/foto') );
 
 
 
