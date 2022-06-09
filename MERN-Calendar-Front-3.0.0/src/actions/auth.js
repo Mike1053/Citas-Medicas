@@ -18,7 +18,10 @@ export const startLogin = ( email, password ) => {
             dispatch( login({
                 uid: body.uid,
                 name: body.name,
-                email: body.email
+                email: body.email,
+                fullName: body.fullName,
+                speciality: body.speciality,
+                license: body.license,
             }) )
         } else {
             Swal.fire('Error', body.msg, 'error');
@@ -41,7 +44,10 @@ export const startRegister = ( email, password, name ) => {
             dispatch( login({
                 uid: body.uid,
                 name: body.name,
-                email: body.email
+                email: body.email,
+                fullName: body.fullName,
+                speciality: body.speciality,
+                license: body.license,
             }) )
         } else {
             Swal.fire('Error', body.msg, 'error');
@@ -64,7 +70,10 @@ export const startRegisterMedic = ( email, password, name , license, speciality,
             dispatch( login({
                 uid: body.uid,
                 name: body.name,
-                email: body.email
+                email: body.email,
+                fullName: body.fullName,
+                speciality: body.speciality,
+                license: body.license,
             }) )
         } else {
             Swal.fire('Error', body.msg, 'error');
@@ -87,7 +96,10 @@ export const startChecking = () => {
             dispatch( login({
                 uid: body.uid,
                 name: body.name,
-                email: body.email
+                email: body.email,
+                fullName: body.fullName,
+                speciality: body.speciality,
+                license: body.license,
             }) )
         } else {
             dispatch( checkingFinish() );

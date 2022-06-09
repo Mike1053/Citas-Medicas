@@ -66,8 +66,10 @@ const Dictaphone = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
-  
 
+ 
+  
+  
 
   return (
     <div>
@@ -112,9 +114,14 @@ const Dictaphone = () => {
         <button onClick={e=>translate()}>Translate</button>
       </div>
     </div>
+
     
-    <Speech text={output} />
+    
+    <Speech text={output}
+    voice="Jorge"
+    />
     {document.getElementById('node')}
+    
     </div>
 
     

@@ -54,13 +54,16 @@ const crearUsuario = async(req, res = response ) => {
         await usuario.save();
 
         // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name, usuario.email );
+        const token = await generarJWT( usuario.id, usuario.name, usuario.email, usuario.license, usuario.fullName, usuario.speciality );
     
         res.status(201).json({
             ok: true,
             uid: usuario.id,
             name: usuario.name,
             email: usuario.email,
+            license: usuario.license,
+            fullName: usuario.fullName,
+            speciality: usuario.speciality,
             token
         })
         
@@ -124,13 +127,16 @@ const crearDoctor = async(req, res = response ) => {
         await doctor.save();
 
         // Generar JWT
-        const token = await generarJWT( doctor.id, doctor.name, doctor.email );
+        const token = await generarJWT( doctor.id, doctor.name, doctor.email, doctor.license, doctor.fullName, doctor.speciality );
     
         res.status(201).json({
             ok: true,
             uid: doctor.id,
             name: doctor.name,
             email: doctor.email,
+            license: doctor.license,
+            fullName: doctor.fullName,
+            speciality: doctor.speciality,
             token
         })
         
@@ -165,13 +171,16 @@ const loginUsuario = async(req, res = response ) => {
             }
 
             // Generar JWT
-            const token = await generarJWT( usuarioPaciente.id, usuarioPaciente.name, usuarioPaciente.email );
+            const token = await generarJWT( usuarioPaciente.id, usuarioPaciente.name, usuarioPaciente.email, usuarioPaciente.license, usuarioPaciente.fullName, usuarioPaciente.speciality );
 
             res.json({
                 ok: true,
                 uid: usuarioPaciente.id,
                 name: usuarioPaciente.name,
                 email: usuarioPaciente.email,
+                license: usuarioPaciente.license,
+                fullName: usuarioPaciente.fullName,
+                speciality: usuarioPaciente.speciality,
                 token
             })
         }
@@ -189,13 +198,16 @@ const loginUsuario = async(req, res = response ) => {
             }
 
             // Generar JWT
-            const token = await generarJWT( usuarioDoctor.id, usuarioDoctor.name, usuarioDoctor.email );
+            const token = await generarJWT( usuarioDoctor.id, usuarioDoctor.name, usuarioDoctor.email, usuarioDoctor.license, usuarioDoctor.fullName, usuarioDoctor.speciality );
 
             res.json({
                 ok: true,
                 uid: usuarioDoctor.id,
                 name: usuarioDoctor.name,
                 email: usuarioDoctor.email,
+                license: usuarioDoctor.license,
+                fullName: usuarioDoctor.fullName,
+                speciality: usuarioDoctor.speciality,
                 token
             })
         }

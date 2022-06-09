@@ -4,6 +4,7 @@ import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
 import { ProfileEdit } from '../DashboardComponents/ProfileEdit';
+import { CalendarScreen } from '../calendar/CalendarScreen';
 
 
 moment.locale('es');

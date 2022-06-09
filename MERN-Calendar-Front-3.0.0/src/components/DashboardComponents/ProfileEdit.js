@@ -4,12 +4,18 @@ import pic from '../images/superporky.jpg'
 import { useForm } from '../../hooks/useForm';
 import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
+import moment from 'moment';
+
+moment.locale('es');
 
 export const ProfileEdit = () => {
 
     const dispatch = useDispatch();
     const { name } = useSelector( state => state.auth );
     const { email } = useSelector( state => state.auth );
+    const { license } = useSelector( state => state.auth );
+    const { fullName } = useSelector( state => state.auth );
+    const { speciality } = useSelector( state => state.auth );
     const handleLogout = () => {
         dispatch( startLogout() );
     }
@@ -17,8 +23,8 @@ export const ProfileEdit = () => {
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
         nName: name,
         nEmail: email,
-        nFullName: 'Nando Macias',
-        nEspeciality: 'Tanatologo',
+        nFullName: fullName,
+        nEspeciality: speciality,
         nCountry: 'México',
         nAddress: 'La marmol',
         nPhone: '123456',

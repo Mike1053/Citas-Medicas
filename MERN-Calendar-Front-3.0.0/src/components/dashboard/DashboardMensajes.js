@@ -5,7 +5,7 @@ import pic from '../images/superporky.jpg'
 import moment from 'moment';
 import UploadImage from '../auth/UploadImage';
 import MostrarFoto from '../DashboardComponents/MostrarFoto';
-
+import SimpleChat from '../DashboardComponents/SimpleChat';
 
 moment.locale('es');
 
@@ -55,9 +55,12 @@ const DashboardMensajes = () => {
     </div>
     <div class="view">
       <br></br>
+      {/*
       <UploadImage/>
       <MostrarFoto/>
-       
+      <Chat/>
+      */}
+       <SimpleChat/>
     </div>
   </div>
 </div>
