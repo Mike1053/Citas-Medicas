@@ -18,12 +18,13 @@ const crearConsulta = async ( req, res = response ) => {
 
     try {
 
-        cons.userPaciente = '62965a5231b4e54d102ed12f';
+        cons.userPaciente = '62a220ccc052cd437c75b447';
         cons.Medico = req.uid;
         
         //const consultaGuardada = await cons.save();
         await cons.save();
 
+        
         res.json({
             ok: true,
             msg: 'Consulta guardada exitosamente',
@@ -42,37 +43,37 @@ const crearConsulta = async ( req, res = response ) => {
 
 const actualizarConsulta = async( req, res = response ) => {
     
-    const eventoId = req.params.id;
+    const consultaId = req.params.id;
     const uid = req.uid;
 
     try {
 
-        const evento = await Consulta.findById( eventoId );
+        const consulta = await Consulta.findById( eventoId );
 
-        if ( !evento ) {
+        if ( !consulta ) {
             return res.status(404).json({
                 ok: false,
-                msg: 'Evento no existe por ese id'
+                msg: 'La consulta no existe por ese id'
             });
         }
 
-        if ( evento.user.toString() !== uid ) {
+        if ( consulta.Medico.toString() !== uid ) {
             return res.status(401).json({
                 ok: false,
-                msg: 'No tiene privilegio de editar este evento'
+                msg: 'Este usuario de Medico no tiene privilegio de editar este diagnostico.'
             });
         }
 
-        const nuevoEvento = {
+        const nuevaConsulta = {
             ...req.body,
-            user: uid
+            Medico: uid
         }
 
-        const eventoActualizado = await Evento.findByIdAndUpdate( eventoId, nuevoEvento, { new: true } );
+        const consultaActualizada = await Consulta.findByIdAndUpdate( consultaId, nuevaConsulta, { new: true } );
 
         res.json({
             ok: true,
-            evento: eventoActualizado
+            Consulta: consultaActualizada
         });
 
         

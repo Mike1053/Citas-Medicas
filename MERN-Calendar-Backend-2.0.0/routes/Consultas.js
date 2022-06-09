@@ -45,6 +45,6 @@ router.put(
 );
 
 // Borrar consulta
-router.delete('/deleteConsulta', eliminarConsulta );
+router.delete('/:id', eliminarConsulta );
 
 module.exports = router;
