@@ -13,7 +13,7 @@ const ConsultaSchema = Schema({
     },
     userPaciente: {
         type: Schema.Types.ObjectId,
-        ref: 'Usuario',
+        ref: 'Paciente',
         required: true
     },
     Medico: {
