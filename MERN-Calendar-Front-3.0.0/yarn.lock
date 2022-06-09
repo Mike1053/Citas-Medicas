@@ -2478,6 +2478,14 @@
   "resolved" "https://registry.npmjs.org/aws4/-/aws4-1.10.0.tgz"
   "version" "1.10.0"
 
+"axios@^0.27.2":
+  "integrity" "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz"
+  "version" "0.27.2"
+  dependencies:
+    "follow-redirects" "^1.14.9"
+    "form-data" "^4.0.0"
+
 "axobject-query@^2.0.2":
   "integrity" "sha512-ICt34ZmrVt8UQnvPl6TVyDTkmhXmAyAT4Jh5ugfGUX4MOrZ+U/ZY6/sdylRw3qGNr9Ub5AJsaHeDMzNLehRdOQ=="
   "resolved" "https://registry.npmjs.org/axobject-query/-/axobject-query-2.1.2.tgz"
@@ -3292,7 +3300,7 @@
     "color-convert" "^1.9.1"
     "color-string" "^1.5.2"
 
-"combined-stream@^1.0.6", "combined-stream@~1.0.6":
+"combined-stream@^1.0.6", "combined-stream@^1.0.8", "combined-stream@~1.0.6":
   "integrity" "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg=="
   "resolved" "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz"
   "version" "1.0.8"
@@ -4961,7 +4969,7 @@
     "inherits" "^2.0.3"
     "readable-stream" "^2.3.6"
 
-"follow-redirects@^1.0.0":
+"follow-redirects@^1.0.0", "follow-redirects@^1.14.9":
   "integrity" "sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.0.tgz"
   "version" "1.15.0"
@@ -5001,6 +5009,15 @@
     "semver" "^5.6.0"
     "tapable" "^1.0.0"
     "worker-rpc" "^0.1.0"
+
+"form-data@^4.0.0":
+  "integrity" "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww=="
+  "resolved" "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "asynckit" "^0.4.0"
+    "combined-stream" "^1.0.8"
+    "mime-types" "^2.1.12"
 
 "form-data@~2.3.2":
   "integrity" "sha512-1lLKB2Mu3aGP1Q/2eCOx0fNbRMe7XdwktwOruhfqqd0rIJWwN4Dh+E3hrPSlDCXnSR7UtZ1N38rVXm+6+MEhJQ=="
@@ -5586,6 +5603,11 @@
   "resolved" "https://registry.npmjs.org/immer/-/immer-1.10.0.tgz"
   "version" "1.10.0"
 
+"immutability-helper@^3.0.1":
+  "integrity" "sha512-Q0QaXjPjwIju/28TsugCHNEASwoCcJSyJV3uO1sOIQGI0jKgm9f41Lvz0DZj3n46cNCyAZTsEYoY4C2bVRUzyQ=="
+  "resolved" "https://registry.npmjs.org/immutability-helper/-/immutability-helper-3.1.1.tgz"
+  "version" "3.1.1"
+
 "import-cwd@^2.0.0":
   "integrity" "sha1-qmzzbnInYShcs3HsZRn1PiQ1sKk="
   "resolved" "https://registry.npmjs.org/import-cwd/-/import-cwd-2.1.0.tgz"
@@ -5735,7 +5757,7 @@
     "has" "^1.0.3"
     "side-channel" "^1.0.2"
 
-"invariant@^2.2.2", "invariant@^2.2.4", "invariant@2.2.4":
+"invariant@^2.1.2", "invariant@^2.2.2", "invariant@^2.2.4", "invariant@2.2.4":
   "integrity" "sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA=="
   "resolved" "https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz"
   "version" "2.2.4"
@@ -9258,6 +9280,19 @@
   optionalDependencies:
     "fsevents" "2.1.2"
 
+"react-speech-recognition@^3.9.1":
+  "integrity" "sha512-HzhHydSvLcpaCW7q9HZamNg4XQaKXEMGBT9rYP/rGhbwBRj6dgrCZsHcoV3Lr3WSDyFw0svXeoRzbG/cneFGnQ=="
+  "resolved" "https://registry.npmjs.org/react-speech-recognition/-/react-speech-recognition-3.9.1.tgz"
+  "version" "3.9.1"
+
+"react-speech@^1.0.2":
+  "integrity" "sha512-z/HgICAqmWIwXbQnxVDm0CMgu6MlZzkVtp37F7kd9vPKSJw8Pcv+f2wFy5kOwTO5m5BOD9awnCsBa5J9XovPJA=="
+  "resolved" "https://registry.npmjs.org/react-speech/-/react-speech-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "immutability-helper" "^3.0.1"
+    "react" "^16.10.1"
+
 "react-time-picker@^4.0.0":
   "integrity" "sha512-qnZDlXXF6AItplelYXMUsHar05VevaYY+SuKIacTZ5YJwyj74ZpScHkolNvcJgo6YYzdX1QC6iNprzcuPHYt7Q=="
   "resolved" "https://registry.npmjs.org/react-time-picker/-/react-time-picker-4.0.1.tgz"
@@ -9289,7 +9324,14 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^16.13.1", "react@^16.14.0", "react@^16.6.1", "react@^16.8 || ^17 || ^18", "react@^16.8.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.3", "react@>=0.14.0", "react@>=15", "react@>=15.0.0", "react@>=15.5", "react@>=16", "react@>=16.14.0", "react@>=16.3", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8.0", "react@~0.14.8 || ^15.0.0 || ^16.0.0":
+"react-translate@^7.0.1":
+  "integrity" "sha512-YHKsjj3+3qy6i/lY463I/B1BY5iNc57In/B6pKNiqVYps95mZNTeFIpJAS8M6AmfwLxuHpmrNdI0pvde6jA7Ug=="
+  "resolved" "https://registry.npmjs.org/react-translate/-/react-translate-7.0.1.tgz"
+  "version" "7.0.1"
+  dependencies:
+    "invariant" "^2.1.2"
+
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^16.10.1", "react@^16.13.1", "react@^16.14.0", "react@^16.6.1", "react@^16.8 || ^17 || ^18", "react@^16.8.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.3", "react@>=0.14.0", "react@>=15", "react@>=15.0.0", "react@>=15.5", "react@>=16", "react@>=16.14.0", "react@>=16.3", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8.0", "react@~0.14.8 || ^15.0.0 || ^16.0.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"
@@ -10780,6 +10822,11 @@
   "integrity" "sha1-f17oI66AUgfACvLfSoTsP8+lcLQ="
   "resolved" "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   "version" "0.2.0"
+
+"text-to-speech-js@^1.1.10":
+  "integrity" "sha512-53frVz2cepPJvNlHp172QNOTGU4dItR0/uUlpjEKzGkTdBF4jXwj3Ticnm8JZdjaLoqy+APCdpiWTdU5pABqnw=="
+  "resolved" "https://registry.npmjs.org/text-to-speech-js/-/text-to-speech-js-1.1.10.tgz"
+  "version" "1.1.10"
 
 "throat@^4.0.0":
   "integrity" "sha1-iQN8vJLFarGJJua6TLsgDhVnKmo="

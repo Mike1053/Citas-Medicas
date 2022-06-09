@@ -2,12 +2,21 @@ import React from 'react'
 import '../Estilos/profileEdit.css'
 import pic from '../images/superporky.jpg'
 import { useForm } from '../../hooks/useForm';
+import { useSelector, useDispatch } from 'react-redux'
+import { startLogout } from '../../actions/auth';
 
 export const ProfileEdit = () => {
 
+    const dispatch = useDispatch();
+    const { name } = useSelector( state => state.auth );
+    const { email } = useSelector( state => state.auth );
+    const handleLogout = () => {
+        dispatch( startLogout() );
+    }
+
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-        nName: 'Nando',
-        nEmail: 'nando@gmail.com',
+        nName: name,
+        nEmail: email,
         nFullName: 'Nando Macias',
         nEspeciality: 'Tanatologo',
         nCountry: 'México',
@@ -22,7 +31,7 @@ export const ProfileEdit = () => {
     <div className="row">
         <div className="col-md-4 border-right">
             <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="90"/>
-            <span className="font-weight-bold">{nFullName}</span>
+            <span className="font-weight-bold">{name}</span>
             <span className="text-black-50">{nEmail}</span>
             </div>
         </div>

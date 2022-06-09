@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
+import Dictaphone from '../translator/Dictaphone'
 
 
 moment.locale('es');
@@ -53,7 +54,7 @@ const DashboardVideoChat = () => {
     </div>
     <div class="view">
       <br></br>
-      <h1>Video Chat</h1>
+      <Dictaphone/>
        
     </div>
   </div>

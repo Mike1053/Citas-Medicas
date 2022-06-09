@@ -1,0 +1,5 @@
+npm i text-to-speech-js
+
+npm i react-translate
+
+npm i react-speech-recognition

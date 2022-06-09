@@ -23,6 +23,7 @@ import DashboardVideoChat from '../components/dashboard/DashboardVideoChat';
 import DashboardMensajes from '../components/dashboard/DashboardMensajes';
 import DashboardAjustes from '../components/dashboard/DashboardAjustes';
 import { ProfileEdit } from '../components/DashboardComponents/ProfileEdit';
+import Logout from '../components/auth/Logout';
 
 export const AppRouter = () => {
 
@@ -49,6 +50,12 @@ export const AppRouter = () => {
                         path="/login" 
                         component={ LoginScreen }
                         isAuthenticated={ !!uid }
+                    />
+
+                    <PublicRoute
+                        exact
+                        path="/logout"
+                        component={ Logout }
                     />
 
                     <PublicRoute 
