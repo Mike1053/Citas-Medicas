@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
+import UploadImage from '../auth/UploadImage';
+import MostrarFoto from '../DashboardComponents/MostrarFoto';
 
 
 moment.locale('es');
@@ -53,7 +55,8 @@ const DashboardMensajes = () => {
     </div>
     <div class="view">
       <br></br>
-      <h1>Mensajes</h1>
+      <UploadImage/>
+      <MostrarFoto/>
        
     </div>
   </div>

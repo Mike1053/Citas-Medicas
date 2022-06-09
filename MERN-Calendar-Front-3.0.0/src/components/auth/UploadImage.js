@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux';
 import { uploadImage } from '../../actions/uploadImage';
-
+import { useSelector} from 'react-redux'
+import { startLogout } from '../../actions/auth';
 import React from 'react'
 
 	export const UploadImage = ({ isOpen, close }) => {
@@ -10,7 +11,10 @@ import React from 'react'
 	const dispatch = useDispatch();
     const [fileName, setFileName] = useState("Subir una imagen")
 	const [selectedFile, setSelectedFile] = useState(null)
-
+	const { uid } = useSelector( state => state.auth );
+    const handleLogout = () => {
+        dispatch( startLogout() );
+    }
 	const handleFileChange = (e) => {
 		const [file] = e.target.files; 
 		const SIZE_50MB = 50 * 1024 * 1024;
@@ -33,10 +37,15 @@ import React from 'react'
 
 	}
 	
-	const handleUpdateProfilePic = () => {
+	const handleUpdateProfilePic = (e) => {
+		e.preventDefault();
 		if(!selectedFile) return toast.error('Debes seleccionar una nueva imagen');
-		dispatch( uploadImage( selectedFile ) );
-		close()
+		dispatch( uploadImage( selectedFile,  uid) );
+		
+	}
+
+	const deleteImage = () =>{
+		setSelectedFile(null);
 	}
 
 	return (
@@ -62,8 +71,8 @@ import React from 'react'
 				/>
 			</div>
 			<div>
-				<button variant="secondary" onClick={close}>
-					Cancelar
+				<button variant="secondary" onClick={deleteImage}>
+					Cancelar 
 				</button>
 				<button variant="primary" onClick={handleUpdateProfilePic}>
 					Actualizar imagen
