@@ -1,3 +1,8 @@
+/*
+    Ruta
+    /api/info
+*/
+
 const { Router } = require('express');
 const router = Router();
 
@@ -5,12 +10,13 @@ const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
-const { subirImagen } = require('../controllers/infomgmt');
+const { crearInfo } = require('../controllers/infomgmt');
 
+router.use( validarJWT );
 
-
-router.put(
-    '/uploadHist',
-    validarJWT,
-    actHistorial 
+router.post(
+    '/upload_Info_Patient',
+    crearInfo 
 );
+
+module.exports = router;

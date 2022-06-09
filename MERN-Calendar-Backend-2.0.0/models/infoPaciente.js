@@ -10,12 +10,7 @@ const infoPacienteSchema = Schema({
     },
     usuarioPaciente: {
         type: Schema.Types.ObjectId,
-        ref: 'Usuario',
-        required: true
-    },
-    usuarioMedico: {
-        type: Schema.Types.ObjectId,
-        ref: 'Doctor',
+        ref: 'Paciente',
         required: true
     }
 });
