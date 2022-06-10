@@ -68,8 +68,20 @@ const Dictaphone = () => {
   }
 
  
-  
-  
+  const style = {
+    play: {
+      button: {
+        width: '28',
+        height: '28',
+        cursor: 'pointer',
+        pointerEvents: 'none',
+        outline: 'none',
+        backgroundColor: 'yellow',
+        border: 'solid 1px rgba(255,255,255,1)',
+        borderRadius: 6
+      },
+    }
+  };
 
   return (
     <div>
@@ -114,14 +126,14 @@ const Dictaphone = () => {
         <button onClick={e=>translate()}>Translate</button>
       </div>
     </div>
-
-    
-    
+    <div>
     <Speech text={output}
     voice="Jorge"
+    textAsButton={true}    
+    displayText="Text-to-Speech" 
     />
     {document.getElementById('node')}
-    
+    </div>
     </div>
 
     
