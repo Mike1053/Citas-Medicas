@@ -23,11 +23,11 @@ export const ProfileEdit = () => {
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
         nName: name,
         nEmail: email,
-        nFullName: fullName,
-        nEspeciality: speciality,
+        nFullName: name,
+        nEspeciality: 'Urologo',
         nCountry: 'México',
-        nAddress: 'La marmol',
-        nPhone: '123456',
+        nAddress: 'Avenida Álvaro Obregón',
+        nPhone: '+525589577288',
     });
     const { nName, nEmail, nFullName, nEspeciality, nCountry, nAddress, nPhone} = formRegisterValues;
     console.log(formRegisterValues);
