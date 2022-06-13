@@ -1,14 +1,14 @@
 /*
-    Event Routes
+    Foto Routes
     /api/foto
 */
 
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { crearFoto, fotoGet, actualizarFoto } = require('../controllers/foto');
 const { validarCampos } = require('../middlewares/validar-campos');
-
 const { validarJWT } = require('../middlewares/validar-jwt');
+
+const { crearFoto, fotoGet, actualizarFoto, eliminarFoto } = require('../controllers/foto');
 
 const router = Router();
 
@@ -38,12 +38,7 @@ router.put(
   actualizarFoto
 ); 
 
-// Borrar foto
-router.delete(
-  '/borrarFoto',
-  [
-    
-  ]
-)
+// Eliminar foto
+router.delete('/:id', eliminarFoto );
 
 module.exports = router;

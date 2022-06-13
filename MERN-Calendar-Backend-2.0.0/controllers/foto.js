@@ -26,6 +26,8 @@ const crearFoto = async ( req, res = response ) => {
   }
 }
 
+
+//obtener fotos por ID
 const fotoGet = async(req = request, res = response) => {
 
 // TO-DO ALMACENAR EL ID EN EN UNA VARIABLE
@@ -40,22 +42,21 @@ const fotoGet = async(req = request, res = response) => {
   });
 }
 
-// const fotoGetId = async(req = request, res = response) => {
+const getFotos = async( req, res = response ) => {
 
+    const fotos = await Foto.find()
+                                .populate('user','name');
+                                
 
-//   const fotosId = await Foto.findById();
-                          
-
-
-//   res.json({
-//     ok: true,
-//     fotosId
-//   });
-// }
+    res.json({
+        ok: true,
+        fotos
+    });
+}
 
 
 const actualizarFoto = async( req, res = response ) => {
-    
+ 
   const fotoId = req.params.id;
   const uid = req.uid;
   //const uid = req.user;
@@ -101,7 +102,44 @@ const actualizarFoto = async( req, res = response ) => {
 
 }
 
+const eliminarFoto = async( req, res = response ) => {
 
+    const fotoId = req.params.id;
+    const uid = req.uid;
+
+    try {
+
+        const foto = await Foto.findById( fotoId );
+
+        if ( !foto ) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'Foto no existe por ese id'
+            });
+        }
+
+        if ( foto.user.toString() !== uid ) {
+            return res.status(401).json({
+                ok: false,
+                msg: 'No tiene privilegio de eliminar esta foto'
+            });
+        }
+
+
+        await Foto.findByIdAndDelete( fotoId );
+
+        res.json({ ok: true });
+
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+
+}
 
 
 
@@ -111,5 +149,8 @@ const actualizarFoto = async( req, res = response ) => {
 module.exports = {
   crearFoto,
   fotoGet,
-  actualizarFoto
+  actualizarFoto,
+  getFotos,
+  eliminarFoto
+
 }
