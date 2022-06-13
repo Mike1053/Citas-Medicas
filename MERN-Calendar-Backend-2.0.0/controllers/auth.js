@@ -165,13 +165,12 @@ const loginUsuario = async(req, res = response ) => {
             }
 
             // Generar JWT
-            const token = await generarJWT( usuarioPaciente.id, usuarioPaciente.name, usuarioPaciente.email );
+            const token = await generarJWT( usuarioPaciente.id, usuarioPaciente.name );
 
             res.json({
                 ok: true,
                 uid: usuarioPaciente.id,
                 name: usuarioPaciente.name,
-                email: usuarioPaciente.email,
                 token
             })
         }
@@ -189,13 +188,12 @@ const loginUsuario = async(req, res = response ) => {
             }
 
             // Generar JWT
-            const token = await generarJWT( usuarioDoctor.id, usuarioDoctor.name, usuarioDoctor.email );
+            const token = await generarJWT( usuarioDoctor.id, usuarioDoctor.name );
 
             res.json({
                 ok: true,
                 uid: usuarioDoctor.id,
                 name: usuarioDoctor.name,
-                email: usuarioDoctor.email,
                 token
             })
         }

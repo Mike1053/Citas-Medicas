@@ -5,6 +5,7 @@ const getEventos = async( req, res = response ) => {
 
     const eventos = await Evento.find()
                                 .populate('user','name');
+                                
 
     res.json({
         ok: true,
@@ -41,6 +42,7 @@ const actualizarEvento = async( req, res = response ) => {
     
     const eventoId = req.params.id;
     const uid = req.uid;
+    //const uid = req.user;
 
     try {
 

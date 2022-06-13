@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const FotoSchema = Schema({
   foto: {
       type: String,
-      required: true
+      required: true,
+      unique:true
   },
   user: {
     type: Schema.Types.ObjectId,
