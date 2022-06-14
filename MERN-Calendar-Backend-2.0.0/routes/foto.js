@@ -22,7 +22,7 @@ router.get('/', fotoGet );
 // Obtener fotos 
 router.get('/', getFotos );
 
-// Crear un nuevo foto
+// Crear una nueva foto
 router.post(
     '/subirFoto',
     [
