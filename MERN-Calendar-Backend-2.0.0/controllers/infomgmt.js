@@ -17,6 +17,28 @@ const actHistorial = async(req, res = response ) => {
       }
 }
 */
+
+const getInfo = async ( req, res = response ) => {
+
+    try {
+
+        let info = await perfilPaciente.findOne({usuarioPaciente: '62a220ccc052cd437c75b447'});
+
+        res.json({
+            ok: true,
+            ID_de_Info_de_Paciente: info
+        })
+
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+}
+
 const crearInfo = async ( req, res = response ) => {
 
     const info = new perfilPaciente( req.body );
@@ -43,5 +65,6 @@ const crearInfo = async ( req, res = response ) => {
 }
 
 module.exports = {
-    crearInfo
+    crearInfo,
+    getInfo
 }

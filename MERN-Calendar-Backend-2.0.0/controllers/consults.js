@@ -1,5 +1,7 @@
 const { response } = require('express');
 const Consulta = require('../models/Consulta');
+const perfilPaciente = require('../models/infoPaciente');
+
 
 const getConsultas = async( req, res = response ) => {
 
@@ -24,11 +26,21 @@ const crearConsulta = async ( req, res = response ) => {
         //const consultaGuardada = await cons.save();
         await cons.save();
 
-        
+        let info = await perfilPaciente.findOneAndUpdate({usuarioPaciente: '62a220ccc052cd437c75b447'});
+        //info.Historial.push(cons._id);
+        /*
+        perfilPaciente.updateOne(
+            { _id: ID }, 
+            { $push: { 
+                      Historial: cons.ObjectI    
+                    } 
+            })
+*/
         res.json({
             ok: true,
             msg: 'Consulta guardada exitosamente',
-            cons
+            cons,
+            info
         })
 
 
