@@ -8,7 +8,7 @@ const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
-const { crearFoto, fotoGet, actualizarFoto, eliminarFoto } = require('../controllers/foto');
+const { crearFoto, fotoGet, actualizarFoto, eliminarFoto, getFotos } = require('../controllers/foto');
 
 const router = Router();
 
@@ -16,8 +16,11 @@ const router = Router();
 router.use( validarJWT );
 
 
-// Obtener fotos 
+// Obtener fotos por ID
 router.get('/', fotoGet );
+
+// Obtener fotos 
+router.get('/', getFotos );
 
 // Crear un nuevo foto
 router.post(

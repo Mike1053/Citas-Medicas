@@ -30,9 +30,9 @@ const crearFoto = async ( req, res = response ) => {
 //obtener fotos por ID
 const fotoGet = async(req = request, res = response) => {
 
-// TO-DO ALMACENAR EL ID EN EN UNA VARIABLE
+    const uid = req.uid;    
   const fotos = await Foto.find({"user":
-    "62a2187f91f10431e85e5f16"});
+    uid});
                           
 
 
