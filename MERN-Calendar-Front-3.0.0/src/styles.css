@@ -365,13 +365,19 @@ body {
   .clear {
     clear: both;
   }
-/*
+
 .ant-modal-root{
-  background-color: #F0F4F5;
   position: relative;
   z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
-*/
+
 .ant-modal-content{
   background-color: #F0F4F5;
   position: relative;
@@ -379,13 +385,6 @@ body {
   margin-top: 300px;
   margin-left:100px;
   
-  
-}
-
-.msg_flex{
-  background-color: red;
-  position: relative;
-  z-index: 99999;
 }
 
 .ant-notification-notice-content{

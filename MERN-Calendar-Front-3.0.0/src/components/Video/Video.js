@@ -135,7 +135,7 @@ const Video = () => {
               ></i>
             </div>
 
-            {callAccepted && !callEnded && (
+            {/*callAccepted && !callEnded && (
               <div
                 className="icons"
                 onClick={() => {
@@ -145,7 +145,8 @@ const Video = () => {
               >
                 <img src={Msg} alt="chat icon" />
               </div>
-            )}
+            )*/}
+            {/*
             <Modal
               title="Chat"
               footer={null}
@@ -181,6 +182,7 @@ const Video = () => {
                 onSearch={onSearch}
               />
             </Modal>
+              */}
             {callAccepted && !callEnded && (
               <div
                 className="icons"

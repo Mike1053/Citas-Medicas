@@ -91,7 +91,7 @@ const Options = () => {
               icon={<CopyOutlined />}
               className={classes.btn}
               tabIndex="0"
-              onClick={() => message.success("Code copied successfully!")}
+              //onClick={() => message.success("Code copied successfully!")}
             >
               Copy code
             </Button>
