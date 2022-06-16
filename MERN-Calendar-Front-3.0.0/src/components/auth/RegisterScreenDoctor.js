@@ -34,8 +34,13 @@ export const RegisterScreenDoctor = () => {
 
     return (
         <div className="container login-container">
-                <div className="col-md-6 login-form-2">
+                <div className="col-md-4 login-form-2">
                     <h3>Registro Doctor</h3>
+                    {/*Logo del login*/}
+                    <div className="logo">
+                        <img src="./CitasMedicas.png" width="100" height="100"/>
+                    </div>
+
                     <form onSubmit={ handleRegister }>
                         
                         <div className="form-group">

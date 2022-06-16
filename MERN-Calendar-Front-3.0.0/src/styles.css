@@ -365,5 +365,6 @@ body {
   .clear {
     clear: both;
   }
-
-
+  .circular--square{
+    border-radius: 50%;
+}

@@ -1,27 +1,30 @@
+  .ajustesperfil{
+    background-color: rgb(78, 78, 78);
+  }
 
-  
-  .form-control:focus {
+  .focus {
     box-shadow: none;
-    border-color: #BA68C8;
+    border-color: #54b9cd;
+    border-radius: 30px;
   }
   
   .profile-button {
-    background: #BA68C8;
+    background: #54b9cd;
     box-shadow: none;
     border: none;
   }
   
   .profile-button:hover {
-    background: #682773;
+    background: #54b9cd;
   }
   
   .profile-button:focus {
-    background: #682773;
+    background: #54b9cd;
     box-shadow: none;
   }
   
   .profile-button:active {
-    background: #682773;
+    background: #54b9cd;
     box-shadow: none;
   }
   

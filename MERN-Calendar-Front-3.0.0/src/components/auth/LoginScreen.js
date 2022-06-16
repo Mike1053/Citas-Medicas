@@ -44,9 +44,15 @@ export const LoginScreen = () => {
 
     return (
         <div className="container login-container">
-                <div className="col-md-6 login-form-1">
-                    <h3>Ingresos</h3>
+                <div className="col-md-4 login-form-2">
+                    <h3>Inicia sesion</h3>
                     <form onSubmit={ handleLogin }>
+                        {/*Logo del login*/}
+                        <div className="logo">
+                            <img src="./CitasMedicas.png" width="100" height="100"/>
+                        </div>
+
+
                         <div className="form-group">
                             <input 
                                 type="text"
@@ -73,9 +79,23 @@ export const LoginScreen = () => {
                                 className="btnSubmit"
                                 value="Login" 
                             />
-                        </div>
-                        <a href='/registerDoctor'>Ir al registro</a>
+                        </div>         
                     </form>
+                    
+                    <button
+                        type="submit"
+                        className="btnSubmit"
+                        onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href='/registerDoctor';
+                        }}
+                        
+                        > Registro
+                    </button>
+                    
+                     
+                    
+                    
                     
                 </div>
         </div>

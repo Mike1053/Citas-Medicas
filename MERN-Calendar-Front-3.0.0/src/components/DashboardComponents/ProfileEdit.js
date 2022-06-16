@@ -44,7 +44,7 @@ export const ProfileEdit = () => {
         <div className="col-md-8">
             <div className="p-3 py-5">
                 <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h6 className="text-right">Edit Profile</h6>
+                    <h6 className="text-right">Editar Perfil</h6>
                 </div>
                 <form>
                 <div className="row mt-2">
