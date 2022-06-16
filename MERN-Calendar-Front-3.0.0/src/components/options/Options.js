@@ -14,11 +14,16 @@ import {
   FacebookIcon,
   FacebookShareButton,
 } from "react-share";
+import {
+  UserOutlined,
+  CopyOutlined,
+  InfoCircleOutlined,
+  PhoneOutlined,
+} from "@ant-design/icons";
 import { socket } from "../../context/VideoState";
 
 const Options = () => {
   const [idToCall, setIdToCall] = useState("");
-
   const [isModalVisible, setIsModalVisible] = useState(false);
   const Audio = useRef();
   const {
@@ -68,6 +73,7 @@ const Options = () => {
         <Input
           size="large"
           placeholder="Your name"
+          prefix={<UserOutlined />}
           maxLength={15}
           suffix={<small>{name.length}/15</small>}
           value={name}
@@ -82,6 +88,8 @@ const Options = () => {
           <CopyToClipboard text={me}>
             <Button
               type="primary"
+              icon={<CopyOutlined />}
+              className={classes.btn}
               tabIndex="0"
               onClick={() => message.success("Code copied successfully!")}
             >
@@ -125,6 +133,12 @@ const Options = () => {
           value={idToCall}
           onChange={(e) => setIdToCall(e.target.value)}
           style={{ marginRight: "0.5rem", marginBottom: "0.5rem" }}
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          suffix={
+            <Tooltip title="Enter code of the other user">
+              <InfoCircleOutlined style={{ color: "rgba(0,0,0,.45)" }} />
+            </Tooltip>
+          }
         />
 
         {callAccepted && !callEnded ? (
@@ -140,6 +154,7 @@ const Options = () => {
         ) : (
           <Button
             type="primary"
+            icon={<PhoneOutlined />}
             onClick={() => {
               if (name.length) callUser(idToCall);
               else message.error("Please enter your name to call!");
@@ -151,9 +166,9 @@ const Options = () => {
           </Button>
         )}
       </div>
-
-      {call.isReceivingCall && !callAccepted && (
-        <>
+      
+      { call.isReceivingCall && !callAccepted && (
+        <div class="ant-modal-content">
           <audio src={Teams} loop ref={Audio} />
           <Modal
             title="Incoming Call"
@@ -178,6 +193,7 @@ const Options = () => {
                 variant="contained"
                 className={classes.answer}
                 color="#29bb89"
+                icon={<PhoneOutlined />}
                 onClick={() => {
                   answerCall();
                   Audio.current.pause();
@@ -189,6 +205,7 @@ const Options = () => {
               <Button
                 variant="contained"
                 className={classes.decline}
+                icon={<PhoneOutlined />}
                 onClick={() => {
                   setIsModalVisible(false);
                   Audio.current.pause();
@@ -199,7 +216,7 @@ const Options = () => {
               </Button>
             </div>
           </Modal>
-        </>
+        </div>
       )}
     </div>
   );

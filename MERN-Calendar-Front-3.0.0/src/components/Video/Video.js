@@ -10,6 +10,8 @@ import VideoOff from "../../assests/video-off.svg";
 import Msg_Illus from "../../assests/msg_illus.svg";
 import Msg from "../../assests/msg.svg";
 import ScreenShare from '../../assests/share_screen.svg'
+import { UserOutlined, MessageOutlined } from "@ant-design/icons";
+
 import { socket } from "../../context/VideoState";
 
 // const socket = io()
@@ -75,7 +77,7 @@ const Video = () => {
       notification.open({
         message: "",
         description: `${msgRcv.sender}: ${msgRcv.value}`,
-        
+        icon: <MessageOutlined style={{ color: "#108ee9" }} />,
       });
     }
   }, [msgRcv]);
@@ -111,7 +113,7 @@ const Video = () => {
                 opacity: `${myVdoStatus ? "-1" : "2"}`,
               }}
               size={98}
-              icon={!name}
+              icon={!name && <UserOutlined />}
             >
               {name}
             </Avatar>
@@ -231,7 +233,7 @@ const Video = () => {
                 opacity: `${userVdoStatus ? "-1" : "2"}`,
               }}
               size={98}
-              icon={!(userName || call.name)}
+              icon={!(userName || call.name) && <UserOutlined />}
             >
               {userName || call.name}
             </Avatar>

@@ -365,5 +365,31 @@ body {
   .clear {
     clear: both;
   }
+/*
+.ant-modal-root{
+  background-color: #F0F4F5;
+  position: relative;
+  z-index: 99999;
+}
+*/
+.ant-modal-content{
+  background-color: #F0F4F5;
+  position: relative;
+  z-index: 99999;
+  margin-top: 300px;
+  margin-left:100px;
+  
+  
+}
 
+.msg_flex{
+  background-color: red;
+  position: relative;
+  z-index: 99999;
+}
 
+.ant-notification-notice-content{
+  background-color: #F0F4F5;
+  position: relative;
+  z-index: 99999;
+}
