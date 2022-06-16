@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const { dbConnection } = require('./database/config');
-
+const fileUpload = require('express-fileupload');
 // Crear el servidor de express
 const app = express();
 
@@ -19,6 +19,12 @@ app.use( express.static('public') );
 
 // Lectura y parseo del body
 app.use( express.json() );
+
+// Fileupload carga de archivos
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/upload/'
+}));
 
 // Rutas
 app.use('/api/auth', require('./routes/auth') );

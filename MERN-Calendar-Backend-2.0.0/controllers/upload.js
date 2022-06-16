@@ -21,7 +21,7 @@ const crearUpload = async ( req, res = response ) => {
       console.log(error)
       res.status(500).json({
           ok: false,
-          msg: 'Ya subiste esta upload, prueba con otra'
+          msg: 'Ya subiste este arcivo, prueba con otro'
       });
   }
 }
@@ -68,14 +68,14 @@ const actualizarUpload = async( req, res = response ) => {
       if ( !upload ) {
           return res.status(404).json({
               ok: false,
-              msg: 'Upload no existe por ese id'
+              msg: 'archivo no existe por ese id'
           });
       }
 
       if ( upload.user.toString() !== uid ) {
           return res.status(401).json({
               ok: false,
-              msg: 'No tiene privilegio de editar esta upload'
+              msg: 'No tiene privilegio de editar este archivo'
           });
       }
 
@@ -121,7 +121,7 @@ const eliminarUpload = async( req, res = response ) => {
         if ( foto.user.toString() !== uid ) {
             return res.status(401).json({
                 ok: false,
-                msg: 'No tiene privilegio de eliminar esta upload'
+                msg: 'No tiene privilegio de eliminar este archivo'
             });
         }
 

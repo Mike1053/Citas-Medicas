@@ -16,26 +16,26 @@ const router = Router();
 router.use( validarJWT );
 
 
-// Obtener uploads por ID
-router.get('/', uploadGet );
-
-// Obtener uploads 
-router.get('/', getUploads );
-
-// Crear una nueva upload
+// Crear una nuevo archivo
 router.post(
-    '/upload',
+    '/',
     [
 
     ],
     crearUpload 
 );
 
+// Obtener uploads por ID
+router.get('/', uploadGet );
+
+// Obtener uploads 
+router.get('/', getUploads );
+
 // Actualizar upload
 router.put(
   '/:id',
   [
-        check('upload','Selecciona una upload').not().isEmpty(),
+        check('upload','Selecciona un archivo').not().isEmpty(),
         validarCampos
   ],
   actualizarUpload
