@@ -4,6 +4,7 @@ import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
 import Dictaphone from '../translator/Dictaphone'
+import VideoChat from '../videoChat/VideoChat';
 
 
 moment.locale('es');
@@ -54,7 +55,8 @@ const DashboardVideoChat = () => {
     </div>
     <div class="view">
       <br></br>
-      <Dictaphone/>
+      {/* <Dictaphone/> */}
+      <VideoChat/>
        
     </div>
   </div>
