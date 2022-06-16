@@ -6,6 +6,7 @@ import * as classes from "./Options.module.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import VideoContext from "../../context/VideoContext";
 import Hang from "../../assests/hang.svg";
+import pic from "../images/hombre.jpg"
 import {
   TwitterIcon,
   TwitterShareButton,
@@ -171,22 +172,19 @@ const Options = () => {
         <div class="ant-modal-content">
           <audio src={Teams} loop ref={Audio} />
           <Modal
-            title="Incoming Call"
             visible={isModalVisible}
             onOk={() => showModal(false)}
             onCancel={handleCancel}
             footer={null}
           >
+            <h2 className="titulo-recibir-llamada">{call.name} is calling you</h2>
             <div style={{ display: "flex", justifyContent: "space-around" }}>
-              <h1>
-                {call.name} is calling you:{" "}
-                <img
-                  src={Phone}
-                  alt="phone ringing"
-                  className={classes.phone}
-                  style={{ display: "inline-block" }}
-                />
-              </h1>
+              <p className="p-de-la-foto">
+                {<img
+                  src={pic}
+                  className="videoCall"
+                />}
+              </p>
             </div>
             <div className={classes.btnDiv}>
               <Button

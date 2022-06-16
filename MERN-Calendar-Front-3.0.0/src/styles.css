@@ -374,21 +374,46 @@ body {
   align-items: center;
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 25%;
   transform: translate(-50%, -50%);
+  
 }
 
 .ant-modal-content{
-  background-color: #F0F4F5;
+  background-color: #81abff;
   position: relative;
   z-index: 99999;
   margin-top: 300px;
   margin-left:100px;
-  
+  border-width: medium;
+  border-style: solid;
+  border-color: #000;
+  padding: 20px 20px 20px 20px;
 }
 
 .ant-notification-notice-content{
   background-color: #F0F4F5;
   position: relative;
   z-index: 99999;
+}
+
+.ant-modal-close{
+  display: none;
+}
+
+.p-de-la-foto{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.videoCall{
+  border-radius: 10%;
+}
+
+.titulo-recibir-llamada{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
