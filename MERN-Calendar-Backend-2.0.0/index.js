@@ -30,7 +30,7 @@ app.use(fileUpload({
 app.use('/api/auth', require('./routes/auth') );
 app.use('/api/events', require('./routes/events') );
 app.use('/api/foto', require('./routes/foto') );
-app.use('/api/upload', require('./routes/upload') );
+app.use('/api/uploads', require('./routes/uploads') );
 
 
 // Escuchar peticiones
