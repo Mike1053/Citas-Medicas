@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const infoPacienteSchema = Schema({
-    Historial: {
+    Historial: [{
         type: Schema.Types.ObjectId,
         ref: 'Consulta',        
-    },
+    }],
     telefono: {
         type: String
     },

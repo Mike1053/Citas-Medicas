@@ -26,21 +26,16 @@ const crearConsulta = async ( req, res = response ) => {
         //const consultaGuardada = await cons.save();
         await cons.save();
 
-        let info = await perfilPaciente.findOneAndUpdate({usuarioPaciente: '62a220ccc052cd437c75b447'});
-        //info.Historial.push(cons._id);
-        /*
-        perfilPaciente.updateOne(
-            { _id: ID }, 
-            { $push: { 
-                      Historial: cons.ObjectI    
-                    } 
-            })
-*/
+        let info = await perfilPaciente.findOne({usuarioPaciente: '62a220ccc052cd437c75b447'});
+        info.Historial.push(cons._id.toString());
+        
+        const infoActualizada = await perfilPaciente.findByIdAndUpdate( info._id, info, { new: true } );
+        
         res.json({
             ok: true,
             msg: 'Consulta guardada exitosamente',
             cons,
-            info
+            infoActualizada
         })
 
 
@@ -60,7 +55,7 @@ const actualizarConsulta = async( req, res = response ) => {
 
     try {
 
-        const consulta = await Consulta.findById( eventoId );
+        const consulta = await Consulta.findById( consultaId );
 
         if ( !consulta ) {
             return res.status(404).json({
@@ -101,29 +96,29 @@ const actualizarConsulta = async( req, res = response ) => {
 
 const eliminarConsulta = async( req, res = response ) => {
 
-    const eventoId = req.params.id;
+    const consultaId = req.params.id;
     const uid = req.uid;
 
     try {
 
-        const evento = await Evento.findById( eventoId );
+        const consulta = await Consulta.findById( consultaId );
 
-        if ( !evento ) {
+        if ( !consulta ) {
             return res.status(404).json({
                 ok: false,
                 msg: 'Evento no existe por ese id'
             });
         }
 
-        if ( evento.user.toString() !== uid ) {
+        if ( consulta.user.toString() !== uid ) {
             return res.status(401).json({
                 ok: false,
-                msg: 'No tiene privilegio de eliminar este evento'
+                msg: 'No tiene privilegio de eliminar esta consulta'
             });
         }
 
 
-        await Evento.findByIdAndDelete( eventoId );
+        await Consulta.findByIdAndDelete( consultaId );
 
         res.json({ ok: true });
 
