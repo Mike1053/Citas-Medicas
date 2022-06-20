@@ -19,8 +19,6 @@ router.use( validarJWT );
 // Obtener fotos por ID
 router.get('/', fotoGet );
 
-// Obtener fotos 
-router.get('/', getFotos );
 
 // Crear una nueva foto
 router.post(
