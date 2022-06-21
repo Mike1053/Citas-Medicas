@@ -6,38 +6,14 @@ import { fetchSinToken, fetchConToken } from '../../helpers/fetch';
 const MostrarFoto = () => {
 
     const [foto, setFoto] = useState();
-    const { uid } = useSelector( state => state.auth );
-    /*
-    const dispatch = useDispatch();
     useEffect(() => {
-        
-      dispatch( fotoLoading() );
-
-    }, [ dispatch ])
-    */
-
-    const sacaFoto = () => {
-      return async() => {
-  
-          try {
-              const resp = await fetchConToken( 'foto' );
-              const body = await resp.json();
-              
-              const fotos = body.fotos;
-
-              let base = fotos.map(function(element){
-                if(uid === element.user){
-                  return element.foto
-                }
-              })
-              setFoto(base)
-          } catch (error) {
-              console.log(error)
-          }
-  
+      const fetchData = async () => {
+        const data = await fotoLoading();
+        setFoto(data)
       }
-  }
-
+      fetchData()
+    }, [])
+    
   return (
     <div>Aqui va la foto:
       <div>
@@ -45,7 +21,6 @@ const MostrarFoto = () => {
 					className="img-fluid mt-2"
 					src={foto   /*user?.profilePic*/}
 				/>
-      <button onClick={sacaFoto()}>Foto</button>
       </div>
     </div>
     

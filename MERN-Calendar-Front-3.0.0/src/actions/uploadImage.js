@@ -21,23 +21,20 @@ export const uploadImage = (foto, user) => {
     } 
 }
 
-export const fotoLoading = () => {
-    return async(dispatch) => {
-
+export const fotoLoading = async () => {
         try {
-            
             const resp = await fetchConToken( 'foto' );
             const body = await resp.json();
-
+            
             const fotos = body.fotos;
-            console.log(fotos)
-            dispatch(fotos);
 
+            let base = fotos.map(function(element){
+                return element.foto
+            })
+            return base;
         } catch (error) {
             console.log(error)
         }
-
-    }
 }
 
 const fotoLoaded = (foto) => ({
