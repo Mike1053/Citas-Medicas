@@ -2,6 +2,7 @@ import { fetchSinToken, fetchConToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import Swal from 'sweetalert2';
 import { eventLogout } from './events';
+import { prepareFotos } from '../helpers/prepareFotos';
 
 export const uploadImage = (foto, user) => {
     return async( dispatch, getState ) => {
@@ -13,23 +14,30 @@ export const uploadImage = (foto, user) => {
             const body = await resp.json();
 
             console.log(body)
-            /*
-            if ( body.ok ) {
-                event.id = body.evento.id;
-                event.user = {
-                    _id: uid,
-                    name: name
-                }
-                console.log( event );
-                dispatch( eventAddNew( event ) );
-            }
-            */
 
         } catch (error) {
             console.log(error);
         }
-
-    }
-
-  
+    } 
 }
+
+export const fotoLoading = async () => {
+        try {
+            const resp = await fetchConToken( 'foto' );
+            const body = await resp.json();
+            
+            const fotos = body.fotos;
+
+            let base = fotos.map(function(element){
+                return element.foto
+            })
+            return base;
+        } catch (error) {
+            console.log(error)
+        }
+}
+
+const fotoLoaded = (foto) => ({
+    type: types.fotoLoaded,
+    payload: foto
+})
