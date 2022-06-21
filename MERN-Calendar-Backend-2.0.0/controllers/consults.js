@@ -110,17 +110,34 @@ const eliminarConsulta = async( req, res = response ) => {
             });
         }
 
-        if ( consulta.user.toString() !== uid ) {
+        if ( consulta.Medico.toString() !== uid ) {
             return res.status(401).json({
                 ok: false,
                 msg: 'No tiene privilegio de eliminar esta consulta'
             });
         }
 
+        let perfil = await perfilPaciente.findOne({Historial: { $all : [consultaId]}});
+
+        if ( !perfil ) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'Este perfil no existe por ese id',
+                perfilif: perfil
+            });
+        }
+        
+        let indice = await perfil.Historial.findIndex( (element) => element == consultaId);
+        await perfil.Historial.splice(indice, 1);
+        const perfilActualizado = await perfilPaciente.findByIdAndUpdate( perfil._id, perfil, { new: true } );
 
         await Consulta.findByIdAndDelete( consultaId );
 
-        res.json({ ok: true });
+        res.status(200).json({ 
+            ok: true,
+            msg: 'Se borro la Consulta existosamente.',
+            perfilActualizado
+        });
 
         
     } catch (error) {

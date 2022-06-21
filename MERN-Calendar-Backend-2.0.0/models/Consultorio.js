@@ -1,10 +1,9 @@
 const { Schema, model } = require('mongoose');
 
-const infoDoctorSchema = Schema({
-    consultorio: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Consultorio',        
-    }],
+const ConsultorioSchema = Schema({
+    direccion: {
+        type: String        
+    },
     telefono: {
         type: String
     },
@@ -16,4 +15,4 @@ const infoDoctorSchema = Schema({
 });
 
 
-module.exports = model('perfilDoctor', infoDoctorSchema );
+module.exports = model('Consultorio', ConsultorioSchema );

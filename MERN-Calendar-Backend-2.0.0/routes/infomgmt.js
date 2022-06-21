@@ -9,8 +9,7 @@ const router = Router();
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
-
-const { crearInfo, getInfo } = require('../controllers/infomgmt');
+const { crearInfo, getInfo, borrarInfo } = require('../controllers/infomgmt');
 
 router.use( validarJWT );
 
@@ -22,6 +21,11 @@ router.post(
 router.get(
     '/getInfoID',
     getInfo 
+);
+
+router.delete(
+    '/:id',
+    borrarInfo 
 );
 
 module.exports = router;
