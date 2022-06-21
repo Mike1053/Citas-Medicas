@@ -55,7 +55,7 @@ const actualizarImagen = async(req, res = response ) => {
         break;
     
         default:
-            return res.status(500).json({ msg: 'Se me olvidó validar esto'});
+            return res.status(500).json({ msg: 'Falta realizar validación'});
     }
 
 
@@ -108,7 +108,7 @@ const actualizarImagenCloudinary = async(req, res = response ) => {
         break;
     
         default:
-            return res.status(500).json({ msg: 'Se me olvidó validar esto'});
+            return res.status(500).json({ msg: 'Falta realizar validación'});
     }
 
 
@@ -160,7 +160,7 @@ const mostrarImagen = async(req, res = response ) => {
         break;
     
         default:
-            return res.status(500).json({ msg: 'Se me olvidó validar esto'});
+            return res.status(500).json({ msg: 'Falta realizar validación'});
     }
 
 

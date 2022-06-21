@@ -10,7 +10,7 @@ const router = Router();
 
 
 router.post( '/', validarArchivoSubir, cargarArchivo );
-
+/*
 router.put('/:coleccion/:id', [
     validarArchivoSubir,
     check('id','El id debe de ser de mongo').isMongoId(),
@@ -18,6 +18,13 @@ router.put('/:coleccion/:id', [
     validarCampos
 ], actualizarImagenCloudinary )
 // ], actualizarImagen )
+*/
+router.put('/:nombre', [
+    validarArchivoSubir,
+    
+], actualizarImagenCloudinary )
+// ], actualizarImagen )
+
 
 router.get('/:coleccion/:id', [
     check('id','El id debe de ser de mongo').isMongoId(),
