@@ -23,4 +23,7 @@ export const types = {
     authStartStartTokenRenew: '[auth] Start token renew',
     authLogout: '[auth] Logout',
 
+
+    fotoAddNew: '[foto] Foto uploaded',
+    fotoLoaded: '[foto] Events loaded',
 }
