@@ -1,6 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const infoDoctorSchema = Schema({
+    prefijo:{
+        type: String
+    },
     consultorio: [{
         type: Schema.Types.ObjectId,
         ref: 'Consultorio',        

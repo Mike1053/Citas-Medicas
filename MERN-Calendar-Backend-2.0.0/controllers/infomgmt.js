@@ -3,23 +3,12 @@ const perfilPaciente = require('../models/infoPaciente');
 const Consulta = require('../models/Consulta')
 
 /*
-const actHistorial = async(req, res = response ) => {
-    try {
-        await ListItem.findByIdAndUpdate(req.params.id, {
-            itemname: req.body.itemname,
-            category: req.body.category
-        });
-        // Send response in here
-        res.send('Item Updated!');
-  
-      } catch(err) {
-          console.error(err.message);
-          res.send(400).send('Server Error');
-      }
-}
+-----------------------------------------------------------------------------------
+Estas primeras 4 funciones se encargan del manejo de los perfiles de pacientes.
+----------------------------------------------------------------------------------- 
 */
 
-const getInfo = async ( req, res = response ) => {
+const getInfoPacientes = async ( req, res = response ) => {
 
     try {
 
@@ -41,7 +30,7 @@ const getInfo = async ( req, res = response ) => {
     }
 }
 
-const crearInfo = async ( req, res = response ) => {
+const crearInfoPacientes = async ( req, res = response ) => {
 
     const info = new perfilPaciente( req.body );
 
@@ -66,7 +55,54 @@ const crearInfo = async ( req, res = response ) => {
     }
 }
 
-const borrarInfo = async ( req, res = response ) => {
+const actualizarInfoPacientes = async ( req, res = response ) => {
+    
+    const perfilId = req.params.id;
+    const uid = req.uid;
+    const {telefono} = req.body;
+
+    try {
+
+        const Perfil = await perfilPaciente.findById( perfilId );
+
+        if ( !Perfil ) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'Este perfil no existe por ese id.'
+            });
+        }
+
+        if ( Perfil.usuarioPaciente.toString() !== uid ) {
+            return res.status(401).json({
+                ok: false,
+                msg: 'No tiene privilegio de actualizar este perfil.'
+            });
+        }
+
+        Perfil.telefono = telefono;
+
+        const perfilActualizado = await perfilPaciente.findByIdAndUpdate( perfilId, Perfil, { new: true } );
+
+        res.status(200).json({ 
+            ok: true,
+            msg: 'Se actualizo la informacion del historial existosamente.',
+            perfilActualizado
+        });
+
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+
+
+
+}
+
+const borrarInfoPacientes = async ( req, res = response ) => {
 
     const consultaId = req.params.id;
     const uid = req.uid;
@@ -120,9 +156,15 @@ const borrarInfo = async ( req, res = response ) => {
     }
 }
 
+/*
+-----------------------------------------------------------------------------------
+Estas segundas 4 funciones se encargan del manejo de los perfiles de Doctores.
+----------------------------------------------------------------------------------- 
+*/
 
 module.exports = {
-    crearInfo,
-    getInfo,
-    borrarInfo
+    crearInfoPacientes,
+    getInfoPacientes,
+    actualizarInfoPacientes,
+    borrarInfoPacientes
 }
