@@ -9,23 +9,28 @@ const router = Router();
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
-const { crearInfo, getInfo, borrarInfo } = require('../controllers/infomgmt');
+const { crearInfoPacientes, getInfoPacientes, borrarInfoPacientes, actualizarInfoPacientes } = require('../controllers/infomgmt');
 
 router.use( validarJWT );
 
 router.post(
     '/upload_Info_Patient',
-    crearInfo 
+    crearInfoPacientes 
 );
 
 router.get(
     '/getInfoID',
-    getInfo 
+    getInfoPacientes 
+);
+
+router.put(
+    '/:id',
+    actualizarInfoPacientes
 );
 
 router.delete(
     '/:id',
-    borrarInfo 
+    borrarInfoPacientes 
 );
 
 module.exports = router;

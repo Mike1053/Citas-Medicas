@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+
 const ConsultaSchema = Schema({
     fecha: {
         type: Date,
