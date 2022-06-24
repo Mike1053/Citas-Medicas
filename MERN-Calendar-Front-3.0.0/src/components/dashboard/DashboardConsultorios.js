@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
+import DictaPhone from '../translator/Dictaphone'
 
 moment.locale('es');
 
@@ -52,8 +53,10 @@ const DashboardConsultorios = () => {
     </div>
     <div class="view">
       <br></br>
-      <h1>Consultorios</h1>
-       
+      <h1>Consultorios
+        
+      </h1>
+      <DictaPhone/>
     </div>
   </div>
 </div>

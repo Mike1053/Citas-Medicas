@@ -118,7 +118,9 @@ const Video = () => {
               {name}
             </Avatar>
           </div>
+          {/*Este div contiene todos los iconos*/}  
 
+          {/*Icono de microfono*/}
           <div className="iconsDiv">
             <div
               className="icons"
@@ -134,6 +136,24 @@ const Video = () => {
                 aria-hidden="true"
               ></i>
             </div>
+            {/*Icono de microfono*/}
+            
+            {/*Icono de text-to-speech(audifonos)*/}
+            <div
+              className="icons"
+              onClick={() => {
+                console.log("hola")
+              }}
+              tabIndex="0"
+            >
+              <i
+                className={"fas fa-headphones"}
+                style={{ transform: "scaleX(1)" }}
+                aria-label={`${myMicStatus ? "mic on" : "mic off"}`}
+                aria-hidden="true"
+              ></i>
+            </div>
+            {/*Icono de text-to-speech(audifonos)*/}
 
             {/*callAccepted && !callEnded && (
               <div
@@ -183,7 +203,8 @@ const Video = () => {
               />
             </Modal>
               */}
-            {callAccepted && !callEnded && (
+            {/*Icono de compartir pantalla*/}
+           
               <div
                 className="icons"
                 onClick={() => handleScreenSharing()} 
@@ -191,15 +212,16 @@ const Video = () => {
               >
                 <img src={ScreenShare} alt="share screen" />
               </div>
-            )}
+            
 
             <div className="icons" onClick={() => updateVideo()} tabIndex="0">
               {myVdoStatus ? (
                 <img src={VideoIcon} alt="video on icon" />
               ) : (
                 <img src={VideoOff} alt="video off icon" />
-              )}
+              )}              
             </div>
+          {/*Icono de compartir pantalla*/}
           </div>
         </div>
       ) : (

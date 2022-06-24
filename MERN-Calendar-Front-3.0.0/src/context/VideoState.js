@@ -144,7 +144,7 @@ const VideoState = ({ children }) => {
       return !currentStatus;
     });
   };
-
+  /*Audio tracks que jalan el micro*/
   const updateMic = () => {
     setMyMicStatus((currentStatus) => {
       socket.emit("updateMyMedia", {
@@ -157,7 +157,7 @@ const VideoState = ({ children }) => {
   };
 
   
-    //SCREEN SHARING 
+    //SCREEN SHARING -----------------------------------------------------------
     const handleScreenSharing = () => {
 
       if(!myVdoStatus){
@@ -205,7 +205,7 @@ const VideoState = ({ children }) => {
         screenTrackRef.current.onended();
       }
     };
-
+    //SCREEN SHARING -----------------------------------------------------------
      //full screen
      const fullScreen = (e) => {
       const elem = e.target;

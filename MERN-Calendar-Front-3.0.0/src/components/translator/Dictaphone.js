@@ -62,6 +62,8 @@ const Dictaphone = () => {
     resetTranscript,
     browserSupportsSpeechRecognition
   }  = useSpeechRecognition();
+  const startListening = () => SpeechRecognition.startListening({ continuous: true });
+
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -85,14 +87,15 @@ const Dictaphone = () => {
 
   return (
     <div>
+      {/*Este pedo es lo de reconocer voz(la voz méxico)*/}
       <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <button onClick={SpeechRecognition.startListening}>Start</button>
+      <button onClick={startListening}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
       <p>{transcript}</p>
       <div className="App">
       <div>
-      
+      {/*Este pedo es lo de traducción con cuadro de texto*/}
         From ({from}) :
         <select onChange={(e) => setFrom(e.target.value)}>
           {options.map((opt) => (
@@ -115,6 +118,7 @@ const Dictaphone = () => {
           cols="50"
           rows="8"
           value={transcript}
+          
         >
           
         </textarea>
@@ -127,6 +131,7 @@ const Dictaphone = () => {
       </div>
     </div>
     <div>
+      {/*Este pedo es lo de text-to-speech*/}
     <Speech text={output}
     voice="Jorge"
     textAsButton={true}    

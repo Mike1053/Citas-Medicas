@@ -6,7 +6,7 @@ import * as classes from "./Options.module.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import VideoContext from "../../context/VideoContext";
 import Hang from "../../assests/hang.svg";
-import pic from "../images/hombre.jpg"
+import pic from "../images/hombretactico.jpg"
 import {
   TwitterIcon,
   TwitterShareButton,
@@ -141,7 +141,7 @@ const Options = () => {
             </Tooltip>
           }
         />
-
+        {/*Modal de llamada entrada*/}
         {callAccepted && !callEnded ? (
           <Button
             variant="contained"
@@ -166,6 +166,7 @@ const Options = () => {
             Call
           </Button>
         )}
+        {/*Modal de llamada entrada*/}
       </div>
       
       { call.isReceivingCall && !callAccepted && (
