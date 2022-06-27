@@ -1,5 +1,6 @@
 const { response } = require('express');
 const perfilPaciente = require('../models/infoPaciente');
+const perfilDoctor = require('../models/infoDoctor');
 const Consulta = require('../models/Consulta')
 
 /*
@@ -17,7 +18,7 @@ const getInfoPacientes = async ( req, res = response ) => {
 
         res.json({
             ok: true,
-            ID_de_Info_de_Paciente: info
+            Perfiles_de_Pacientes_Guardados: info
         })
 
 
@@ -162,9 +163,148 @@ Estas segundas 4 funciones se encargan del manejo de los perfiles de Doctores.
 ----------------------------------------------------------------------------------- 
 */
 
+const getInfoDoctores = async ( req, res = response ) => {
+
+    try {
+
+        //let info = await perfilPaciente.findOne({usuarioPaciente: '62a220ccc052cd437c75b447'});
+        let info = await perfilDoctor.find().populate('Consultorio', 'name');
+
+        res.json({
+            ok: true,
+            Perfiles_de_de_Doctores: info
+        })
+
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+}
+
+const crearInfoDoctores = async ( req, res = response ) => {
+
+    const profile = new perfilDoctor( req.body );
+
+    try {
+
+        profile.usuarioDoctor = req.uid;
+        
+        let infoGuardada = await profile.save();
+
+        res.json({
+            ok: true,
+            Info_de_Doctor: infoGuardada
+        })
+
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+}
+
+const actualizarInfoDoctores = async ( req, res = response ) => {
+    
+    const perfilid = req.params.id;
+    const uid = req.uid;
+    const {prefijo, telefono} = req.body;
+
+    try {
+
+        const profile = await perfilDoctor.findById( perfilid );
+
+        if ( !profile ) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'Este perfil no existe por ese id.'
+            });
+        }
+
+        if ( profile.usuarioDoctor.toString() !== uid ) {
+            return res.status(401).json({
+                ok: false,
+                msg: 'No tiene privilegio de actualizar este perfil.'
+            });
+        }
+
+        profile.telefono = telefono;
+        profile.prefijo = prefijo;
+
+        const perfilActualizado = await perfilPaciente.findByIdAndUpdate( perfilid, profile, { new: true } );
+
+        res.status(200).json({ 
+            ok: true,
+            msg: 'Se actualizo la informacion del perfil existosamente.',
+            perfilActualizado
+        });
+
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+
+}
+
+const borrarInfoDoctores = async ( req, res = response ) => {
+
+    const profileId = req.params.id;
+    const uid = req.uid;
+    //const id = req.body;
+
+    try {
+
+        const profileDoc = await perfilDoctor.findById( profileId );
+
+        if ( !profileDoc ) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'Este perfil no existe por ese id'
+            });
+        }
+
+        if ( profileDoc.usuarioDoctor.toString() !== uid ) {
+            return res.status(401).json({
+                ok: false,
+                msg: 'No tiene privilegio de eliminar esta consulta'
+            });
+        }
+
+        await perfilDoctor.findByIdAndDelete(profileId);
+
+        res.status(200).json({ 
+            ok: true,
+            msg: 'Se borro el perfil de doctor existosamente.',
+            perfilActualizado
+        });
+
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+}
+
 module.exports = {
     crearInfoPacientes,
     getInfoPacientes,
     actualizarInfoPacientes,
-    borrarInfoPacientes
+    borrarInfoPacientes,
+    crearInfoDoctores,
+    getInfoDoctores,
+    actualizarInfoDoctores,
+    borrarInfoDoctores
 }
