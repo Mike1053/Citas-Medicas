@@ -5,7 +5,7 @@ import pic from '../images/superporky.jpg'
 import moment from 'moment';
 import Dictaphone from '../translator/Dictaphone'
 import VideoChat from '../videoChat/VideoChat';
-
+import VideoChatCall from '../../components/videoChatTranslate/VideoChatCall/VideoChatCall'
 
 moment.locale('es');
 
@@ -55,8 +55,10 @@ const DashboardVideoChat = () => {
     </div>
     <div class="view">
       <br></br>
-      {/* <Dictaphone/> */}
+      {/* <Dictaphone/> 
       <VideoChat/>
+      */}
+      <VideoChatCall/>
        
     </div>
   </div>
