@@ -26,6 +26,12 @@ const ConsultorioSchema = Schema({
         },
         pais:{
             type: String
+        },
+        latitud:{
+            type: String
+        },
+        longitud: {
+            type: String
         }
     },
     telefono: {
