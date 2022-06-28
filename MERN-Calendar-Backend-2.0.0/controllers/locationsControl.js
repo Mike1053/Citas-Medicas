@@ -1,43 +1,41 @@
 const { response } = require('express');
 const Consultorio = require('../models/Consultorio');
-const infoDoctor = require('../models/infoDoctor');
+const perfilDoctor = require('../models/infoDoctor');
 const perfilPaciente = require('../models/infoPaciente');
 
 
 const getConsultorios = async( req, res = response ) => {
 
-    const consultorios = await Consultorio.find().populate('userDoctor','name');
+    const consultorios = await Consultorio.find().populate('usuarioDoctor','name');
 
 
     res.json({
         ok: true,
-        Consultorios_Guardadas: consultorios 
+        Consultorios_Guardados: consultorios 
     });
 }
 
 const crearConsultorio = async ( req, res = response ) => {
 
-    const cons = new Consultorio( req.body );
+    const konsultorio = new Consultorio( req.body );
+    const id = req.uid;
 
     try {
+  
+        konsultorio.usuarioDoctor = req.uid;
+        
+        await konsultorio.save();
 
-        cons.Medico = req.uid;
+        let info = await perfilDoctor.findOne({usuarioDoctor: id});
+        info.consultorio.push(konsultorio._id.toString());
         
-        //const consultaGuardada = await cons.save();
-        await cons.save();
+        const infoActualizada = await perfilDoctor.findByIdAndUpdate( info._id, info, { new: true } );
 
-        let info = await infoDoctor.findOne({usuarioDoctor: cons.Medico});
-        info.Historial.push(cons._id.toString());
-        
-        const infoActualizada = await infoDoctor.findByIdAndUpdate( info._id, info, { new: true } );
-        
         res.json({
             ok: true,
-            msg: 'Consultorio guardado exitosamente',
-            cons,
-            infoActualizada
+            Info_de_Doctor: infoActualizada,
+            Consultorio_Nuevo: konsultorio
         })
-
 
     } catch (error) {
         console.log(error)
@@ -50,37 +48,73 @@ const crearConsultorio = async ( req, res = response ) => {
 
 const actualizarConsultorio = async( req, res = response ) => {
     
-    const consultaId = req.params.id;
+    const {name, direccion, telefono, numCons, Horario} = req.body;
+    const consultorioId = req.params.id;
     const uid = req.uid;
 
     try {
 
-        const consulta = await Consulta.findById( consultaId );
+        const consultorio = await Consultorio.findById( consultorioId );
 
-        if ( !consulta ) {
+        if ( !consultorio ) {
             return res.status(404).json({
                 ok: false,
                 msg: 'La consulta no existe por ese id'
             });
         }
 
-        if ( consulta.Medico.toString() !== uid ) {
+        if ( consultorio.usuarioDoctor.toString() !== uid ) {
             return res.status(401).json({
                 ok: false,
                 msg: 'Este usuario de Medico no tiene privilegio de editar este diagnostico.'
             });
         }
 
-        const nuevaConsulta = {
-            ...req.body,
-            Medico: uid
-        }
+        consultorio.name = name;
+        consultorio.telefono = telefono;
+        consultorio.numCons = numCons;
 
-        const consultaActualizada = await Consulta.findByIdAndUpdate( consultaId, nuevaConsulta, { new: true } );
+        consultorio.direccion.calle = direccion.calle;
+        consultorio.direccion.colonia = direccion.colonia;
+        consultorio.direccion.numExt = direccion.numExt;
+        consultorio.direccion.cp = direccion.cp;
+        consultorio.direccion.cd = direccion.cd;
+        consultorio.direccion.estado = direccion.estado;
+        consultorio.direccion.pais = direccion.pais;
+
+        consultorio.Horario.Lunes.work = Horario.Lunes.work;
+        consultorio.Horario.Lunes.start = Horario.Lunes.start;
+        consultorio.Horario.Lunes.end = Horario.Lunes.end;
+
+        consultorio.Horario.Martes.work = Horario.Martes.work;
+        consultorio.Horario.Martes.start = Horario.Martes.start;
+        consultorio.Horario.Martes.end = Horario.Martes.end;
+
+        consultorio.Horario.Miercoles.work = Horario.Miercoles.work;
+        consultorio.Horario.Miercoles.start = Horario.Miercoles.start;
+        consultorio.Horario.Miercoles.end = Horario.Miercoles.end;
+
+        consultorio.Horario.Jueves.work = Horario.Jueves.work;
+        consultorio.Horario.Jueves.start = Horario.Jueves.start;
+        consultorio.Horario.Jueves.end = Horario.Jueves.end;
+
+        consultorio.Horario.Viernes.work = Horario.Viernes.work;
+        consultorio.Horario.Viernes.start = Horario.Viernes.start;
+        consultorio.Horario.Viernes.end = Horario.Viernes.end;
+
+        consultorio.Horario.Sabado.work = Horario.Sabado.work;
+        consultorio.Horario.Sabado.start = Horario.Sabado.start;
+        consultorio.Horario.Sabado.end = Horario.Sabado.end;
+
+        consultorio.Horario.Domingo.work = Horario.Domingo.work;
+        consultorio.Horario.Domingo.start = Horario.Domingo.start;
+        consultorio.Horario.Domingo.end = Horario.Domingo.end;
+
+        const consultorioActualizado = await Consultorio.findByIdAndUpdate( consultorioId, consultorio, { new: true } );
 
         res.json({
             ok: true,
-            Consulta: consultaActualizada
+            Consultorio: consultorioActualizado
         });
 
         
@@ -96,30 +130,30 @@ const actualizarConsultorio = async( req, res = response ) => {
 
 const eliminarConsultorio = async( req, res = response ) => {
 
-    const consultaId = req.params.id;
+    const konsultorioId = req.params.id;
     const uid = req.uid;
 
     try {
 
-        const consulta = await Consulta.findById( consultaId );
+        const Konsultorio = await Consultorio.findById( konsultorioId );
 
-        if ( !consulta ) {
+        if ( !Konsultorio ) {
             return res.status(404).json({
                 ok: false,
-                msg: 'Evento no existe por ese id'
+                msg: 'El consultorio no existe por ese id'
             });
         }
 
-        if ( consulta.Medico.toString() !== uid ) {
+        if ( Konsultorio.usuarioDoctor.toString() !== uid ) {
             return res.status(401).json({
                 ok: false,
-                msg: 'No tiene privilegio de eliminar esta consulta'
+                msg: 'No tiene privilegio de eliminar este Consultorio.'
             });
         }
 
-        let perfil = await perfilPaciente.findOne({Historial: { $all : [consultaId]}});
+        let profile = await perfilDoctor.findOne({consultorio: { $all : [konsultorioId]}});
 
-        if ( !perfil ) {
+        if ( !profile ) {
             return res.status(404).json({
                 ok: false,
                 msg: 'Este perfil no existe por ese id',
@@ -127,16 +161,16 @@ const eliminarConsultorio = async( req, res = response ) => {
             });
         }
         
-        let indice = await perfil.Historial.findIndex( (element) => element == consultaId);
-        await perfil.Historial.splice(indice, 1);
-        const perfilActualizado = await perfilPaciente.findByIdAndUpdate( perfil._id, perfil, { new: true } );
+        let indice = await profile.consultorio.findIndex( (element) => element == konsultorioId);
+        await profile.consultorio.splice(indice, 1);
+        const profileActualizado = await perfilDoctor.findByIdAndUpdate( profile._id, profile, { new: true } );
 
-        await Consulta.findByIdAndDelete( consultaId );
+        await Consultorio.findByIdAndDelete( konsultorioId );
 
         res.status(200).json({ 
             ok: true,
             msg: 'Se borro la Consulta existosamente.',
-            perfilActualizado
+            profileActualizado
         });
 
         
