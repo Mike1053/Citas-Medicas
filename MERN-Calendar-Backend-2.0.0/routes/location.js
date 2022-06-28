@@ -9,7 +9,7 @@ const router = Router();
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
-const { crearConsultorio, getConsultorios, borrarConsultorios, actualizarConsultorios } = require('../controllers/infomgmt');
+const { crearConsultorio, getConsultorios, eliminarConsultorio, actualizarConsultorio } = require('../controllers/locationsControl');
 
 router.use( validarJWT );
 
@@ -25,12 +25,12 @@ router.get(
 
 router.put(
     '/:id',
-    actualizarConsultorios
+    actualizarConsultorio
 );
 
 router.delete(
     '/:id',
-    borrarConsultorios 
+    eliminarConsultorio 
 );
 
 module.exports = router;
