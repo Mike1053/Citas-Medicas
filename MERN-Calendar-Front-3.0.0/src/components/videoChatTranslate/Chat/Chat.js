@@ -152,7 +152,22 @@ export default function Chat(props) {
         <label htmlFor="chatInput"></label>
         <input type="submit" value="Translate" className='translate-button'/>
       </form>
-      
+      From ({from}) :
+        <select onChange={(e) => setFrom(e.target.value)}>
+          {options.map((opt) => (
+            <option key={opt.code} value={opt.code}>
+              {opt.name}
+            </option>
+          ))}
+        </select>
+        To ({to}) :
+        <select onChange={(e) => setTo(e.target.value)}>
+          {options.map((opt) => (
+            <option key={opt.code} value={opt.code}>
+              {opt.name}
+            </option>
+          ))}
+        </select>
     </div>
   ) : null;
 }
