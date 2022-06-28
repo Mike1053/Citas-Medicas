@@ -98,9 +98,6 @@ const actualizarInfoPacientes = async ( req, res = response ) => {
             msg: 'Hable con el administrador'
         });
     }
-
-
-
 }
 
 const borrarInfoPacientes = async ( req, res = response ) => {
@@ -168,11 +165,11 @@ const getInfoDoctores = async ( req, res = response ) => {
     try {
 
         //let info = await perfilPaciente.findOne({usuarioPaciente: '62a220ccc052cd437c75b447'});
-        let info = await perfilDoctor.find().populate('Consultorio', 'name');
+        let info = await perfilDoctor.find().populate('consultorio', 'name').populate('usuarioDoctor','name');
 
         res.json({
             ok: true,
-            Perfiles_de_de_Doctores: info
+            Perfiles_de_Doctores: info
         })
 
 
@@ -237,11 +234,11 @@ const actualizarInfoDoctores = async ( req, res = response ) => {
         profile.telefono = telefono;
         profile.prefijo = prefijo;
 
-        const perfilActualizado = await perfilPaciente.findByIdAndUpdate( perfilid, profile, { new: true } );
+        const perfilActualizado = await perfilDoctor.findByIdAndUpdate( perfilid, profile, { new: true } );
 
         res.status(200).json({ 
             ok: true,
-            msg: 'Se actualizo la informacion del perfil existosamente.',
+            msg: 'Se actualizo la informacion del perfil de doctor existosamente.',
             perfilActualizado
         });
 
@@ -285,7 +282,6 @@ const borrarInfoDoctores = async ( req, res = response ) => {
         res.status(200).json({ 
             ok: true,
             msg: 'Se borro el perfil de doctor existosamente.',
-            perfilActualizado
         });
 
         
