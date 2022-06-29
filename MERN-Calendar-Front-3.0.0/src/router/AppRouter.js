@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Redirect
+    Redirect,
+    Route
   } from 'react-router-dom';
   
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,15 +16,16 @@ import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { UploadImage } from '../components/auth/UploadImage';
-import Map from '../components/map/Map';
 import Dashboard from '../components/dashboard/Dashboard';
 import DashboardConsultorios from '../components/dashboard/DashboardConsultorios';
+import DashboardConsultorios2 from '../components/dashboard/DashboardConsultorios2';
 import DashboardPacientes from '../components/dashboard/DashboardPacientes';
 import DashboardVideoChat from '../components/dashboard/DashboardVideoChat';
 import DashboardMensajes from '../components/dashboard/DashboardMensajes';
 import DashboardAjustes from '../components/dashboard/DashboardAjustes';
 import { ProfileEdit } from '../components/DashboardComponents/ProfileEdit';
 import Logout from '../components/auth/Logout';
+import MapView from '../components/mapa/MapView';
 
 export const AppRouter = () => {
 
@@ -99,6 +101,18 @@ export const AppRouter = () => {
                         component={ DashboardConsultorios } 
                         isAuthenticated={ !!uid }
                     />
+
+                    {/* <PrivateRoute 
+                        exact 
+                        path="/map" 
+                        component={ MapView } 
+                        isAuthenticated={ !!uid }
+                    /> */}
+
+                    <Route path="/map">
+                        <MapView/>
+                    </Route>
+                    
                     <PrivateRoute 
                         exact 
                         path="/pacientes" 
@@ -123,11 +137,7 @@ export const AppRouter = () => {
                         component={ DashboardAjustes } 
                         isAuthenticated={ !!uid }
                     />
-                    <PublicRoute 
-                        exact 
-                        path="/map" 
-                        component={ Map }
-                    />
+                    
 
                     <Redirect to="/" />   
                 </Switch>

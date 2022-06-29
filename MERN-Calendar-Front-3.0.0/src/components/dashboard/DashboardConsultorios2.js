@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
-import DictaPhone from '../translator/Dictaphone'
-import Home from '../mapa/Home';
+import MapView from '../mapa/MapView';
 
 moment.locale('es');
 
@@ -54,10 +53,7 @@ const DashboardConsultorios = () => {
     </div>
     <div class="view">
       <br></br>
-      <h1>Consultorios
-        
-      </h1>
-      <Home />
+      <MapView />
     </div>
   </div>
 </div>
