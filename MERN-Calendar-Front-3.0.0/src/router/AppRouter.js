@@ -27,6 +27,9 @@ import { ProfileEdit } from '../components/DashboardComponents/ProfileEdit';
 import Logout from '../components/auth/Logout';
 import MapView from '../components/mapa/MapView';
 
+import "../components/leaf.css";
+
+
 export const AppRouter = () => {
 
     const dispatch = useDispatch();
@@ -102,12 +105,19 @@ export const AppRouter = () => {
                         isAuthenticated={ !!uid }
                     />
 
-                    {/* <PrivateRoute 
+                    <PrivateRoute 
+                        exact 
+                        path="/consultorios2" 
+                        component={ DashboardConsultorios2 } 
+                        isAuthenticated={ !!uid }
+                    />
+
+                     <PrivateRoute 
                         exact 
                         path="/map" 
                         component={ MapView } 
                         isAuthenticated={ !!uid }
-                    /> */}
+                    /> 
 
                     <Route path="/map">
                         <MapView/>

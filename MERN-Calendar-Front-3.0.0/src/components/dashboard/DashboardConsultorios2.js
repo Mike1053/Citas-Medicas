@@ -8,7 +8,7 @@ import MapView from '../mapa/MapView';
 moment.locale('es');
 
 
-const DashboardConsultorios = () => {
+const DashboardConsultorios2 = () => {
     const dispatch = useDispatch();
     const { name } = useSelector( state => state.auth );
     const handleLogout = () => {
@@ -64,4 +64,4 @@ const DashboardConsultorios = () => {
   )
 }
 
-export default DashboardConsultorios
+export default DashboardConsultorios2
