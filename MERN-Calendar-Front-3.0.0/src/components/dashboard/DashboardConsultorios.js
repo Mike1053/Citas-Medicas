@@ -4,7 +4,7 @@ import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
 import DictaPhone from '../translator/Dictaphone'
-import Home from '../mapa/Home';
+import Home from '../mapa/Home'
 
 moment.locale('es');
 
@@ -57,7 +57,7 @@ const DashboardConsultorios = () => {
       <h1>Consultorios
         
       </h1>
-      <Home />
+      <Home/>
     </div>
   </div>
 </div>
