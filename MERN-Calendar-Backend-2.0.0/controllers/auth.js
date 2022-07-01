@@ -1,16 +1,17 @@
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
+const Paciente = require('../models/Paciente');
 const Doctor = require('../models/Doctor');
-const { generarJWT } = require('../helpers/jwt');
-const Usuario = require('../models/Usuario');
-const crearUsuario = async(req, res = response ) => {
+const { generarJWT } = require('../helpers/jwt');       
+ 
+const crearPaciente = async(req, res = response ) => {
 
     const { name, email, password } = req.body;
 
     try {
         
-        let correoPaciente = await Usuario.findOne({ email });
-        let nombrePaciente = await Usuario.findOne({ name });
+        let correoPaciente = await Paciente.findOne({ email });
+        let nombrePaciente = await Paciente.findOne({ name });
         let correoDoctor = await Doctor.findOne({ email });
         let nombreDoctor = await Doctor.findOne({ name });
 
@@ -42,7 +43,7 @@ const crearUsuario = async(req, res = response ) => {
             });
         }
 
-        let usuario = new Usuario( req.body );
+        let usuario = new Paciente( req.body );
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
@@ -81,8 +82,8 @@ const crearDoctor = async(req, res = response ) => {
 
     try {
 
-        let correoPaciente = await Usuario.findOne({ email });
-        let nombrePaciente = await Usuario.findOne({ name });
+        let correoPaciente = await Paciente.findOne({ email });
+        let nombrePaciente = await Paciente.findOne({ name });
         let correoDoctor = await Doctor.findOne({ email });
         let nombreDoctor = await Doctor.findOne({ name });
 
@@ -153,7 +154,7 @@ const loginUsuario = async(req, res = response ) => {
 
     try {
         
-        const usuarioPaciente = await Usuario.findOne({ email });
+        const usuarioPaciente = await Paciente.findOne({ email });
         const usuarioDoctor = await Doctor.findOne({ email });
 
         if ( usuarioPaciente ) {
@@ -248,7 +249,7 @@ const revalidarToken = async (req, res = response ) => {
 
 
 module.exports = {
-    crearUsuario,
+    crearPaciente,
     loginUsuario,
     revalidarToken,
     crearDoctor

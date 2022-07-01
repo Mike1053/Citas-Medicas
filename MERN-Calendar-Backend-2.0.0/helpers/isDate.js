@@ -10,6 +10,9 @@ const isDate = ( value ) => {
     if ( fecha.isValid() ) {
         return true;
     } else {
+        /*res.json({
+            msg: 
+        })*/
         return false;
     }
     

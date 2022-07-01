@@ -32,6 +32,9 @@ app.use('/api/auth', require('./routes/auth') );
 app.use('/api/events', require('./routes/events') );
 app.use('/api/foto', require('./routes/foto') );
 app.use('/api/task', require('./routes/task') );
+app.use('/api/consultas', require('./routes/Consultas') );
+app.use('/api/info', require('./routes/infomgmt') );
+app.use('/api/locations', require('./routes/location') );
 
 //Backend de videollamada------------------------
 const io = require("socket.io")(server, {

@@ -22,7 +22,6 @@ const EventoSchema = Schema({
         ref: 'Doctor',
         required: true
     }
-
 });
 
 EventoSchema.method('toJSON', function() {
