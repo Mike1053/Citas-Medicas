@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
+import TaskUpload from '../task/taskUpload';
+import TaskScreen from '../task/TaskScreen';
 
 
 moment.locale('es');
@@ -53,8 +55,8 @@ const DashboardPacientes = () => {
     </div>
     <div class="view">
       <br></br>
-      <h1>Pacientes</h1>
-       
+       {/* <TaskUpload/> */}
+       <TaskScreen/>
     </div>
   </div>
 </div>

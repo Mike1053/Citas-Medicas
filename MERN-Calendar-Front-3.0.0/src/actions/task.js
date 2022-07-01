@@ -16,7 +16,7 @@ export const taskStartAddNew = ( task ) => {
             console.log(body)
 
             if ( body.ok ) {
-                task.id = body.tasko.id;
+                task.id = body.task.id;
                 task.user = {
                     _id: uid,
                     name: name
@@ -111,6 +111,7 @@ export const taskStartLoading = async () => {
             const body = await resp.json();
             
             const tasks = body.task;
+            
             let taskList = tasks.map(function(element){
                 return element
             })
