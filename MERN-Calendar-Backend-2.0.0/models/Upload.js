@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-const FotoSchema = Schema({
-  foto: {
+const UploadSchema = Schema({
+  upload: {
       type: String,
       required: true,
       unique:true
@@ -13,11 +13,11 @@ const FotoSchema = Schema({
 }
 });
 
-FotoSchema.method('toJSON', function() {
+UploadSchema.method('toJSON', function() {
   const { __v, _id, ...object } = this.toObject();
   object.id = _id;
   return object;
 });
 
 
-module.exports = model('Foto', FotoSchema );
+module.exports = model('Upload', UploadSchema );

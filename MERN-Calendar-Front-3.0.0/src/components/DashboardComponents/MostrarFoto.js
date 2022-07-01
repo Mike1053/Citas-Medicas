@@ -1,15 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fotoLoading } from '../../actions/uploadImage';
+import { fetchSinToken, fetchConToken } from '../../helpers/fetch';
 
 const MostrarFoto = () => {
-    const dispatch = useDispatch();
-    const { uid } = useSelector( state => state.auth );
-    const { events, activeEvent } = useSelector( state => state.calendar );
-    console.log("los eventos------");
-    console.log(events);
-    console.log("los eventos------");
+
+    const [foto, setFoto] = useState();
+    useEffect(() => {
+      const fetchData = async () => {
+        const data = await fotoLoading();
+        setFoto(data)
+      }
+      fetchData()
+    }, [])
+    
   return (
-    <div>jejejeje{uid}</div>
+    <div>Aqui va la foto:
+      <div>
+      <img 
+					className="img-fluid mt-2"
+					src={foto   /*user?.profilePic*/}
+				/>
+      </div>
+    </div>
+    
   )
 }
 

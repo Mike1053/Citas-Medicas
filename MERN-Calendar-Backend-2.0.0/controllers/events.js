@@ -43,6 +43,7 @@ const actualizarEvento = async( req, res = response ) => {
     
     const eventoId = req.params.id;
     const uid = req.uid;
+    //const uid = req.user;
 
     try {
 

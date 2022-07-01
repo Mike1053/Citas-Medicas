@@ -1,14 +1,14 @@
 /*
-    Event Routes
+    Foto Routes
     /api/foto
 */
 
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { crearFoto } = require('../controllers/foto');
 const { validarCampos } = require('../middlewares/validar-campos');
-
 const { validarJWT } = require('../middlewares/validar-jwt');
+
+const { crearFoto, fotoGet, actualizarFoto, eliminarFoto, getFotos } = require('../controllers/foto');
 
 const router = Router();
 
@@ -16,10 +16,11 @@ const router = Router();
 router.use( validarJWT );
 
 
-// Obtener fotos 
+// Obtener fotos por ID
+router.get('/', fotoGet );
 
 
-// Crear un nuevo foto
+// Crear una nueva foto
 router.post(
     '/subirFoto',
     [
@@ -28,5 +29,17 @@ router.post(
     crearFoto 
 );
 
+// Actualizar foto
+router.put(
+  '/:id',
+  [
+        check('foto','Selecciona una foto').not().isEmpty(),
+        validarCampos
+  ],
+  actualizarFoto
+); 
+
+// Eliminar foto
+router.delete('/:id', eliminarFoto );
 
 module.exports = router;
