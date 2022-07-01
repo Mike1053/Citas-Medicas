@@ -9,7 +9,7 @@ import "leaflet/dist/leaflet.css";
 
 const MapView = (props) => {
   const [state, setState] = useState({
-    currentLocation: { lat: 52.52437, lng: 13.41053 },
+    currentLocation: { lat: 28.6610353, lng: -106.0676981 },
     zoom: 13,
     data,
   });
