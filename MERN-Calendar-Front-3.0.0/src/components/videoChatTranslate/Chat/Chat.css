@@ -1,11 +1,13 @@
 .chat {
   position: absolute;
   right: 10px;
-  bottom: 75px;
-  width: 250px;
+  /*bottom: 75px; Se lo culeo el quebin*/
+  top: 15px;
+  width: 280px;
   height: calc(100% - 150px);
-  background-color: #f2f2f2;
-  border-radius: 4px;
+  background-color:rgb(246, 255, 0);
+  border-radius: 5px;
+  overflow-y: auto;
 }
 
 .messageList {
@@ -14,22 +16,21 @@
 
 .chat-input {
   position: absolute;
-  bottom: 31px;
-  width: 240px;
+  width: 175px;
   height: 25px;
+  margin-top: 10px;
+  border: 0px;
+  margin-left: 10px;
 }
 
 .send-chat-button {
   position: absolute;
-  text-align: left;
-  bottom: 0px;
-  right: 0px;
-  left: 40px;
   width: 50px;
-  height: 31px;
+  height: 25px;
+  margin-left: 200px;
+  margin-top: 10px;
   background-color: #f2f2f2;
-  font-weight: bold;
-  padding-right: 10px;
+  border: 0px;
 }
 
 .translate-button {
@@ -43,4 +44,12 @@
   background-color: hsla(79, 78%, 50%, 0.653);
   font-weight: bold;
   /*padding-right: 10px;*/
+}
+
+.submit-div{
+  background-color: chocolate;
+  position: absolute;
+  bottom: 0px;
+  height: 150px;
+  width: 260px;
 }

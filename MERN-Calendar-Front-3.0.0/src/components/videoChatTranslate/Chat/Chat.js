@@ -130,6 +130,7 @@ export default function Chat(props) {
 
   const isSpeaking = (event) =>{
     event.preventDefault();
+    resetTranscript();
     if(speaking === false){
       setSpeaking(true);
       startListening();
@@ -138,19 +139,52 @@ export default function Chat(props) {
       setSpeaking(false);
       SpeechRecognition.stopListening();
       setInputValue(transcript);
+      resetTranscript();
     }
   }
 
   {/*Aquí va el pedo del dictaphone----------------------------------------- */}
 
   return props.onClickDisplay ? (
+    <div className='chat'>
     <div className="chat">
       {chatHistory.map((entry, index) => (
         <div key={`entry-${index}`} className="messageList">
           <b>{entry.sender}</b>: {entry.message}
         </div>
       ))}
-      <form onSubmit={handleSubmit}>
+      {transcript}
+    </div>
+    <div className='submit-div'>
+      <p>Translate</p>
+      <form onSubmit={isSpeaking}>
+        <label htmlFor="chatInput"></label>
+        <input type="submit" value="Start" />
+      </form>
+      <form onSubmit={isSpeaking}>
+        <label htmlFor="chatInput"></label>
+        <input type="submit" value="Stop" />
+      </form>
+        <select onChange={(e) => setFrom(e.target.value)}>
+          {options.map((opt) => (
+            <option key={opt.code} value={opt.code}>
+              {opt.name}
+            </option>
+          ))}
+        </select>
+         - To - 
+        <select onChange={(e) => setTo(e.target.value)}>
+          {options.map((opt) => (
+            <option key={opt.code} value={opt.code}>
+              {opt.name}
+            </option>
+          ))}
+        </select>
+        <form onSubmit={translate}>
+        <label htmlFor="chatInput"></label>
+        <input type="submit" value="Translate" /* className='translate-button'*//>
+        </form>
+        <form onSubmit={handleSubmit}>
         <label htmlFor="chatInput"></label>
         <input
           id="chatInput"
@@ -160,33 +194,9 @@ export default function Chat(props) {
           value={inputValue}
           onChange={handleChange}
         ></input>
-        <input type="submit" value="Send" className='send-chat-button'/>
+        <input type="submit" value="Send" className='send-chat-button' />
       </form>
-      <form onSubmit={translate}>
-        <label htmlFor="chatInput"></label>
-        <input type="submit" value="Translate" className='translate-button'/>
-      </form>
-      <form onSubmit={isSpeaking}>
-        <label htmlFor="chatInput"></label>
-        <input type="submit" value="Transcript" />
-      </form>
-      <p>{transcript}</p>
-      From ({from}) :
-        <select onChange={(e) => setFrom(e.target.value)}>
-          {options.map((opt) => (
-            <option key={opt.code} value={opt.code}>
-              {opt.name}
-            </option>
-          ))}
-        </select>
-        To ({to}) :
-        <select onChange={(e) => setTo(e.target.value)}>
-          {options.map((opt) => (
-            <option key={opt.code} value={opt.code}>
-              {opt.name}
-            </option>
-          ))}
-        </select>
+        </div>
     </div>
   ) : null;
 }
