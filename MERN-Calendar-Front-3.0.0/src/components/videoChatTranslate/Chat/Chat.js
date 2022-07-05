@@ -9,6 +9,7 @@ export default function Chat(props) {
   const callObject = useContext(CallObjectContext);
   const [inputValue, setInputValue] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
+  const [speaking, setSpeaking] = useState(false);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -127,6 +128,19 @@ export default function Chat(props) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
+  const isSpeaking = (event) =>{
+    event.preventDefault();
+    if(speaking === false){
+      setSpeaking(true);
+      startListening();
+    }
+    if(speaking === true){
+      setSpeaking(false);
+      SpeechRecognition.stopListening();
+      setInputValue(transcript);
+    }
+  }
+
   {/*Aquí va el pedo del dictaphone----------------------------------------- */}
 
   return props.onClickDisplay ? (
@@ -152,6 +166,11 @@ export default function Chat(props) {
         <label htmlFor="chatInput"></label>
         <input type="submit" value="Translate" className='translate-button'/>
       </form>
+      <form onSubmit={isSpeaking}>
+        <label htmlFor="chatInput"></label>
+        <input type="submit" value="Transcript" />
+      </form>
+      <p>{transcript}</p>
       From ({from}) :
         <select onChange={(e) => setFrom(e.target.value)}>
           {options.map((opt) => (
