@@ -33,10 +33,10 @@ export const ProfileEdit = () => {
     console.log(formRegisterValues);
   return (
     <>
-    <div className="container rounded bg-white mt-5">
+    <div className="container rounded bg-white mt-5 fondo-ajustes">
     <div className="row">
         <div className="col-md-4 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="90"/>
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="150"/>
             <span className="font-weight-bold">{name}</span>
             <span className="text-black-50">{nEmail}</span>
             </div>
@@ -48,21 +48,21 @@ export const ProfileEdit = () => {
                 </div>
                 <form>
                 <div className="row mt-2">
-                    <div className="col-md-6"><input type="text" className="form-control" placeholder="userName" name='nName' value={nName} onChange={handleRegisterInputChange}/></div>
-                    <div className="col-md-6"><input type="text" className="form-control" placeholder="Nombre completo" name='nFullName' value={nFullName} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control ajustes" placeholder="userName" name='nName' value={nName} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control ajustes" placeholder="Nombre completo" name='nFullName' value={nFullName} onChange={handleRegisterInputChange}/></div>
                 </div>
                 <div className="row mt-3">
-                    <div className="col-md-6"><input type="email" className="form-control" placeholder="Email" name='nEmail' value={nEmail} onChange={handleRegisterInputChange}/></div>
-                    <div className="col-md-6"><input type="text" className="form-control" placeholder="Phone number" name='nPhone' value={nPhone} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="email" className="form-control ajustes" placeholder="Email" name='nEmail' value={nEmail} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control ajustes" placeholder="Phone number" name='nPhone' value={nPhone} onChange={handleRegisterInputChange}/></div>
                 </div>
                 <div className="row mt-3">
-                    <div className="col-md-6"><input type="text" className="form-control" placeholder="address" name='nAddress' value={nAddress} onChange={handleRegisterInputChange}/></div>
-                    <div className="col-md-6"><input type="text" className="form-control" placeholder="Country" name='nCountry' value={nCountry} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control ajustes" placeholder="address" name='nAddress' value={nAddress} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control ajustes" placeholder="Country" name='nCountry' value={nCountry} onChange={handleRegisterInputChange}/></div>
                 </div>
                 <div className="row mt-3">
-                    <div className="col-md-6"><input type="text" className="form-control" placeholder="especiality" name='nEspeciality' value={nEspeciality} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6"><input type="text" className="form-control ajustes" placeholder="especiality" name='nEspeciality' value={nEspeciality} onChange={handleRegisterInputChange}/></div>
                 </div>
-                <div className="mt-5 text-right"><input className="btnSubmit" type="submit" value="Actualizar"/></div>
+                <div className="mt-2 text-right"><input className="btn btn-primary boton boton-update" type="submit" value="Actualizar"/></div>
                 </form>
             </div>
         </div>

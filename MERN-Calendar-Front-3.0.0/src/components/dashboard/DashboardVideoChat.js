@@ -6,6 +6,7 @@ import moment from 'moment';
 import Dictaphone from '../translator/Dictaphone'
 import VideoChat from '../videoChat/VideoChat';
 import VideoChatCall from '../../components/videoChatTranslate/VideoChatCall/VideoChatCall'
+import "./Dashboard.css";
 
 moment.locale('es');
 
@@ -27,7 +28,7 @@ const DashboardVideoChat = () => {
   <div class="pageHeader">
     <div class="title">Bienvenido {name} <img class = "circular--square" src={pic} width="40" height="40"/></div>
     <div class="userPanel"><span class="username"><button 
-                className="btn btn-danger"
+                className="btn btn-light colorletra"
                 onClick={ handleLogout }
             >
                 <span> Salir</span>

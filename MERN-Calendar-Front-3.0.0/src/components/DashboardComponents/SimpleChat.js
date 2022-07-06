@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Talk from 'talkjs';
 
 
+
 export default class SimpleChat extends Component {
 
     constructor(props) {
@@ -10,7 +11,6 @@ export default class SimpleChat extends Component {
         
         this.inbox = undefined;
     }
-
     componentDidMount() {
         // Promise can be `then`ed multiple times
         Talk.ready
@@ -45,6 +45,7 @@ export default class SimpleChat extends Component {
                     photoUrl: "https://talkjs.com/docs/img/ronald.jpg",
                     welcomeMessage: "Vamos al chequeo diario"
                 });
+               
 
                 // You control the ID of a conversation. oneOnOneId is a helper method that generates
                 // a unique conversation ID for a given pair of users. 
@@ -71,7 +72,7 @@ export default class SimpleChat extends Component {
                     //selected: conversation2,
                 });
                 this.inbox.mount(this.container);
-
+                
             })
             .catch(e => console.error(e));
 
@@ -86,7 +87,7 @@ export default class SimpleChat extends Component {
 
     render() {
         return (<span>
-            <div style={{height: '500px'}} ref={c => this.container = c}>Loading...</div>
+            <div style={{height: '450px', width: '750px'}} ref={c => this.container = c}>Loading...</div>
         </span>);
     }
 }
