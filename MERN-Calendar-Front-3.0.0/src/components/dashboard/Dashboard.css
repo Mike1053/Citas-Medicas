@@ -1,0 +1,16 @@
+.colorletra{
+    color: red;
+}
+
+
+.fondo{
+    text-align: center;
+    margin-right: auto;
+    background-color: rgb(225, 255, 255);
+}
+
+.cuadro{
+    background-color: yellow;
+    height: 100px;
+    width: 100px;
+}

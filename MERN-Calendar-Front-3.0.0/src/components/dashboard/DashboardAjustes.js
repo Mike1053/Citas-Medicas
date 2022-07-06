@@ -5,7 +5,7 @@ import pic from '../images/superporky.jpg'
 import moment from 'moment';
 import { ProfileEdit } from '../DashboardComponents/ProfileEdit';
 import { CalendarScreen } from '../calendar/CalendarScreen';
-
+import "./Dashboard.css";
 
 moment.locale('es');
 
@@ -27,7 +27,7 @@ const DashboardAjustes = () => {
   <div class="pageHeader">
     <div class="title">Bienvenido {name} <img class = "circular--square" src={pic} width="40" height="40"/></div>
     <div class="userPanel"><span class="username"><button 
-                className="btn btn-danger"
+                className="btn btn-light colorletra"
                 onClick={ handleLogout }
             >
                 <span> Salir</span>

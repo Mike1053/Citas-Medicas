@@ -9,6 +9,7 @@ export default function Chat(props) {
   const callObject = useContext(CallObjectContext);
   const [inputValue, setInputValue] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
+  const [speaking, setSpeaking] = useState(false);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -69,7 +70,7 @@ export default function Chat(props) {
 
   const [options, setOptions] = useState([]);
   const [to, setTo] = useState('en');
-  const [from, setFrom] = useState('es');
+  const [from, setFrom] = useState('en');
   const [output, setOutput] = useState('');
   let timerId;
 
@@ -127,32 +128,51 @@ export default function Chat(props) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
+  const isSpeaking = (event) =>{
+    event.preventDefault();
+    resetTranscript();
+    startListening();
+  }
+
+  const stopSpeaking = (event) =>{
+    event.preventDefault();
+    SpeechRecognition.stopListening();
+    setInputValue(transcript);
+    resetTranscript();
+  }
+
   {/*Aquí va el pedo del dictaphone----------------------------------------- */}
 
   return props.onClickDisplay ? (
-    <div className="chat">
+    <div className='chat'>
+    <div className="chat-messages">
       {chatHistory.map((entry, index) => (
         <div key={`entry-${index}`} className="messageList">
-          <b>{entry.sender}</b>: {entry.message}
+          <b>{entry.sender}</b>: {entry.message} 
+          <Speech text={entry.message}
+          voice="Jorge"
+          textAsButton={true}    
+          displayText="Text-to-Speech" 
+    />
         </div>
       ))}
-      <form onSubmit={handleSubmit}>
+    </div>
+    <div className='submit-div'>
+      <div className='class-text'>
+        Habla para traducir:
+      </div>
+      <div class="btn-group d-flex justify-content-center">
+      <form onSubmit={isSpeaking}>
         <label htmlFor="chatInput"></label>
-        <input
-          id="chatInput"
-          className="chat-input"
-          type="text"
-          placeholder="Type your message here.."
-          value={inputValue}
-          onChange={handleChange}
-        ></input>
-        <input type="submit" value="Send" className='send-chat-button'/>
+        <input type="submit" value="Empezar" class="btn btn-success btn-sm mr-1 empezar" />
       </form>
-      <form onSubmit={translate}>
+      <form onSubmit={stopSpeaking}>
         <label htmlFor="chatInput"></label>
-        <input type="submit" value="Translate" className='translate-button'/>
+        <input type="submit" value="Pausar" class="btn btn-danger btn pausar"/>
       </form>
-      From ({from}) :
+      </div>
+      <div className='espacio'></div>
+      <div class='d-flex justify-content-center'>
         <select onChange={(e) => setFrom(e.target.value)}>
           {options.map((opt) => (
             <option key={opt.code} value={opt.code}>
@@ -160,7 +180,7 @@ export default function Chat(props) {
             </option>
           ))}
         </select>
-        To ({to}) :
+         - To - 
         <select onChange={(e) => setTo(e.target.value)}>
           {options.map((opt) => (
             <option key={opt.code} value={opt.code}>
@@ -168,6 +188,28 @@ export default function Chat(props) {
             </option>
           ))}
         </select>
+        </div>
+        <div className='espacio'></div>
+        <div className='centrar'>
+        <form onSubmit={translate}>
+        <label htmlFor="chatInput"></label>
+        <input type="submit" value="Translate" className='btn btn-warning traducir'/>
+        </form>
+        </div>
+        <form onSubmit={handleSubmit}>
+        <label htmlFor="chatInput"></label>
+        <input
+          id="chatInput"
+          className="chat-input"
+          type="text"
+          placeholder="Escribe tu mensaje aqui..."
+          value={inputValue}
+          onChange={handleChange}
+          required
+        ></input>
+          <input type="submit" value="Enviar" className='send-chat-button btn btn-secondary' />
+      </form>
+        </div>
     </div>
   ) : null;
 }

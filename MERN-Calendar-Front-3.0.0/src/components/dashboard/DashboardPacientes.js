@@ -5,6 +5,7 @@ import pic from '../images/superporky.jpg'
 import moment from 'moment';
 import TaskUpload from '../task/taskUpload';
 import TaskScreen from '../task/TaskScreen';
+import "./Dashboard.css";
 
 
 moment.locale('es');
@@ -27,7 +28,7 @@ const DashboardPacientes = () => {
   <div class="pageHeader">
     <div class="title">Bienvenido {name} <img class = "circular--square" src={pic} width="40" height="40"/></div>
     <div class="userPanel"><span class="username"><button 
-                className="btn btn-danger"
+                className="btn btn-light colorletra"
                 onClick={ handleLogout }
             >
                 <span> Salir</span>
