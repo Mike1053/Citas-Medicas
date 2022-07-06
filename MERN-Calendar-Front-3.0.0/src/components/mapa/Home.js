@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import './Consultorios2.css';
+
 const Home = () => {
   const [state, setState] = useState({
     longitude: 0,
@@ -26,8 +28,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Geolocation</h1>
+    <div className="wrapper_imagen">
+    <div className="wrapper">
+      <h1>Consultorios</h1>
       <p>Latitude: {state.latitude}</p>
       <p>longitude: {state.longitude}</p>
 
@@ -40,8 +43,9 @@ const Home = () => {
           state,
         }}
       >
-        See marker
+        <button type="button" class="btn btn-primary">Ver nuestros consultorios</button>
       </Link>
+    </div>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import moment from 'moment';
 import UploadImage from '../auth/UploadImage';
 import MostrarFoto from '../DashboardComponents/MostrarFoto';
 import SimpleChat from '../DashboardComponents/SimpleChat';
+import "./Dashboard.css";
 
 moment.locale('es');
 
@@ -27,7 +28,7 @@ const DashboardMensajes = () => {
   <div class="pageHeader">
     <div class="title">Bienvenido {name} <img class = "circular--square" src={pic} width="40" height="40"/></div>
     <div class="userPanel"><span class="username"><button 
-                className="btn btn-danger"
+                className="btn btn-light colorletra"
                 onClick={ handleLogout }
             >
                 <span> Salir</span>
