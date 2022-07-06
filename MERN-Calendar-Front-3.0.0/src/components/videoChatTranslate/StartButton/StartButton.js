@@ -8,12 +8,14 @@ import './StartButton.css';
  */
 export default function StartButton(props) {
   return (
+    <div className='boton-videochat'>
     <button
-      className="start-button"
+      className="btn btn-primary"
       disabled={props.disabled}
       onClick={props.onClick}
     >
-      Click to start a call
+      Entrar a llamada
     </button>
+    </div>
   );
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Oswald:wght@300&family=Passion+One&display=swap');
+
 .chat {
   position: absolute;
   right: 45px;
@@ -41,20 +43,22 @@
 .chat-input {
   position: absolute;
   width: 175px;
-  height: 25px;
-  margin-top: 10px;
+  height: 30px;
+  margin-top: 5px;
   border: 0px;
   margin-left: 10px;
+  border-radius: 20px;
 }
 
 .send-chat-button {
   position: absolute;
-  width: 50px;
-  height: 25px;
-  margin-left: 200px;
-  margin-top: 10px;
-  background-color: #f2f2f2;
-  border: 0px;
+  margin-left: 195px;
+  margin-top: 5px;
+  border-radius: 20px;
+  height: 30px;
+  font-size: 13px;
+  padding-bottom: 15px;
+  
 }
 
 .btn-group button {
@@ -100,4 +104,25 @@
   height: 160px;
   width: 280px;
   background-color: #81abff;
+}
+.empezar{
+  border-radius: 20px;
+  height: 30px;
+  font-size: 12px;
+  text-align: center;
+}
+.pausar{
+  border-radius: 20px;
+  height: 25px;
+  font-size: 12px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.traducir{
+  border-radius: 20px;
+  height: 25px;
+  font-size: 15px;
+  text-align: center;
+  padding-bottom: 25px;
+  font-family: 'Passion One', cursive;
 }
