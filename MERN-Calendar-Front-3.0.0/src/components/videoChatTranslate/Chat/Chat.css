@@ -1,17 +1,41 @@
 .chat {
   position: absolute;
-  right: 10px;
+  right: 45px;
   /*bottom: 75px; Se lo culeo el quebin*/
   top: 15px;
   width: 280px;
-  height: calc(100% - 150px);
-  background-color:rgb(246, 255, 0);
+  height: calc(100% - 130px);
   border-radius: 5px;
   overflow-y: auto;
+  text-align: left;
+}
+
+.botones-verga{
+  text-align: center;
+  float: left;
+}
+
+.chat-messages{
+  overflow-y: auto;
+  background-color: #e9eeef;
+  height: calc(100% - 160px);
 }
 
 .messageList {
   padding: 10px;
+}
+
+.class-text{
+  text-align: center;
+  font-size: large;
+}
+
+.espacio{
+  height: 5px;
+}
+
+.centrar{
+  text-align: center;
 }
 
 .chat-input {
@@ -33,6 +57,29 @@
   border: 0px;
 }
 
+.btn-group button {
+  background-color: #04AA6D; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+/* .start-btn{
+  position: absolute;
+  margin-left: 10px;
+  background-color: #f2f2f2;
+  border: 0px; 
+}
+
+.stop-button{
+  position: absolute;
+  margin-left: 80px;  
+  background-color: #f2f2f2;
+  border: 0px; 
+}  */
+
 .translate-button {
   position: absolute;
   text-align: left;
@@ -47,9 +94,10 @@
 }
 
 .submit-div{
-  background-color: chocolate;
+  /* background-color: chocolate; */
   position: absolute;
   bottom: 0px;
-  height: 150px;
-  width: 260px;
+  height: 160px;
+  width: 280px;
+  background-color: #81abff;
 }

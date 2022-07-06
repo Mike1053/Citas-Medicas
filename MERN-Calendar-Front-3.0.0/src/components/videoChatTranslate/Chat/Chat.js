@@ -70,7 +70,7 @@ export default function Chat(props) {
 
   const [options, setOptions] = useState([]);
   const [to, setTo] = useState('en');
-  const [from, setFrom] = useState('es');
+  const [from, setFrom] = useState('en');
   const [output, setOutput] = useState('');
   let timerId;
 
@@ -131,40 +131,48 @@ export default function Chat(props) {
   const isSpeaking = (event) =>{
     event.preventDefault();
     resetTranscript();
-    if(speaking === false){
-      setSpeaking(true);
-      startListening();
-    }
-    if(speaking === true){
-      setSpeaking(false);
-      SpeechRecognition.stopListening();
-      setInputValue(transcript);
-      resetTranscript();
-    }
+    startListening();
+  }
+
+  const stopSpeaking = (event) =>{
+    event.preventDefault();
+    SpeechRecognition.stopListening();
+    setInputValue(transcript);
+    resetTranscript();
   }
 
   {/*Aquí va el pedo del dictaphone----------------------------------------- */}
 
   return props.onClickDisplay ? (
     <div className='chat'>
-    <div className="chat">
+    <div className="chat-messages">
       {chatHistory.map((entry, index) => (
         <div key={`entry-${index}`} className="messageList">
-          <b>{entry.sender}</b>: {entry.message}
+          <b>{entry.sender}</b>: {entry.message} 
+          <Speech text={entry.message}
+          voice="Jorge"
+          textAsButton={true}    
+          displayText="Text-to-Speech" 
+    />
         </div>
       ))}
-      {transcript}
     </div>
     <div className='submit-div'>
-      <p>Translate</p>
+      <div className='class-text'>
+        Speech-to-text
+      </div>
+      <div class="btn-group d-flex justify-content-center">
       <form onSubmit={isSpeaking}>
         <label htmlFor="chatInput"></label>
-        <input type="submit" value="Start" />
+        <input type="submit" value="Start" class="btn btn-success btn-sm mr-1" />
       </form>
-      <form onSubmit={isSpeaking}>
+      <form onSubmit={stopSpeaking}>
         <label htmlFor="chatInput"></label>
-        <input type="submit" value="Stop" />
+        <input type="submit" value="Stop" class="btn btn-danger btn-sm"/>
       </form>
+      </div>
+      <div className='espacio'></div>
+      <div class='d-flex justify-content-center'>
         <select onChange={(e) => setFrom(e.target.value)}>
           {options.map((opt) => (
             <option key={opt.code} value={opt.code}>
@@ -180,10 +188,14 @@ export default function Chat(props) {
             </option>
           ))}
         </select>
+        </div>
+        <div className='espacio'></div>
+        <div className='centrar'>
         <form onSubmit={translate}>
         <label htmlFor="chatInput"></label>
         <input type="submit" value="Translate" /* className='translate-button'*//>
         </form>
+        </div>
         <form onSubmit={handleSubmit}>
         <label htmlFor="chatInput"></label>
         <input
@@ -193,6 +205,7 @@ export default function Chat(props) {
           placeholder="Type your message here.."
           value={inputValue}
           onChange={handleChange}
+          required
         ></input>
         <input type="submit" value="Send" className='send-chat-button' />
       </form>

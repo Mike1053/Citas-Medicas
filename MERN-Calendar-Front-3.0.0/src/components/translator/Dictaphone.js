@@ -7,7 +7,7 @@ const axios = require('axios').default;
 const Dictaphone = () => {
   const [options, setOptions] = useState([]);
   const [to, setTo] = useState('en');
-  const [from, setFrom] = useState('es');
+  const [from, setFrom] = useState('en');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   let timerId;
