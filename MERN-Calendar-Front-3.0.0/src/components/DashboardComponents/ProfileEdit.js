@@ -62,7 +62,7 @@ export const ProfileEdit = () => {
                 <div className="row mt-3">
                     <div className="col-md-6"><input type="text" className="form-control ajustes" placeholder="especiality" name='nEspeciality' value={nEspeciality} onChange={handleRegisterInputChange}/></div>
                 </div>
-                <div className="mt-2 text-right"><input className="btn btn-primary boton boton-update" type="submit" value="Actualizar"/></div>
+                <div className="mt-2 text-right py-2"><input className="btn btn-primary boton boton-update" type="submit" value="Actualizar"/></div>
                 </form>
             </div>
         </div>
