@@ -4,7 +4,7 @@
 
 body {
     background: url("../src/imgs/FondoMedico2.jpg");
-
+    background-size: cover;  
 }
 
 .calendar-screen {
