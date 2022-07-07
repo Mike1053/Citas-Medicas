@@ -33,9 +33,10 @@
     cursor: pointer;
   }
   .boton-update{
-    width: 400px;
+    width: 625px;
     height: 40px;
     border-radius: 50px;
+    font-family: 'Franklin Gothic';
   }
   .ajustes{
     width: 100%;
@@ -46,4 +47,19 @@
     color: rgb(0, 0, 0);
     padding-left: 15px;
     background-color: #9b9b9b34;
+}
+h1{
+  color: #2d3e50;
+  font-family: 'Passion One', cursive;
+}
+.nombre{
+  font-family: 'Passion One', cursive;
+  font-size: 18px;
+}
+.email{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow';
+  font-size: 16px;
+}
+.col-md-6{
+  font-family: 'Franklin Gothic';
 }

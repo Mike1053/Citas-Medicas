@@ -1,6 +1,8 @@
 .app {
-  background-color: #202124;
+  background-image: url('../CitasMedicas.png');
   position:inherit;
   height:500px ; /*Tamaño general del contenedor*/
   width: 100%;
+  background-repeat: no-repeat;
+  background-position: 250px;
 }

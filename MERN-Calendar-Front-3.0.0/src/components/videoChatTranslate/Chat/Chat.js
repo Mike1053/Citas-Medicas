@@ -159,16 +159,16 @@ export default function Chat(props) {
     </div>
     <div className='submit-div'>
       <div className='class-text'>
-        Speech-to-text
+        Habla para traducir:
       </div>
       <div class="btn-group d-flex justify-content-center">
       <form onSubmit={isSpeaking}>
         <label htmlFor="chatInput"></label>
-        <input type="submit" value="Start" class="btn btn-success btn-sm mr-1" />
+        <input type="submit" value="Empezar" class="btn btn-success btn-sm mr-1 empezar" />
       </form>
       <form onSubmit={stopSpeaking}>
         <label htmlFor="chatInput"></label>
-        <input type="submit" value="Stop" class="btn btn-danger btn-sm"/>
+        <input type="submit" value="Pausar" class="btn btn-danger btn pausar"/>
       </form>
       </div>
       <div className='espacio'></div>
@@ -193,7 +193,7 @@ export default function Chat(props) {
         <div className='centrar'>
         <form onSubmit={translate}>
         <label htmlFor="chatInput"></label>
-        <input type="submit" value="Translate" /* className='translate-button'*//>
+        <input type="submit" value="Translate" className='btn btn-warning traducir'/>
         </form>
         </div>
         <form onSubmit={handleSubmit}>
@@ -202,12 +202,12 @@ export default function Chat(props) {
           id="chatInput"
           className="chat-input"
           type="text"
-          placeholder="Type your message here.."
+          placeholder="Escribe tu mensaje aqui..."
           value={inputValue}
           onChange={handleChange}
           required
         ></input>
-        <input type="submit" value="Send" className='send-chat-button' />
+          <input type="submit" value="Enviar" className='send-chat-button btn btn-secondary' />
       </form>
         </div>
     </div>
