@@ -37,14 +37,14 @@ export const ProfileEdit = () => {
     <div className="row">
         <div className="col-md-4 border-right">
             <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="150"/>
-            <span className="font-weight-bold">{name}</span>
-            <span className="text-black-50">{nEmail}</span>
+            <span className="font-weight-bold nombre">{name}</span>
+            <span className="text-black-50 email">{nEmail}</span>
             </div>
         </div>
         <div className="col-md-8">
             <div className="p-3 py-5">
                 <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h6 className="text-right">Editar Perfil</h6>
+                    <h1 className="text-right">Editar Perfil</h1>
                 </div>
                 <form>
                 <div className="row mt-2">
