@@ -118,10 +118,10 @@ export const AppRouter = () => {
                         component={ MapView } 
                         isAuthenticated={ !!uid }
                     /> 
-
+{/* 
                     <Route path="/map">
                         <MapView/>
-                    </Route>
+                    </Route> */}
                     
                     <PrivateRoute 
                         exact 
