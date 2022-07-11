@@ -38,7 +38,7 @@ export const ProfileEdit = () => {
         <div className="col-md-4 border-right">
             <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="150"/>
             <span className="font-weight-bold nombre">{name}</span>
-            <span className="text-black-50 email">{nEmail}</span>
+            <span className="text-black-50">{nEmail}</span>
             </div>
         </div>
         <div className="col-md-8">
