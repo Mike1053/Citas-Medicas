@@ -3,22 +3,48 @@ import { taskStartLoading, taskStartAddNew, taskStartUpdate, taskClearActivetask
 import { useSelector, useDispatch } from 'react-redux';
 
 const TaskScreen = () => {
-
-    const [task, settask] = useState();
+    const [task, setTask] = useState();
     /* useEffect para recibir datos de los task */
+
+    const fetchData = async () => {
+      const data = await taskStartLoading()
+      .then(data =>{
+        setTask(data)
+        console.log(task)
+      })
+      
+    }
+
     useEffect(() => {
-      const fetchData = async () => {
-        const data = await taskStartLoading();
-        for (let i = 0; i < data.length; i++) {
-            console.log(`${i} title:${data[i].title}, id objeto:${data[i].id}`)
-          }
-        settask(data);
-      }
-      fetchData()
-    }, [])
+      
+      fetchData();
+    }, []) 
+
+    const elDiv = async () => {
+      const datos = await (task.map(function(element){
+        //console.log(element)
+        /* return(
+          <table>
+          <tr>
+              <th>ID</th>
+              <th>Titulo</th>
+              <th>Descripción</th>
+          </tr>
+          <tr>
+              <td>{element.id}</td>
+              <td>{element.title}</td>
+              <td>{element.description}</td>
+          </tr>
+          </table>
+        )  */
+        }))
+    }
 
   return (
-    <div>{}</div>
+    <div>
+      {/*elDiv()*/}
+    <button onClick={elDiv}>picale</button>
+    </div>
   )
 }
 

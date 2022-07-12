@@ -17,7 +17,6 @@ export default function Chat(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("pasa el mensaje");
     callObject.sendAppMessage({ message: inputValue }, '*');
     const name = callObject.participants().local.user_name
       ? callObject.participants().local.user_name
@@ -91,7 +90,6 @@ export default function Chat(props) {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       }).then(res=>{
-        //console.log(res.data)
         setInputValue(res.data.translatedText)
       })
     },100);
@@ -103,7 +101,6 @@ export default function Chat(props) {
         headers: { accept: 'application/json' },
       })
       .then((res) => {
-        console.log(res.data);
         setOptions(res.data);
       });
   }, []);
