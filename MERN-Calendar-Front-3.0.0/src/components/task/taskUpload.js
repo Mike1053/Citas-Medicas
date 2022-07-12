@@ -124,7 +124,14 @@ const TaskUpload = () => {
     }
 
   return (
-    <div>
+    <Modal
+          isOpen={ modalOpen }
+          onRequestClose={ closeModal }
+          style={ customStyles }
+          closeTimeoutMS={ 200 }
+          className="modal"
+          overlayClassName="modal-fondo"
+        >
       <h1> { (activeEvent)? 'Editar tarea': 'Nueva tarea' } </h1>
             <hr />
             <form 
@@ -188,7 +195,7 @@ const TaskUpload = () => {
                 </button>
 
             </form>
-    </div>
+        </Modal>
   )
 }
 

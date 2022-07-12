@@ -81,7 +81,7 @@ const taskUpdated = ( task ) => ({
 export const taskStartDelete = () => {
     return async ( dispatch, getState ) => {
 
-        const { id } = getState().calendar.activeTask;
+        const { id } = getState().task.activeTask;
         try {
             const resp = await fetchConToken(`task/${ id }`, {}, 'DELETE' );
             const body = await resp.json();

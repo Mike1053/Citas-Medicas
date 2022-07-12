@@ -13,10 +13,13 @@ moment.locale('es');
 
 const DashboardPacientes = () => {
     const dispatch = useDispatch();
+    
     const { name } = useSelector( state => state.auth );
+    
     const handleLogout = () => {
         dispatch( startLogout() );
     }
+    
   return (
     <div>
 
@@ -58,6 +61,7 @@ const DashboardPacientes = () => {
       <br></br>
        {/* <TaskUpload/> */}
        <TaskScreen/>
+       
     </div>
   </div>
 </div>
