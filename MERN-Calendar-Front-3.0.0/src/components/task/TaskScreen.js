@@ -16,7 +16,6 @@ const TaskScreen = () => {
 
     useEffect(() => {
       fetchData();
-      console.log("se carga")
     }, [dispatch]) 
 
     const onDoubleClick = (e) => {
