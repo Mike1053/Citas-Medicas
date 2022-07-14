@@ -55,7 +55,7 @@ export const taskStartUpdate = ( task ) => {
     return async(dispatch) => {
 
         try {
-            const resp = await fetchConToken(`tasks/${ task.id }`, task, 'PUT' );
+            const resp = await fetchConToken(`task/${ task.id }`, task, 'PUT' );
             const body = await resp.json();
 
             if ( body.ok ) {

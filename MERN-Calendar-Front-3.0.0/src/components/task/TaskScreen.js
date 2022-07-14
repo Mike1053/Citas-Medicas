@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { taskStartLoading, taskStartAddNew, taskStartUpdate, taskClearActivetask, taskSetActive } from '../../actions/task';
+import { taskStartLoading, taskStartAddNew, taskStartUpdate, taskClearActivetask, taskSetActive, taskStartDelete } from '../../actions/task';
 import { useSelector, useDispatch } from 'react-redux';
 import TaskUpload from './taskUpload';
 import { uiOpenModal } from '../../actions/ui';
@@ -16,16 +16,22 @@ const TaskScreen = () => {
 
     useEffect(() => {
       fetchData();
-    }, []) 
+      console.log("se carga")
+    }, [dispatch]) 
 
     const onDoubleClick = (e) => {
       // console.log(e);
       dispatch( uiOpenModal() );
   }
 
-  const onSelectEvent = (e) => {
-    console.log(e);
+  const onSelectTaskEdit = (e) => {
     dispatch( taskSetActive( e ) );
+    dispatch( uiOpenModal() );
+}
+
+const onSelectTaskDelete = (e) => {
+  dispatch( taskSetActive( e ) );
+  dispatch( taskStartDelete() );
 }
 
   return (
@@ -44,7 +50,10 @@ const TaskScreen = () => {
               <td>{element.title}</td>
               <td>{element.description}</td>
               <td>
-                <button type="button" onClick={() =>{onSelectEvent(element)}}>boton</button>
+                <button type="button" onClick={() =>{onSelectTaskEdit(element)}}>editar</button>
+              </td>
+              <td>
+                <button type="button" onClick={() =>{onSelectTaskDelete(element)}}>eliminar</button>
               </td>
           </tr>
           </tbody>
