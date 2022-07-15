@@ -3,8 +3,9 @@ import { Map, TileLayer } from "react-leaflet";
 import Markers from "./VenueMarkers";
 import 'leaflet/dist/leaflet.css';
 
-/*Datos para mostrar los marcadores*/
+/*Datos para mostrar los marcadores----------------------------------------------------*/
 import data from "../../assests/data.json"; 
+/*Datos para mostrar los marcadores----------------------------------------------------*/
 
 import { useLocation, useHistory } from "react-router-dom";
 
@@ -48,9 +49,6 @@ const MapView = (props) => {
   const locate = (e) => {
     let {lat, lng} = e.latlng;
     console.log(e.latlng)
-    /* console.log("la ubi del click")
-    console.info("Lat:", lat);
-    console.info("Lng: ",lng); */
   }
 
   return (
