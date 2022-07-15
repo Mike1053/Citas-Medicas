@@ -13,12 +13,9 @@ export const ProfileEdit = () => {
     const dispatch = useDispatch();
     const { name } = useSelector( state => state.auth );
     const { email } = useSelector( state => state.auth );
-    const { license } = useSelector( state => state.auth );
+    /* const { license } = useSelector( state => state.auth );
     const { fullName } = useSelector( state => state.auth );
-    const { speciality } = useSelector( state => state.auth );
-    const handleLogout = () => {
-        dispatch( startLogout() );
-    }
+    const { speciality } = useSelector( state => state.auth ); */
 
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
         nName: name,

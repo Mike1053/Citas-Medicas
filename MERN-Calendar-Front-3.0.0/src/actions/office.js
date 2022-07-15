@@ -121,9 +121,5 @@ export const officeStartLoading = async () => {
         }  
 }
 
-const officeLoaded = (offices) => ({
-    type: types.officeLoaded,
-    payload: offices
-})
 
 export const officeLogout =() => ({ type: types.officeLogout });

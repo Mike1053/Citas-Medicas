@@ -9,7 +9,6 @@ export default function Chat(props) {
   const callObject = useContext(CallObjectContext);
   const [inputValue, setInputValue] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
-  const [speaking, setSpeaking] = useState(false);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -70,7 +69,6 @@ export default function Chat(props) {
   const [options, setOptions] = useState([]);
   const [to, setTo] = useState('en');
   const [from, setFrom] = useState('en');
-  const [output, setOutput] = useState('');
   let timerId;
 
   const translate = (event) => {

@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
-import UploadImage from '../auth/UploadImage';
-import MostrarFoto from '../DashboardComponents/MostrarFoto';
 import SimpleChat from '../DashboardComponents/SimpleChat';
 import "./Dashboard.css";
 

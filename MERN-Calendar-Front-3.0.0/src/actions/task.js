@@ -121,9 +121,4 @@ export const taskStartLoading = async () => {
         }  
 }
 
-const taskLoaded = (tasks) => ({
-    type: types.taskLoaded,
-    payload: tasks
-})
-
 export const taskLogout =() => ({ type: types.taskLogout });

@@ -12,13 +12,11 @@ import React from 'react'
     const [fileName, setFileName] = useState("Subir una imagen")
 	const [selectedFile, setSelectedFile] = useState(null)
 	const { uid } = useSelector( state => state.auth );
-    const handleLogout = () => {
-        dispatch( startLogout() );
-    }
+
 	const handleFileChange = (e) => {
 		const [file] = e.target.files; 
 		const SIZE_50MB = 50 * 1024 * 1024;
-		const isValidSize = file.size < SIZE_50MB; 
+		//const isValidSize = file.size < SIZE_50MB; 
 		// const isValidSize = file.size < 200 * 1024
 		const isNameOfOneImageRegEx = /.(jpe?g|gif|png)$/i;
 		const isValidType = isNameOfOneImageRegEx.test(file.name)
