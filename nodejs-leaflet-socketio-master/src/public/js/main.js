@@ -10,7 +10,7 @@ const socket = io.connect();
 
 // Marker 00
 
-const marker = L.marker([28.653784417300734, -106.06957097047322]); //Hospital general Chihuahua Mex.
+const marker = L.marker([28.6441, -106.07859]); //Hospital general Chihuahua Mex. 
 marker.bindPopup('Hospital General de Chihuahua');
 map.addLayer(marker);
 
