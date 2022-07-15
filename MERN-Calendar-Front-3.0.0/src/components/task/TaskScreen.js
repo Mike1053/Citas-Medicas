@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import TaskUpload from './taskUpload';
 import { uiOpenModal } from '../../actions/ui';
 
+import { officeStartLoading } from '../../actions/office';
+
 const TaskScreen = () => {
     const dispatch = useDispatch();
     const [task, setTask] = useState([]);
@@ -11,6 +13,8 @@ const TaskScreen = () => {
 
     const fetchData = async () => {
       const data = await taskStartLoading()
+      const data2 = await officeStartLoading()
+      console.log(data2)
       setTask(data)
     }
 

@@ -48,9 +48,9 @@ const MapView = (props) => {
   const locate = (e) => {
     let {lat, lng} = e.latlng;
     console.log(e.latlng)
-    console.log("la ubi del click")
+    /* console.log("la ubi del click")
     console.info("Lat:", lat);
-    console.info("Lng: ",lng);
+    console.info("Lng: ",lng); */
   }
 
   return (
