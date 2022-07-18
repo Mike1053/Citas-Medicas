@@ -44,6 +44,11 @@ router.delete(
 
 router.post(
     '/upload_Info_Doctor',
+    [ // middlewares
+        check('prefijo', 'El prefijo es obligatorio').not().isEmpty(),
+        check('telefono', 'El telefono es obligatorio y numerico').not().isEmpty(),
+        validarCampos
+    ],
     crearInfoDoctores 
 );
 

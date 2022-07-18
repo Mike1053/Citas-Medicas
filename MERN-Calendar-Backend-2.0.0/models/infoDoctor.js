@@ -9,7 +9,8 @@ const infoDoctorSchema = Schema({
         ref: 'Consultorio',        
     }],
     telefono: {
-        type: String
+        type: String,
+        unique: true
     },
     usuarioDoctor: {
         type: Schema.Types.ObjectId,

@@ -169,7 +169,7 @@ const eliminarConsultorio = async( req, res = response ) => {
 
         res.status(200).json({ 
             ok: true,
-            msg: 'Se borro la Consulta existosamente.',
+            msg: 'Se borro el Consultorio existosamente.',
             profileActualizado
         });
 

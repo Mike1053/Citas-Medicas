@@ -30,7 +30,7 @@ router.post(
         check('name', 'El nombre es obligatorio').not().isEmpty(),
         check('email', 'El email es obligatorio').isEmail(),
         check('password', 'El password debe de ser de 6 caracteres').isLength({ min: 6 }),
-        check('license', 'La cedula es obligatoria').not().isEmpty(),
+        check('license', 'La cedula es obligatoria').not().isEmpty().isNumeric(),
         check('fullName', 'El nombre completo es obligatorio').not().isEmpty(),
         check('speciality', 'La especialidad es requerida').not().isEmpty(),
         validarCampos
