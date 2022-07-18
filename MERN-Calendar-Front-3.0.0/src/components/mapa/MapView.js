@@ -57,7 +57,8 @@ const MapView = (props) => {
     <div id="map">
     <Map  center={state.currentLocation} zoom={state.zoom} onClick={locate}>
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" default map
+        url="https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       <Markers venues={state.data.venues} />
