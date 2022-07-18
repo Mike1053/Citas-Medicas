@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Map, TileLayer } from "react-leaflet";
+import { Map, TileLayer, SVGOverlay } from "react-leaflet";
 import Markers from "./VenueMarkers";
 import 'leaflet/dist/leaflet.css';
+import './Consultorios2.css';
 
 /*Datos para mostrar los marcadores----------------------------------------------------*/
 import data from "../../assests/data.json"; 
@@ -54,6 +55,7 @@ const MapView = (props) => {
   return (
     <div id="map">
     <Map  center={state.currentLocation} zoom={state.zoom} onClick={locate}>
+      <button className="boton">El boton</button>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
