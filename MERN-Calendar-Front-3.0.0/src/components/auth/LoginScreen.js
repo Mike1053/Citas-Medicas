@@ -15,15 +15,7 @@ export const LoginScreen = () => {
         lPassword: '123456'
     });
 
-    const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-        rName: 'Nando',
-        rEmail: 'nando@gmail.com',
-        rPassword1: '123456',
-        rPassword2: '123456'
-    });
-    
     const { lEmail, lPassword } = formLoginValues;
-    const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues;
 
     const handleLogin = ( e ) => {
         e.preventDefault();
@@ -38,7 +30,7 @@ export const LoginScreen = () => {
                     <form onSubmit={ handleLogin }>
                         {/*Logo del login*/}
                         <div className="logo">
-                            <img src="./CitasMedicas.png" width="100" height="100"/>
+                            <img src="./CitasMedicas.png" width="100" height="100" alt='Logo'/>
                         </div>
 
 
@@ -81,11 +73,6 @@ export const LoginScreen = () => {
                         
                         > Registro
                     </button>
-                    
-                     
-                    
-                    
-                    
                 </div>
         </div>
     )

@@ -62,18 +62,6 @@ export default function Tray(props) {
       : callObject.startScreenShare();
   }
 
-  function toggleTranscript() {
-    isTranscript
-      ? callObject.stopTranscription()
-      : callObject.startTranscription();
-  }
-
-  function enable_transcription() {
-    isTranscript
-      ? callObject.stopTranscription()
-      : callObject.startTranscription();
-  }
-
   function leaveCall() {
     props.onClickLeaveCall && props.onClickLeaveCall();
   }
