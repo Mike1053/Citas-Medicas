@@ -55,7 +55,7 @@ export const taskStartUpdate = ( task ) => {
     return async(dispatch) => {
 
         try {
-            const resp = await fetchConToken(`tasks/${ task.id }`, task, 'PUT' );
+            const resp = await fetchConToken(`task/${ task.id }`, task, 'PUT' );
             const body = await resp.json();
 
             if ( body.ok ) {
@@ -81,7 +81,7 @@ const taskUpdated = ( task ) => ({
 export const taskStartDelete = () => {
     return async ( dispatch, getState ) => {
 
-        const { id } = getState().calendar.activeTask;
+        const { id } = getState().task.activeTask;
         try {
             const resp = await fetchConToken(`task/${ id }`, {}, 'DELETE' );
             const body = await resp.json();
@@ -120,10 +120,5 @@ export const taskStartLoading = async () => {
             console.log(error)
         }  
 }
-
-const taskLoaded = (tasks) => ({
-    type: types.taskLoaded,
-    payload: tasks
-})
 
 export const taskLogout =() => ({ type: types.taskLogout });

@@ -16,9 +16,9 @@ export const types = {
     eventLoaded: '[event] Events loaded',
 
     taskSetActive: '[task] Set Active',
-    eventLogout: '[task] Logout task',
+    taskLogout: '[task] Logout task',
     
-    evetStartAddNew: '[task] Start add new',
+    taskStartAddNew: '[task] Start add new',
     taskAddNew: '[task] Add new',
     taskClearActiveTask: '[task] Clear active task',
     taskUpdated: '[task] task updated',

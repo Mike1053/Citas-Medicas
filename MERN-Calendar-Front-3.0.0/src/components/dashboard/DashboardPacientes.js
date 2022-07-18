@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import pic from '../images/superporky.jpg'
 import moment from 'moment';
-import TaskUpload from '../task/taskUpload';
 import TaskScreen from '../task/TaskScreen';
 import "./Dashboard.css";
 
@@ -13,10 +12,13 @@ moment.locale('es');
 
 const DashboardPacientes = () => {
     const dispatch = useDispatch();
+    
     const { name } = useSelector( state => state.auth );
+    
     const handleLogout = () => {
         dispatch( startLogout() );
     }
+    
   return (
     <div>
 
@@ -58,6 +60,7 @@ const DashboardPacientes = () => {
       <br></br>
        {/* <TaskUpload/> */}
        <TaskScreen/>
+       
     </div>
   </div>
 </div>
