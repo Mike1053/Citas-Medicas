@@ -30,11 +30,3 @@ p{
 button{
     font-family: 'Franklin Gothic';
 }
-
-.boton{
-    /* z-index:-1;
-    position:relative; */
-    background-color: crimson;
-    z-index: -1;
-    position: relative;
-}
