@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Map, TileLayer, Marker } from "react-leaflet";
+import { Map, TileLayer, ZoomControl } from "react-leaflet";
 import Markers from "./VenueMarkers";
 import 'leaflet/dist/leaflet.css';
 import './Consultorios2.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { uiOpenModal } from '../../actions/ui';
 
 /*Datos para mostrar los marcadores----------------------------------------------------*/
 import data from "../../assests/data.json"; 
@@ -13,6 +15,7 @@ import { useLocation, useHistory } from "react-router-dom";
 
 import "leaflet/dist/leaflet.css";
 import { map } from "leaflet";
+import AddMarker from "./AddMarker";
 
 const MapView = (props) => {
   const [state, setState] = useState({
@@ -82,17 +85,24 @@ const MapView = (props) => {
     );
   }
 
+  const dispatch = useDispatch();
+  const onDoubleClick = (e) => {
+    // console.log(e);
+    dispatch( uiOpenModal() );
+}
+
   return (
     <div id="map">
-    <Map  center={state.currentLocation} zoom={state.zoom} onClick={locate}>
-      <button onClick={() => {centerUser()}} >El boton</button>
+    <Map  center={state.currentLocation} zoom={state.zoom} onClick={locate} zoomControl={false}>
+      <button onClick={() => {onDoubleClick()}} >El boton</button>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       <Markers venues={office} />
-      
+      <ZoomControl/>
     </Map >
+    <AddMarker/>
     </div>
   );
 };
