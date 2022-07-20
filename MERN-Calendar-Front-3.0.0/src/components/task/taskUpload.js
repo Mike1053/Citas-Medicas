@@ -45,7 +45,7 @@ const TaskUpload = () => {
     /* Final useEffect para recibir datos de los task */
     
     const { modalOpen } = useSelector( state => state.ui );
-    const { activeEvent } = useSelector( state => state.calendar );
+    const { activeTask } = useSelector( state => state.task );
     const dispatch = useDispatch();
 
     const [ dateStart, setDateStart ] = useState( now.toDate() );
@@ -57,12 +57,12 @@ const TaskUpload = () => {
     const { description, title, start, end } = formValues;
 
     useEffect(() => {
-        if ( activeEvent ) {
-            setFormValues( activeEvent );
+        if ( activeTask ) {
+            setFormValues( activeTask );
         } else {
             setFormValues( initEvent );
         }
-    }, [activeEvent, setFormValues])
+    }, [activeTask, setFormValues])
 
 
 
@@ -111,7 +111,7 @@ const TaskUpload = () => {
             return setTitleValid(false);
         }
 
-        if ( activeEvent ) {
+        if ( activeTask ) {
             dispatch( taskStartUpdate( formValues ) )
         } else {
             dispatch( taskStartAddNew(formValues) );
@@ -124,8 +124,15 @@ const TaskUpload = () => {
     }
 
   return (
-    <div>
-      <h1> { (activeEvent)? 'Editar tarea': 'Nueva tarea' } </h1>
+    <Modal
+          isOpen={ modalOpen }
+          onRequestClose={ closeModal }
+          style={ customStyles }
+          closeTimeoutMS={ 200 }
+          className="modal"
+          overlayClassName="modal-fondo"
+        >
+      <h1> { (activeTask)? 'Editar tarea': 'Nueva tarea' } </h1>
             <hr />
             <form 
                 className="container"
@@ -188,7 +195,7 @@ const TaskUpload = () => {
                 </button>
 
             </form>
-    </div>
+        </Modal>
   )
 }
 

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Map, TileLayer } from "react-leaflet";
-import data from "../../assests/data.json";
 import Markers from "./VenueMarkers";
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 
+/*Datos para mostrar los marcadores*/
+import data from "../../assests/data.json"; 
 
 import { useLocation, useHistory } from "react-router-dom";
 
-import "leaflet/dist/leaflet.css";
+
 
 const MapView = (props) => {
   const [state, setState] = useState({
@@ -43,11 +44,21 @@ const MapView = (props) => {
     }
   }, [location]);
 
+  /* Recibes las coordenadas al clickear en el mapa */
+  const locate = (e) => {
+    let {lat, lng} = e.latlng;
+    console.log(e.latlng)
+    console.log("la ubi del click")
+    console.info("Lat:", lat);
+    console.info("Lng: ",lng);
+  }
+
   return (
     <div id="map">
-    <Map  center={state.currentLocation} zoom={state.zoom}>
+    <Map  center={state.currentLocation} zoom={state.zoom} onClick={locate}>
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" default map
+        url="https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       <Markers venues={state.data.venues} />
