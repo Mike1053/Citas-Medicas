@@ -44,7 +44,6 @@ export default function Tray(props) {
   const [isCameraMuted, setCameraMuted] = useState(false);
   const [isMicMuted, setMicMuted] = useState(false);
   const [isSharingScreen, setSharingScreen] = useState(false);
-  const [isTranscript, setTranscript] = useState(false);
   const [displayChat, setChatDisplay] = useState(false);
   const [highlightedChat, setChatHighlight] = useState(false);
 
@@ -86,13 +85,12 @@ export default function Tray(props) {
 
     function handleNewParticipantsState(event) {
       event && logDailyEvent(event);
-      const [isCameraMuted, isMicMuted, isSharingScreen, isTranscript] = getStreamStates(
+      const [isCameraMuted, isMicMuted, isSharingScreen] = getStreamStates(
         callObject
       );
       setCameraMuted(isCameraMuted);
       setMicMuted(isMicMuted);
       setSharingScreen(isSharingScreen);
-      setTranscript(isTranscript);
     }
 
     // Use initial state

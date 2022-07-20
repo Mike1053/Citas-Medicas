@@ -64,7 +64,7 @@ export default function Chat(props) {
 
   useEffect(() => {}, [chatHistory]);
 
-  {/*Aquí va el pedo del dictaphone----------------------------------------- */}
+  /*Aquí va el pedo del dictaphone----------------------------------------- */
 
   const [options, setOptions] = useState([]);
   const [to, setTo] = useState('en');
@@ -103,16 +103,16 @@ export default function Chat(props) {
       });
   }, []);
 
-  const commands = [
+  /* const commands = [
     {
       command: '*',
       callback: translate
-    }];
+    }]; */
 
 
     const {
     transcript,
-    listening,
+    //listening,
     resetTranscript,
     browserSupportsSpeechRecognition
   }  = useSpeechRecognition();
@@ -136,7 +136,7 @@ export default function Chat(props) {
     resetTranscript();
   }
 
-  {/*Aquí va el pedo del dictaphone----------------------------------------- */}
+  /*Aquí va el pedo del dictaphone----------------------------------------- */
 
   return props.onClickDisplay ? (
     <div className='chat'>

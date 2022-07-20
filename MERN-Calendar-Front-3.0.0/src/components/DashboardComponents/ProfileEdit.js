@@ -2,7 +2,7 @@ import React from 'react'
 import '../Estilos/profileEdit.css'
 import pic from '../images/superporky.jpg'
 import { useForm } from '../../hooks/useForm';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import moment from 'moment';
 
 moment.locale('es');
