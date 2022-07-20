@@ -2,11 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Map, TileLayer } from "react-leaflet";
 import Markers from "./VenueMarkers";
 import "leaflet/dist/leaflet.css";
+import ReactLeafletSearch from "react-leaflet-search";
 
 /*Datos para mostrar los marcadores*/
 import data from "../../assests/data.json"; 
+import Search from "react-leaflet-search/lib/Search-v1";
 
 import { useLocation, useHistory } from "react-router-dom";
+import L from "leaflet";
+
+const searchComponent = (props) => <ReactLeafletSearch position="topleft" provider="OpenStreetMap" providerOptions={{ region: "gb" }} />;
+
+
+
 
 
 
@@ -52,6 +60,15 @@ const MapView = (props) => {
     console.info("Lat:", lat);
     console.info("Lng: ",lng);
   }
+  const myIcon = L.icon({
+    iconUrl: "/static/media/venue_location_icon.bd6f36a3.svg",
+    iconSize: [25, 41],
+    iconAnchor: [25, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+  });
+  
 
   return (
     <div id="map">
@@ -62,6 +79,18 @@ const MapView = (props) => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       <Markers venues={state.data.venues} />
+      
+      <ReactLeafletSearch
+        position="topleft"
+        markerIcon={myIcon}
+        provider="OpenStreetMap"
+        search={[]} // Setting this to [lat, lng] gives initial search input to the component and map flies to that coordinates, its like search from props not from user
+        zoom={10} // Default value is 10
+        showMarker={true}
+        showPopup={true}
+        closeResultsOnClick={true} // By default, the search results remain when you click on one, and the map flies to the location of the result. But you might want to save space on your map by closing the results when one is clicked. The results are shown again (without another search) when focus is returned to the search input.
+        providerOptions={{searchBounds: []}} // The BingMap and OpenStreetMap providers both accept bounding coordinates in [se,nw] format. Note that in the case of OpenStreetMap, this only weights the results and doesn't exclude things out of bounds.
+      />
     </Map >
     </div>
   );

@@ -9826,7 +9826,12 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react-leaflet@^2.8.0":
+"react-leaflet-search@^2.0.1":
+  "integrity" "sha512-doOcPPUgQVO2CJrO5kg0o14qCC/iD4gQwIclZt4xfvO353yUVRGkBAt5LOhjFLgLzxWjI54VkBKK3EK1ps6clA=="
+  "resolved" "https://registry.npmjs.org/react-leaflet-search/-/react-leaflet-search-2.0.1.tgz"
+  "version" "2.0.1"
+
+"react-leaflet@^2.6.0", "react-leaflet@^2.8.0":
   "integrity" "sha512-Y7oHtNrrlRH8muDttXf+jZ2Ga/X7jneSGi1GN8uEdeCfLProTqgG2Zoa5TfloS3ZnY20v7w+DIenMG59beFsQw=="
   "resolved" "https://registry.npmjs.org/react-leaflet/-/react-leaflet-2.8.0.tgz"
   "version" "2.8.0"
@@ -10023,7 +10028,7 @@
   dependencies:
     "invariant" "^2.1.2"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^15.3.0 || 16 || 17 || 18", "react@^16.10.1", "react@^16.14.0", "react@^16.3.0 || ^17", "react@^16.6.1", "react@^16.8 || ^17 || ^18", "react@^16.8.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.3", "react@>=0.14.0", "react@>=15", "react@>=15.0.0", "react@>=15.5", "react@>=16", "react@>=16.0.0", "react@>=16.11.0", "react@>=16.14.0", "react@>=16.3", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8.0", "react@>=16.9.0", "react@~0.14.8 || ^15.0.0 || ^16.0.0":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^15.3.0 || 16 || 17 || 18", "react@^16.10.1", "react@^16.12.0", "react@^16.14.0", "react@^16.3.0 || ^17", "react@^16.6.1", "react@^16.8 || ^17 || ^18", "react@^16.8.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.3", "react@>=0.14.0", "react@>=15", "react@>=15.0.0", "react@>=15.5", "react@>=16", "react@>=16.0.0", "react@>=16.11.0", "react@>=16.14.0", "react@>=16.3", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8.0", "react@>=16.9.0", "react@~0.14.8 || ^15.0.0 || ^16.0.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"
