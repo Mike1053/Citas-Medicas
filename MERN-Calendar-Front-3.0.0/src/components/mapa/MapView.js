@@ -29,7 +29,7 @@ const MapView = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-    if (location.state.latitude && location.state.longitude) {
+  if (location.state.latitude && location.state.longitude) {
       const currentLocation = {
         lat: location.state.latitude,
         lng: location.state.longitude,
@@ -62,9 +62,9 @@ const MapView = (props) => {
   }
   const myIcon = L.icon({
     iconUrl: "/static/media/venue_location_icon.bd6f36a3.svg",
-    iconSize: [25, 41],
-    iconAnchor: [25, 41],
-    popupAnchor: [1, -34],
+    iconSize: [40, 41],
+    iconAnchor: [40, 41],
+    popupAnchor: [10, -34],
     tooltipAnchor: [16, -28],
     shadowSize: [41, 41]
   });
@@ -88,7 +88,7 @@ const MapView = (props) => {
         zoom={10} // Default value is 10
         showMarker={true}
         showPopup={true}
-        closeResultsOnClick={true} // By default, the search results remain when you click on one, and the map flies to the location of the result. But you might want to save space on your map by closing the results when one is clicked. The results are shown again (without another search) when focus is returned to the search input.
+        closeResultsOnClick={false} // By default, the search results remain when you click on one, and the map flies to the location of the result. But you might want to save space on your map by closing the results when one is clicked. The results are shown again (without another search) when focus is returned to the search input.
         providerOptions={{searchBounds: []}} // The BingMap and OpenStreetMap providers both accept bounding coordinates in [se,nw] format. Note that in the case of OpenStreetMap, this only weights the results and doesn't exclude things out of bounds.
       />
     </Map >
