@@ -64,7 +64,7 @@ const MapView = (props) => {
     iconUrl: "/static/media/venue_location_icon.bd6f36a3.svg",
     iconSize: [40, 41],
     iconAnchor: [40, 41],
-    popupAnchor: [10, -34],
+    popupAnchor: [-30, -34],
     tooltipAnchor: [16, -28],
     shadowSize: [41, 41]
   });
