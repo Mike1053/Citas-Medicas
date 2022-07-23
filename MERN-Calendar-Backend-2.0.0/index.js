@@ -36,6 +36,10 @@ app.use('/api/consultas', require('./routes/Consultas') );
 app.use('/api/info', require('./routes/infomgmt') );
 app.use('/api/locations', require('./routes/location') );
 
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+})
+
 //Backend de videollamada------------------------
 const io = require("socket.io")(server, {
     cors: {
