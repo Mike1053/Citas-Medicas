@@ -19,6 +19,35 @@ const DoctorSchema = Schema({
         type: String,
         required: true
     },
+    direccion: {
+        calle:{
+            type: String
+        },
+        colonia:{
+            type: String
+        },
+        numExt:{
+            type: Number
+        },
+        cp:{
+            type: Number 
+        },
+        cd:{
+            type:String
+        },
+        estado:{
+            type: String
+        },
+        pais:{
+            type: String
+        },
+        latitud:{
+            type: String
+        },
+        longitud: {
+            type: String
+        }
+    },
     email: {
         type: String,
         required: true,
