@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { taskStartLoading, taskStartAddNew, taskStartUpdate, taskClearActivetask, taskSetActive, taskStartDelete } from '../../actions/task';
-import { useSelector, useDispatch } from 'react-redux';
+import { taskStartLoading, taskSetActive, taskStartDelete } from '../../actions/task';
+import { useDispatch } from 'react-redux';
 import TaskUpload from './taskUpload';
 import { uiOpenModal } from '../../actions/ui';
 

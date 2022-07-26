@@ -24,7 +24,7 @@ const DashboardVideoChat = () => {
 <div className="page">
   
   <div class="pageHeader">
-    <div class="title">Bienvenido {name} <img class = "circular--square" src={pic} width="40" height="40"/></div>
+    <div class="title">Bienvenido {name} <img class = "circular--square" src={pic} width="40" height="40" alt='Foto de perfil'/></div>
     <div class="userPanel"><span class="username"><button 
                 className="btn btn-light colorletra"
                 onClick={ handleLogout }
