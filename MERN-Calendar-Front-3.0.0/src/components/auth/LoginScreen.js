@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
-import { startLogin, startRegister } from '../../actions/auth';
-import Swal from 'sweetalert2';
+import { startLogin } from '../../actions/auth';
 
 import './login.css';
 
@@ -16,29 +15,11 @@ export const LoginScreen = () => {
         lPassword: '123456'
     });
 
-    const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-        rName: 'Nando',
-        rEmail: 'nando@gmail.com',
-        rPassword1: '123456',
-        rPassword2: '123456'
-    });
-    
     const { lEmail, lPassword } = formLoginValues;
-    const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues;
 
     const handleLogin = ( e ) => {
         e.preventDefault();
         dispatch( startLogin( lEmail, lPassword ) );
-    }
-
-    const handleRegister = ( e ) => {
-        e.preventDefault();
-
-        if ( rPassword1 !== rPassword2 ) {
-            return Swal.fire('Error', 'Las contraseñas deben de ser iguales','error');
-        }
-        console.log('?')
-        dispatch( startRegister( rEmail, rPassword1, rName ) );
     }
 
 
@@ -49,7 +30,7 @@ export const LoginScreen = () => {
                     <form onSubmit={ handleLogin }>
                         {/*Logo del login*/}
                         <div className="logo">
-                            <img src="./CitasMedicas.png" width="100" height="100"/>
+                            <img src="./CitasMedicas.png" width="100" height="100" alt='Logo'/>
                         </div>
 
 
@@ -87,15 +68,11 @@ export const LoginScreen = () => {
                         className="btnSubmit"
                         onClick={(e) => {
                         e.preventDefault();
-                        window.location.href='/registerDoctor';
+                        window.location.href='/doctorRegister';
                         }}
                         
                         > Registro
                     </button>
-                    
-                     
-                    
-                    
                     
                 </div>
         </div>

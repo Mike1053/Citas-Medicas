@@ -9,7 +9,6 @@ export default function Chat(props) {
   const callObject = useContext(CallObjectContext);
   const [inputValue, setInputValue] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
-  const [speaking, setSpeaking] = useState(false);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -65,12 +64,11 @@ export default function Chat(props) {
 
   useEffect(() => {}, [chatHistory]);
 
-  {/*Aquí va el pedo del dictaphone----------------------------------------- */}
+  /*Aquí va el pedo del dictaphone----------------------------------------- */
 
   const [options, setOptions] = useState([]);
   const [to, setTo] = useState('en');
   const [from, setFrom] = useState('en');
-  const [output, setOutput] = useState('');
   let timerId;
 
   const translate = (event) => {
@@ -105,16 +103,16 @@ export default function Chat(props) {
       });
   }, []);
 
-  const commands = [
+  /* const commands = [
     {
       command: '*',
       callback: translate
-    }];
+    }]; */
 
 
     const {
     transcript,
-    listening,
+    //listening,
     resetTranscript,
     browserSupportsSpeechRecognition
   }  = useSpeechRecognition();
@@ -138,7 +136,7 @@ export default function Chat(props) {
     resetTranscript();
   }
 
-  {/*Aquí va el pedo del dictaphone----------------------------------------- */}
+  /*Aquí va el pedo del dictaphone----------------------------------------- */
 
   return props.onClickDisplay ? (
     <div className='chat'>

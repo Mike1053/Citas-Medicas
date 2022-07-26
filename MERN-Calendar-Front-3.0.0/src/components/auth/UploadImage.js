@@ -3,7 +3,6 @@ import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux';
 import { uploadImage } from '../../actions/uploadImage';
 import { useSelector} from 'react-redux'
-import { startLogout } from '../../actions/auth';
 import React from 'react'
 
 	export const UploadImage = ({ isOpen, close }) => {
@@ -12,16 +11,14 @@ import React from 'react'
     const [fileName, setFileName] = useState("Subir una imagen")
 	const [selectedFile, setSelectedFile] = useState(null)
 	const { uid } = useSelector( state => state.auth );
-    const handleLogout = () => {
-        dispatch( startLogout() );
-    }
+
 	const handleFileChange = (e) => {
 		const [file] = e.target.files; 
-		const SIZE_50MB = 50 * 1024 * 1024;
-		const isValidSize = file.size < SIZE_50MB; 
+		//const SIZE_50MB = 50 * 1024 * 1024;
+		//const isValidSize = file.size < SIZE_50MB; 
 		// const isValidSize = file.size < 200 * 1024
-		const isNameOfOneImageRegEx = /.(jpe?g|gif|png)$/i;
-		const isValidType = isNameOfOneImageRegEx.test(file.name)
+		//const isNameOfOneImageRegEx = /.(jpe?g|gif|png)$/i;
+		//const isValidType = isNameOfOneImageRegEx.test(file.name)
 		
 		//if(!isValidSize) return toast.error("Imagen muy pesada, máximo 50MB")
 		//if(!isValidType) return toast.error("Sólo puedes subir imágenes")

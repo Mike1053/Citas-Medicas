@@ -1,38 +1,55 @@
 
 export const types = {
 
+    //Ui types
     uiOpenModal: '[ui] Open modal',
     uiCloseModal: '[ui] Close modal',
+    //Ui types
 
-    
+    //Event types    
     eventSetActive: '[event] Set Active',
     eventLogout: '[event] Logout event',
-    
     evetStartAddNew: '[event] Start add new',
     eventAddNew: '[event] Add new',
     eventClearActiveEvent: '[event] Clear active event',
     eventUpdated: '[event] Event updated',
     eventDeleted: '[event] Event deleted',
     eventLoaded: '[event] Events loaded',
+    //Event types
 
+    //Task types
     taskSetActive: '[task] Set Active',
-    eventLogout: '[task] Logout task',
-    
-    evetStartAddNew: '[task] Start add new',
+    taskLogout: '[task] Logout task',
+    taskStartAddNew: '[task] Start add new',
     taskAddNew: '[task] Add new',
     taskClearActiveTask: '[task] Clear active task',
     taskUpdated: '[task] task updated',
     taskDeleted: '[task] task deleted',
     taskLoaded: '[task] tasks loaded',
+    //Task types
 
+    //Office types
+    officeSetActive: '[office] Set Active',
+    officeLogout: '[office] Logout office',
+    officeStartAddNew: '[office] Start add new',
+    officeAddNew: '[office] Add new',
+    officeClearActiveOffice: '[office] Clear active office',
+    officeUpdated: '[office] office updated',
+    officeDeleted: '[office] office deleted',
+    officeLoaded: '[office] office loaded',
+    //Office types
+
+    //Auth types
     authCheckingFinish: '[auth] Finish checking login state',
     authStartLogin: '[auth] Start login',
     authLogin: '[auth] Login',
     authStartRegister: '[auth] Start Register',
     authStartStartTokenRenew: '[auth] Start token renew',
     authLogout: '[auth] Logout',
+    //Auth types
 
-
+    //Photo types
     fotoAddNew: '[foto] Foto uploaded',
     fotoLoaded: '[foto] Events loaded',
+    //Photo types
 }

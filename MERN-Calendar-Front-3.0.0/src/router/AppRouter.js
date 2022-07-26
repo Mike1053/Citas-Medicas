@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { RegisterScreen } from '../components/auth/RegisterScreen';
 import { RegisterScreenDoctor } from '../components/auth/RegisterScreenDoctor';
-import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
@@ -26,6 +25,8 @@ import DashboardAjustes from '../components/dashboard/DashboardAjustes';
 import { ProfileEdit } from '../components/DashboardComponents/ProfileEdit';
 import Logout from '../components/auth/Logout';
 import MapView from '../components/mapa/MapView';
+import { DoctorRegister } from '../components/auth/DoctorRegister';
+
 
 import "../components/leaf.css";
 
@@ -74,6 +75,13 @@ export const AppRouter = () => {
                         exact 
                         path="/registerDoctor" 
                         component={ RegisterScreenDoctor }
+                        isAuthenticated={ !!uid }
+                    />
+
+                    <PublicRoute 
+                        exact 
+                        path="/doctorRegister" 
+                        component={ DoctorRegister }
                         isAuthenticated={ !!uid }
                     />
 
