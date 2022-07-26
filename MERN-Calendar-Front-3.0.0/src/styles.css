@@ -74,7 +74,7 @@ body {
 
 /* FABS */
 .fab {
-    border-radius: 100%;
+    border-radius: 50%;
     bottom: 25px;
     font-size: 30px;
     padding: 25px;
