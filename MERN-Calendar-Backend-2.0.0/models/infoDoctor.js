@@ -12,6 +12,36 @@ const infoDoctorSchema = Schema({
         type: String,
         unique: true
     },
+    tarjetas:{
+        tarjetaDebito:{
+            numeroTarjeta:{
+                type: Number
+            },
+            fechaExpiracion:{
+                type: Date
+            },
+            nombreCompleto:{
+                type: String
+            },
+            cvv:{
+                type: Number
+            }
+        },
+        tarjetaCredito:{
+            numeroTarjeta:{
+                type: Number
+            },
+            fechaExpiracion:{
+                type: Date
+            },
+            nombreCompleto:{
+                type: String
+            },
+            cvv:{
+                type: Number
+            }
+        }
+    },
     usuarioDoctor: {
         type: Schema.Types.ObjectId,
         ref: 'Doctor',
