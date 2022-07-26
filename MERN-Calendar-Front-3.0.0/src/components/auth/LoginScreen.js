@@ -76,15 +76,11 @@ export const LoginScreen = () => {
                         className="btnSubmit"
                         onClick={(e) => {
                         e.preventDefault();
-                        window.location.href='/registerDoctor';
+                        window.location.href='/doctorRegister';
                         }}
                         
                         > Registro
                     </button>
-                    
-                     
-                    
-                    
                     
                 </div>
         </div>
