@@ -1,6 +1,6 @@
 import React from 'react'
 import { startLogout } from '../../actions/auth';
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 

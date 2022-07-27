@@ -2,18 +2,23 @@ import React from 'react'
 import '../Estilos/profileEdit.css'
 import pic from '../images/blank-profile-picture.jpg'
 import { useForm } from '../../hooks/useForm';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { startLogout } from '../../actions/auth';
 import moment from 'moment';
 
 moment.locale('es');
 
 export const ProfileEdit = () => {
 
+    const dispatch = useDispatch();
     const { name } = useSelector( state => state.auth );
     const { email } = useSelector( state => state.auth );
-    /* const { license } = useSelector( state => state.auth );
+    const { license } = useSelector( state => state.auth );
     const { fullName } = useSelector( state => state.auth );
-    const { speciality } = useSelector( state => state.auth ); */
+    const { speciality } = useSelector( state => state.auth );
+    const handleLogout = () => {
+        dispatch( startLogout() );
+    }
 
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
         nName: name,
@@ -31,7 +36,7 @@ export const ProfileEdit = () => {
     <div className="container rounded bg-white mt-5 fondo-ajustes">
     <div className="row">
         <div className="col-md-4 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="150" alt='Foto de perfil'/>
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="150"/>
             <span className="font-weight-bold nombre">{name}</span>
             <span className="text-black-50">{nEmail}</span>
             </div>

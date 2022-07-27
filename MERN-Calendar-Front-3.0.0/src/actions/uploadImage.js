@@ -1,7 +1,13 @@
-import { fetchConToken } from '../helpers/fetch';
+import { fetchSinToken, fetchConToken } from '../helpers/fetch';
+import { types } from '../types/types';
+import Swal from 'sweetalert2';
+import { eventLogout } from './events';
+import { prepareFotos } from '../helpers/prepareFotos';
 
 export const uploadImage = (foto, user) => {
-    return async() => {
+    return async( dispatch, getState ) => {
+
+        const { uid, name } = getState().auth;
 
         try {
             const resp = await fetchConToken('foto/subirFoto', {foto, user}, 'POST');
@@ -30,3 +36,8 @@ export const fotoLoading = async () => {
             console.log(error)
         }
 }
+
+const fotoLoaded = (foto) => ({
+    type: types.fotoLoaded,
+    payload: foto
+})

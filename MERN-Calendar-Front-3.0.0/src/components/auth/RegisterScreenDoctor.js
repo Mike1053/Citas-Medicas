@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
-import { startRegisterMedic } from '../../actions/auth';
+import { startLogin, startRegisterMedic } from '../../actions/auth';
 import Swal from 'sweetalert2';
 
 import './login.css';
@@ -38,7 +38,7 @@ export const RegisterScreenDoctor = () => {
                     <h3>Registro Doctor</h3>
                     {/*Logo del login*/}
                     <div className="logo">
-                        <img src="./CitasMedicas.png" width="100" height="100" alt='Logo'/>
+                        <img src="./CitasMedicas.png" width="100" height="100"/>
                     </div>
 
                     <form onSubmit={ handleRegister }>

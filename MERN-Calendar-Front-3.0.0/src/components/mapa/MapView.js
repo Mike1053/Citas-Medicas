@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Map, TileLayer, ZoomControl } from "react-leaflet";
+import { Map, TileLayer } from "react-leaflet";
 import Markers from "./VenueMarkers";
 import "leaflet/dist/leaflet.css";
 import ReactLeafletSearch from "react-leaflet-search";
 
 import data from "../../assests/data.json"; 
-/*Datos para mostrar los marcadores----------------------------------------------------*/
-import { officeStartLoading } from '../../actions/office';
 
 import { useLocation, useHistory } from "react-router-dom";
 import L from "leaflet";
@@ -27,19 +25,6 @@ const MapView = (props) => {
 
   const location = useLocation();
   const history = useHistory();
-
-  const [office, setOffice] = useState([])
-
-  /*Obtener los datos de nuestra base de datos---------------------------------------*/
-  const fetchData = async () => {
-    const data = await officeStartLoading()
-    setOffice(data)
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, [])
-  /*Obtener los datos de nuestra base de datos---------------------------------------*/
 
   useEffect(() => {
     if (location.state.latitude && location.state.longitude) {
@@ -69,6 +54,9 @@ const MapView = (props) => {
   const locate = (e) => {
     let {lat, lng} = e.latlng;
     console.log(e.latlng)
+    console.log("la ubi del click")
+    console.info("Lat:", lat);
+    console.info("Lng: ",lng);
   }
   const myIcon = L.icon({
     iconUrl: "/static/media/venue_location_icon.bd6f36a3.svg",
@@ -79,27 +67,6 @@ const MapView = (props) => {
     shadowSize: [41, 41]
   });
   
-
-  const centerUser = (e) =>{
-    console.log("geolocalización avanzada")
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        console.log(position);
-      },
-      function (error) {
-        console.error("Error Code = " + error.code + " - " + error.message);
-      },
-      {
-        enableHighAccuracy: true,
-      }
-    );
-  }
-
-  const dispatch = useDispatch();
-  const onDoubleClick = (e) => {
-    // console.log(e);
-    dispatch( uiOpenModal() );
-}
 
   return (
     <div id="map">
