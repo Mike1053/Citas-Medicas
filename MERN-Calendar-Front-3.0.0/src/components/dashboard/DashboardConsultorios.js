@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
-import pic from '../images/superporky.jpg'
+import pic from '../images/blank-profile-picture.jpg';
 import moment from 'moment';
 import DictaPhone from '../translator/Dictaphone'
 import Home from '../mapa/Home'

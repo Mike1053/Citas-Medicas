@@ -119,9 +119,7 @@ export const AppRouter = () => {
                         isAuthenticated={ !!uid }
                     /> 
 
-                    <Route path="/map">
-                        <MapView/>
-                    </Route>
+                    
                     
                     <PrivateRoute 
                         exact 
