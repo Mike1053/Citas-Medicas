@@ -4,7 +4,9 @@ import Markers from "./VenueMarkers";
 import "leaflet/dist/leaflet.css";
 import ReactLeafletSearch from "react-leaflet-search";
 
+/*Datos para mostrar los marcadores*/
 import data from "../../assests/data.json"; 
+import Search from "react-leaflet-search/lib/Search-v1";
 
 import { useLocation, useHistory } from "react-router-dom";
 import L from "leaflet";
@@ -27,7 +29,7 @@ const MapView = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-    if (location.state.latitude && location.state.longitude) {
+  if (location.state.latitude && location.state.longitude) {
       const currentLocation = {
         lat: location.state.latitude,
         lng: location.state.longitude,
@@ -70,26 +72,26 @@ const MapView = (props) => {
 
   return (
     <div id="map">
-      <Map  center={state.currentLocation} zoom={state.zoom} onClick={locate}>
-        <TileLayer
-          //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" default map
-          url="https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <Markers venues={state.data.venues} />
-        
-        <ReactLeafletSearch
-          position="topleft"
-          markerIcon={myIcon}
-          provider="OpenStreetMap"
-          search={[]} // Setting this to [lat, lng] gives initial search input to the component and map flies to that coordinates, its like search from props not from user
-          zoom={10} // Default value is 10
-          showMarker={true}
-          showPopup={true}
-          closeResultsOnClick={false} // By default, the search results remain when you click on one, and the map flies to the location of the result. But you might want to save space on your map by closing the results when one is clicked. The results are shown again (without another search) when focus is returned to the search input.
-          providerOptions={{searchBounds: []}} // The BingMap and OpenStreetMap providers both accept bounding coordinates in [se,nw] format. Note that in the case of OpenStreetMap, this only weights the results and doesn't exclude things out of bounds.
-        />
-      </Map >
+    <Map  center={state.currentLocation} zoom={state.zoom} onClick={locate}>
+      <TileLayer
+        //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" default map
+        url="https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
+      <Markers venues={state.data.venues} />
+      
+      <ReactLeafletSearch
+        position="topleft"
+        markerIcon={myIcon}
+        provider="OpenStreetMap"
+        search={[]} // Setting this to [lat, lng] gives initial search input to the component and map flies to that coordinates, its like search from props not from user
+        zoom={10} // Default value is 10
+        showMarker={true}
+        showPopup={true}
+        closeResultsOnClick={false} // By default, the search results remain when you click on one, and the map flies to the location of the result. But you might want to save space on your map by closing the results when one is clicked. The results are shown again (without another search) when focus is returned to the search input.
+        providerOptions={{searchBounds: []}} // The BingMap and OpenStreetMap providers both accept bounding coordinates in [se,nw] format. Note that in the case of OpenStreetMap, this only weights the results and doesn't exclude things out of bounds.
+      />
+    </Map >
     </div>
   );
 };

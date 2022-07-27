@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Estilos/profileEdit.css'
-import pic from '../images/blank-profile-picture.jpg'
+import pic from '../images/superporky.jpg'
 import { useForm } from '../../hooks/useForm';
 import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
