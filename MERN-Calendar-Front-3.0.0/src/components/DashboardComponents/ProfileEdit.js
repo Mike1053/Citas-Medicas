@@ -4,16 +4,25 @@ import pic from '../images/superporky.jpg'
 import { useForm } from '../../hooks/useForm';
 import { useSelector } from 'react-redux'
 import moment from 'moment';
+import ImageModal from './ImageModal';
+import { useDispatch } from 'react-redux';
+import { uiOpenModal } from '../../actions/ui';
 
 moment.locale('es');
 
 export const ProfileEdit = () => {
 
+    const dispatch = useDispatch();
     const { name } = useSelector( state => state.auth );
     const { email } = useSelector( state => state.auth );
     /* const { license } = useSelector( state => state.auth );
     const { fullName } = useSelector( state => state.auth );
     const { speciality } = useSelector( state => state.auth ); */
+
+    const onDoubleClick = (e) => {
+        // console.log(e);
+        dispatch( uiOpenModal() );
+    }
 
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
         nName: name,
@@ -25,13 +34,20 @@ export const ProfileEdit = () => {
         nPhone: '+525589577288',
     });
     const { nName, nEmail, nFullName, nEspeciality, nCountry, nAddress, nPhone} = formRegisterValues;
-    console.log(formRegisterValues);
   return (
     <>
     <div className="container rounded bg-white mt-5 fondo-ajustes">
     <div className="row">
         <div className="col-md-4 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="150" alt='Foto de perfil'/>
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img 
+                    className="rounded-circle mt-5" 
+                    src={pic} width="150" 
+                    alt='Foto de perfil'
+                    onClick = { () => {
+                        onDoubleClick();
+                      }}
+                />
             <span className="font-weight-bold nombre">{name}</span>
             <span className="text-black-50">{nEmail}</span>
             </div>
@@ -60,6 +76,7 @@ export const ProfileEdit = () => {
                 <div className="mt-2 text-right py-2"><input className="btn btn-primary boton boton-update" type="submit" value="Actualizar"/></div>
                 </form>
             </div>
+            <ImageModal/>
         </div>
     </div>
 </div>

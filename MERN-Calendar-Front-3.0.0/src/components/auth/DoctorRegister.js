@@ -20,10 +20,11 @@ export const DoctorRegister = () => {
         rPassword2: '123456',
         rCedula: '123456',
         rEspecialidad: 'Tanatologo',
-        rFullName: 'Nando Macias'
+        rFullName: 'Nando Macias',
+        rDireccion: 'P.za de la Constitución S/N'
     });
     
-    const { rName, rEmail, rPassword1, rPassword2, rCedula, rEspecialidad, rFullName} = formRegisterValues;
+    const { rName, rEmail, rPassword1, rPassword2, rCedula, rEspecialidad, rFullName, rDireccion} = formRegisterValues;
 
     const handleRegister = ( e ) => {
         e.preventDefault();
@@ -58,15 +59,16 @@ export const DoctorRegister = () => {
                     <div className="col-md-6">Cédula<input type="text" className="form-control ajustes" placeholder="12345678" name='rCedula' value={rCedula} onChange={handleRegisterInputChange}/></div>
                 </div>
                 <div className="row mt-3">
-                    <div className="col-md-6">Especialidad<input type="text" className="form-control ajustes" placeholder="Dirección" name='rEspecialidad' value={rEspecialidad} onChange={handleRegisterInputChange}/></div>
-                    <div className="col-md-6">Contraseña<input type="password" className="form-control ajustes" placeholder="Contraseña" name='rPassword1' value={rPassword1} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6">Especialidad<input type="text" className="form-control ajustes" placeholder="Especialidad" name='rEspecialidad' value={rEspecialidad} onChange={handleRegisterInputChange}/></div>
+                    <div className="col-md-6">Dirección<input type="text" className="form-control ajustes" placeholder="Dirección" name='rDireccion' value={rDireccion} onChange={handleRegisterInputChange}/></div>
                 </div>
                 <div className="row mt-3">
+                    <div className="col-md-6">Contraseña<input type="password" className="form-control ajustes" placeholder="Contraseña" name='rPassword1' value={rPassword1} onChange={handleRegisterInputChange}/></div>
                     <div className="col-md-6">Confirmar contraseña<input type="password" className="form-control ajustes" placeholder="Confirmar contraseña" name='rPassword2' value={rPassword2} onChange={handleRegisterInputChange}/></div>
                 </div>
-                <div className="row mt-3">
-                <div className="mt-2 text-right py-2"><input className="btn btn-primary boton boton-update" type="submit" value="Confirmar"/></div>
-                <div className="mt-2 text-right py-2">
+                    <div className="row mt-3">
+                    <div className="mt-2 text-right py-2"><input className="btn btn-primary boton boton-update" type="submit" value="Confirmar"/></div>
+                    <div className="mt-2 text-right py-2">
                     <button
                         type="submit"
                         className="btn btn-primary boton boton-update"
