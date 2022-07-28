@@ -9,7 +9,10 @@ const MostrarFoto = () => {
     useEffect(() => {
       const fetchData = async () => {
         const data = await fotoLoading();
-        setFoto(data)
+        let base = data.map(function(element){
+          setFoto(element.foto)
+          console.log(element.id)
+      })
       }
       fetchData()
     }, [])
