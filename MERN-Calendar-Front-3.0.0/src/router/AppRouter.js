@@ -26,7 +26,7 @@ import DashboardAjustes from '../components/dashboard/DashboardAjustes';
 import { ProfileEdit } from '../components/DashboardComponents/ProfileEdit';
 import Logout from '../components/auth/Logout';
 import MapView from '../components/mapa/MapView';
-
+import { DoctorRegister } from '../components/auth/DoctorRegister';
 import "../components/leaf.css";
 
 
@@ -76,6 +76,12 @@ export const AppRouter = () => {
                         component={ RegisterScreenDoctor }
                         isAuthenticated={ !!uid }
                     />
+                    <PublicRoute 
+                        exact 
+                        path="/doctorRegister" 
+                        component={ DoctorRegister }
+                        isAuthenticated={ !!uid }
+                    />
 
                     <PublicRoute 
                         exact 
@@ -119,7 +125,9 @@ export const AppRouter = () => {
                         isAuthenticated={ !!uid }
                     /> 
 
-                    
+                    <Route path="/map">
+                        <MapView/>
+                    </Route>
                     
                     <PrivateRoute 
                         exact 

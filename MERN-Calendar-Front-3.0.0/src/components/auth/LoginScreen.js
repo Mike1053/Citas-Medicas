@@ -12,15 +12,15 @@ export const LoginScreen = () => {
 
     
     const [ formLoginValues, handleLoginInputChange ] = useForm({
-        lEmail: 'fernando@gmail.com',
-        lPassword: '123456'
+        lEmail: '',
+        lPassword: ''
     });
 
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-        rName: 'Nando',
-        rEmail: 'nando@gmail.com',
-        rPassword1: '123456',
-        rPassword2: '123456'
+        rName: '',
+        rEmail: '',
+        rPassword1: '',
+        rPassword2: ''
     });
     
     const { lEmail, lPassword } = formLoginValues;
@@ -87,7 +87,7 @@ export const LoginScreen = () => {
                         className="btnSubmit"
                         onClick={(e) => {
                         e.preventDefault();
-                        window.location.href='/registerDoctor';
+                        window.location.href='/doctorRegister';
                         }}
                         
                         > Registro

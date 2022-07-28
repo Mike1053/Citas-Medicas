@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Estilos/profileEdit.css'
-import pic from '../images/superporky.jpg'
+import pic from '../images/blank-profile-picture.jpg';
 import { useForm } from '../../hooks/useForm';
 import { useSelector } from 'react-redux'
 import moment from 'moment';

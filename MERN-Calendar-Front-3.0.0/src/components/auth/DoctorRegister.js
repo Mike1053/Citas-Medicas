@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Estilos/profileEdit.css'
-import pic from '../images/superporky.jpg'
+import pic from '../images/blank-profile-picture.jpg';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
@@ -14,14 +14,14 @@ export const DoctorRegister = () => {
     const dispatch = useDispatch();
 
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-        rName: 'Nando',
-        rEmail: 'nando@gmail.com',
-        rPassword1: '123456',
-        rPassword2: '123456',
-        rCedula: '123456',
-        rEspecialidad: 'Tanatologo',
-        rFullName: 'Nando Macias',
-        rDireccion: 'P.za de la Constitución S/N'
+        rName: '',
+        rEmail: '',
+        rPassword1: '',
+        rPassword2: '',
+        rCedula: '',
+        rEspecialidad: '',
+        rFullName: '',
+        rDireccion: ''
     });
     
     const { rName, rEmail, rPassword1, rPassword2, rCedula, rEspecialidad, rFullName, rDireccion} = formRegisterValues;
