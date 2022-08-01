@@ -6,7 +6,7 @@ import * as classes from "./Options.module.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import VideoContext from "../../context/VideoContext";
 import Hang from "../../assests/hang.svg";
-import pic from "../images/hombretactico.jpg"
+import pic from "../images/blank-profile-picture.jpg";
 import {
   TwitterIcon,
   TwitterShareButton,

@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2d858859.chunk.css",
+    "main.js": "/static/js/main.669e7892.chunk.js",
+    "main.js.map": "/static/js/main.669e7892.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.27b01e2e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.27b01e2e.js.map",
+    "static/css/2.230c67f7.chunk.css": "/static/css/2.230c67f7.chunk.css",
+    "static/js/2.423a0750.chunk.js": "/static/js/2.423a0750.chunk.js",
+    "static/js/2.423a0750.chunk.js.map": "/static/js/2.423a0750.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.f945f11d64a231ffda463e1fc7af252f.js": "/precache-manifest.f945f11d64a231ffda463e1fc7af252f.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.230c67f7.chunk.css.map": "/static/css/2.230c67f7.chunk.css.map",
+    "static/css/main.2d858859.chunk.css.map": "/static/css/main.2d858859.chunk.css.map",
+    "static/js/2.423a0750.chunk.js.LICENSE.txt": "/static/js/2.423a0750.chunk.js.LICENSE.txt",
+    "static/media/Consultorios2.css": "/static/media/Citas-Medicas.ae22e105.png",
+    "static/media/App.css": "/static/media/CitasMedicas.ae22e105.png",
+    "static/media/styles.css": "/static/media/FondoMedico2.812a82dd.jpg",
+    "static/media/hang.svg": "/static/media/hang.bf0f5169.svg",
+    "static/media/man.svg": "/static/media/man.537c3545.svg",
+    "static/media/msg.svg": "/static/media/msg.61e6b426.svg",
+    "static/media/msg_illus.svg": "/static/media/msg_illus.ba0729c4.svg",
+    "static/media/phone.gif": "/static/media/phone.9d5e275e.gif",
+    "static/media/share_screen.svg": "/static/media/share_screen.3cef638c.svg",
+    "static/media/teams.mp3": "/static/media/teams.396b82e4.mp3",
+    "static/media/venue_location_icon.svg": "/static/media/venue_location_icon.bd6f36a3.svg",
+    "static/media/video-off.svg": "/static/media/video-off.6a30496f.svg",
+    "static/media/video.svg": "/static/media/video.11ac87c4.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.27b01e2e.js",
+    "static/css/2.230c67f7.chunk.css",
+    "static/js/2.423a0750.chunk.js",
+    "static/css/main.2d858859.chunk.css",
+    "static/js/main.669e7892.chunk.js"
+  ]
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
-import { startLogin } from '../../actions/auth';
+import { startLogin, startRegister } from '../../actions/auth';
+import Swal from 'sweetalert2';
 
 import './login.css';
 
@@ -11,15 +12,33 @@ export const LoginScreen = () => {
 
     
     const [ formLoginValues, handleLoginInputChange ] = useForm({
-        lEmail: 'fernando@gmail.com',
-        lPassword: '123456'
+        lEmail: '',
+        lPassword: ''
     });
 
+    const [ formRegisterValues, handleRegisterInputChange ] = useForm({
+        rName: '',
+        rEmail: '',
+        rPassword1: '',
+        rPassword2: ''
+    });
+    
     const { lEmail, lPassword } = formLoginValues;
+    const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues;
 
     const handleLogin = ( e ) => {
         e.preventDefault();
         dispatch( startLogin( lEmail, lPassword ) );
+    }
+
+    const handleRegister = ( e ) => {
+        e.preventDefault();
+
+        if ( rPassword1 !== rPassword2 ) {
+            return Swal.fire('Error', 'Las contraseñas deben de ser iguales','error');
+        }
+        console.log('?')
+        dispatch( startRegister( rEmail, rPassword1, rName ) );
     }
 
 
@@ -30,7 +49,7 @@ export const LoginScreen = () => {
                     <form onSubmit={ handleLogin }>
                         {/*Logo del login*/}
                         <div className="logo">
-                            <img src="./CitasMedicas.png" width="100" height="100" alt='Logo'/>
+                            <img src="./CitasMedicas.png" width="100" height="100"/>
                         </div>
 
 
@@ -73,6 +92,10 @@ export const LoginScreen = () => {
                         
                         > Registro
                     </button>
+                    
+                     
+                    
+                    
                     
                 </div>
         </div>

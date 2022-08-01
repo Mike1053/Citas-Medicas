@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Estilos/profileEdit.css'
-import pic from '../images/superporky.jpg'
+import pic from '../images/blank-profile-picture.jpg';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
@@ -21,10 +21,11 @@ export const DoctorRegister = () => {
         rCedula: '',
         rEspecialidad: '',
         rFullName: '',
-        rDireccion: ''
+        rDireccion: '',
+        rimg:'',
     });
     
-    const { rName, rEmail, rPassword1, rPassword2, rCedula, rEspecialidad, rFullName, rDireccion} = formRegisterValues;
+    const { rName, rEmail, rPassword1, rPassword2, rCedula, rEspecialidad, rFullName, rDireccion, rimg} = formRegisterValues;
 
     const handleRegister = ( e ) => {
         e.preventDefault();
@@ -32,18 +33,13 @@ export const DoctorRegister = () => {
         if ( rPassword1 !== rPassword2 ) {
             return Swal.fire('Error', 'Las contraseñas deben de ser iguales','error');
         }
-        console.log('?')
-        dispatch( startRegisterMedic( rEmail, rPassword1, rName, rCedula, rEspecialidad , rFullName) );
+        dispatch( startRegisterMedic( rEmail, rPassword1, rName, rCedula, rEspecialidad , rFullName, rimg) );
     }
 
   return (
     <>
     <div className="container rounded bg-white mt-5 fondo-ajustes">
     <div className="row">
-        <div className="col-md-4 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={pic} width="150"/>
-            </div>
-        </div>
         <div className="col-md-8">
             <div className="p-3 py-5">
                 <div className="d-flex justify-content-between align-items-center mb-3">

@@ -35,11 +35,14 @@ const initEvent = {
 const ImageModal = () => {
 
     const [foto, setFoto] = useState();
+    const [wasFoto, setWasFoto] = useState();
+
     useEffect(() => {
       const fetchData = async () => {
         const data = await fotoLoading();
         let base = data.map(function(element){
           setFoto(element.foto)
+          setWasFoto(data)
           setSelectedFile(element)
       })
       }
@@ -83,16 +86,14 @@ const ImageModal = () => {
 	
 	const handleUpdloadProfilePic = (e) => {
 		e.preventDefault();
-		if(!foto) return toast.error('Debes seleccionar una nueva imagen');
-		dispatch( uploadImage( foto,  uid) );
-	}
-
-    const handleUpdateProfilePic = (e) => {
-		e.preventDefault();
-        selectedFile.foto = foto;
-		if(!foto) return toast.error('Debes seleccionar una nueva imagen');
-		dispatch( updateImage( selectedFile ) );
-        
+        if(wasFoto){
+            console.log("existe foto")
+            selectedFile.foto = foto;
+            dispatch( updateImage( selectedFile ) );
+        }else{
+            console.log("no existe imagen")
+            dispatch( uploadImage( foto,  uid) ); 
+        }
 	}
 
 	const deleteImage = () =>{
@@ -135,10 +136,7 @@ const ImageModal = () => {
                         Cancelar 
                     </button>
                     <button variant="primary" onClick={handleUpdloadProfilePic}>
-                        Actualizar imagen
-                    </button>
-                    <button onClick={handleUpdateProfilePic}>
-                        Cambiar foto
+                        Subir imagen
                     </button>
                 </div>
             </div>
