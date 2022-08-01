@@ -42,6 +42,7 @@ const DashboardAjustes = () => {
           {/* Aqui van a ir los componentes del dashboard */}
 
           <li class="active"><a href='/'><i class="fa fa-calendar"></i>Calendario</a></li>
+          <li><a href='/notifications'><i class="fa fa-group"></i>Notificaciones</a></li>
           <li><a href='/consultorios'><i class="fa fa-thumb-tack"></i> Consultorios</a></li>
           <li><a href='/pacientes'><i class="fa fa-group"></i>Pacientes</a></li>
           <li><a href='/videochat'><i class="fa fa-video-camera"></i>Video Chat</a></li>

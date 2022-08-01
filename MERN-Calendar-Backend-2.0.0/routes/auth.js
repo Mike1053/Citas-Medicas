@@ -5,12 +5,16 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
-const { crearPaciente, loginUsuario, revalidarToken, crearDoctor } = require('../controllers/auth');
+const { crearPaciente, loginUsuario, revalidarToken, crearDoctor, getPacientes } = require('../controllers/auth');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
 
 const router = Router();
 
+router.get(
+    '/getPacientes',
+    getPacientes
+)
 
 
 router.post(

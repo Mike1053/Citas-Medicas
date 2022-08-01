@@ -21,6 +21,10 @@ const ConsultaSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Doctor',
         required: true
+    },
+    accepted: {
+        type: Boolean,
+        required: true
     }
 });
 

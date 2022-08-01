@@ -3,7 +3,19 @@ const bcrypt = require('bcryptjs');
 const Paciente = require('../models/Paciente');
 const Doctor = require('../models/Doctor');
 const { generarJWT } = require('../helpers/jwt');       
- 
+
+const getPacientes = async(req, res = response) => {
+
+    const Pacientes = await Paciente.find();
+
+    res.json({
+        ok: true,
+        Pacientes_Guardados: Pacientes 
+    });
+}
+
+
+
 const crearPaciente = async(req, res = response ) => {
 
     const { name, email, password } = req.body;
@@ -252,5 +264,6 @@ module.exports = {
     crearPaciente,
     loginUsuario,
     revalidarToken,
-    crearDoctor
+    crearDoctor,
+    getPacientes
 }

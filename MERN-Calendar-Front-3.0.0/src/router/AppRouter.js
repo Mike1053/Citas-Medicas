@@ -16,6 +16,7 @@ import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { UploadImage } from '../components/auth/UploadImage';
+
 import Dashboard from '../components/dashboard/Dashboard';
 import DashboardConsultorios from '../components/dashboard/DashboardConsultorios';
 import DashboardConsultorios2 from '../components/dashboard/DashboardConsultorios2';
@@ -23,6 +24,7 @@ import DashboardPacientes from '../components/dashboard/DashboardPacientes';
 import DashboardVideoChat from '../components/dashboard/DashboardVideoChat';
 import DashboardMensajes from '../components/dashboard/DashboardMensajes';
 import DashboardAjustes from '../components/dashboard/DashboardAjustes';
+import DashboardNotifications from '../components/dashboard/DashboardNotifications';
 import { ProfileEdit } from '../components/DashboardComponents/ProfileEdit';
 import Logout from '../components/auth/Logout';
 import MapView from '../components/mapa/MapView';
@@ -153,7 +155,13 @@ export const AppRouter = () => {
                         component={ DashboardAjustes } 
                         isAuthenticated={ !!uid }
                     />
+                    <PrivateRoute
+                        exact
+                        path="/notifications"
+                        component={ DashboardNotifications }
+                        isAuthenticated={ !!uid }
                     
+                    />
 
                     <Redirect to="/" />   
                 </Switch>
