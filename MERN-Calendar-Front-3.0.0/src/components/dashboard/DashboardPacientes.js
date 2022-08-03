@@ -6,6 +6,7 @@ import moment from 'moment';
 import TaskUpload from '../task/taskUpload';
 import TaskScreen from '../task/TaskScreen';
 import "./Dashboard.css";
+import PatientList from '../DashboardComponents/PatientList';
 
 
 moment.locale('es');
@@ -59,9 +60,11 @@ const DashboardPacientes = () => {
     </div>
     <div class="view">
       <br></br>
-       {/* <TaskUpload/> */}
-       <TaskScreen/>
-       
+       {/* 
+       <TaskUpload/>
+       <TaskScreen/> 
+       */}
+       <PatientList/>
     </div>
   </div>
 </div>
