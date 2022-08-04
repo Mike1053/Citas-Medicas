@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
-import pic from '../images/superporky.jpg'
+import pic from '../images/blank-profile-picture.jpg';
 import moment from 'moment';
 import "./Dashboard.css";
 import { NotificationsScreen } from '../Notifications/NotificationScreen';

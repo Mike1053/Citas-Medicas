@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+body {
+  background: #105469;
+  font-family: 'Open Sans', sans-serif;
+}
+table {
+  background: #012B39;
+  border-radius: 10px;
+  border-collapse: collapse;
+  margin: 10px;
+  text-align: center;
+}
+th {
+  border-bottom: 1px solid #364043;
+  color: #E2B842;
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  text-align: left;
+  padding-right: 50px;
+}
+td {
+  color: black;
+  font-weight: 400;
+  padding: 0.65em 1em;
+}
+
+tbody tr:hover {
+  background: #014055;
+}
+

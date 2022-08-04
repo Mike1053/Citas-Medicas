@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { uploadImage, updateImage } from '../../actions/uploadImage';
 import { toast } from 'react-toastify'
 import { fotoLoading } from '../../actions/uploadImage';
+import './ImageModal.css';
 
 import moment from 'moment';
 import Modal from 'react-modal';
@@ -17,7 +18,8 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    background            : '#105469'
   }
 };
 Modal.setAppElement('#root');
@@ -109,17 +111,18 @@ const ImageModal = () => {
           className="modal"
           overlayClassName="modal-fondo"
         >
-            <div>
-                <div>
+            <div className='modal-div'>
+                <div class="text-center" closeButton>
+                    <h1>Cambiar mi foto de perfil</h1>
+                </div>
+                <div class="text-center">
                     <img 
-                        className="img-fluid mt-2"
+                        className="rounded-circle mt-2" 
                         src={foto   /*user?.profilePic*/}
                     />
                 </div>
                 {/*Esta madre es subir la imagen*/}
-                <div closeButton>
-                    <h1>Cambiar mi foto de perfil</h1>
-                </div>
+                
                 <div>
                     <form>
                         <input type={"file"} 

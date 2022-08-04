@@ -107,11 +107,10 @@ const patientDeleted = () => ({ type: types.patientDeleted });
 export const patientStartLoading = async () => {
 
         try {
-            const resp = await fetchConToken( 'task' );
+            const resp = await fetchConToken( 'auth/getPacientes' );
             const body = await resp.json();
             
-            const patients = body.patient;
-            
+            const patients = body.Pacientes_Guardados;
             let patientList = patients.map(function(element){
                 return element
             })
