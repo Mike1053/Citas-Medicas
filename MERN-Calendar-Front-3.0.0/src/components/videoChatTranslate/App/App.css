@@ -6,3 +6,12 @@
   background-repeat: no-repeat;
   background-position: 250px;
 }
+
+.backgraund{
+  background-color: rgb(138, 138, 138);
+  position:inherit;
+  height:500px ; /*Tamaño general del contenedor*/
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: 250px;
+}

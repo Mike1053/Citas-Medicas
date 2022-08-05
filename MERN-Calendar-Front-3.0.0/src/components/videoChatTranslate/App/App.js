@@ -212,6 +212,7 @@ export default function App() {
         // is the best choice. But for larger apps with deeply-nested components
         // that want to access call object state and bind event listeners to the
         // call object, this can be a helpful pattern.
+        <div className="backgraund">
         <CallObjectContext.Provider value={callObject}>
           <Call roomUrl={roomUrl} />
           <Tray
@@ -219,6 +220,7 @@ export default function App() {
             onClickLeaveCall={startLeavingCall}
           />
         </CallObjectContext.Provider>
+        </div>
       ) : (
         <StartButton
           disabled={!enableStartButton}
