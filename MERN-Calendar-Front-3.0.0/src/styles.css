@@ -7,6 +7,10 @@ body {
     background-size: cover;  
 }
 
+.router-div{
+    width: 100%;  
+}
+
 .calendar-screen {
     display: flex;
     flex-flow: column;
