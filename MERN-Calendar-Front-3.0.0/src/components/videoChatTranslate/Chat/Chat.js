@@ -63,9 +63,9 @@ export default function Chat(props) {
     };
   }, [callObject, chatHistory]);
 
-  useEffect(() => {}, [chatHistory]);
+  useEffect(() => { }, [chatHistory]);
 
-  {/*Aquí va el pedo del dictaphone----------------------------------------- */}
+  {/*Aquí va el pedo del dictaphone----------------------------------------- */ }
 
   const [options, setOptions] = useState([]);
   const [to, setTo] = useState('en');
@@ -84,15 +84,15 @@ export default function Chat(props) {
 
     clearTimeout(timerId);
     timerId = setTimeout(() => {
-        axios.post('https://libretranslate.de/translate',params, {
+      axios.post('https://libretranslate.de/translate', params, {
         headers: {
           'accept': 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-      }).then(res=>{
+      }).then(res => {
         setInputValue(res.data.translatedText)
       })
-    },100);
+    }, 100);
   };
 
   useEffect(() => {
@@ -112,12 +112,12 @@ export default function Chat(props) {
     }];
 
 
-    const {
+  const {
     transcript,
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition
-  }  = useSpeechRecognition();
+  } = useSpeechRecognition();
   const startListening = () => SpeechRecognition.startListening({ continuous: true });
 
 
@@ -125,88 +125,101 @@ export default function Chat(props) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
-  const isSpeaking = (event) =>{
+  const isSpeaking = (event) => {
     event.preventDefault();
     resetTranscript();
-    startListening();
+    if (!speaking) {
+      resetTranscript();
+      startListening();
+      setSpeaking(true)
+    } else {
+      SpeechRecognition.stopListening();
+      setInputValue(transcript);
+      resetTranscript();
+      setSpeaking(false)
+    }
+
   }
 
-  const stopSpeaking = (event) =>{
+  /* const stopSpeaking = (event) =>{
     event.preventDefault();
     SpeechRecognition.stopListening();
     setInputValue(transcript);
     resetTranscript();
-  }
+  } */
 
-  {/*Aquí va el pedo del dictaphone----------------------------------------- */}
+  {/*Aquí va el pedo del dictaphone----------------------------------------- */ }
 
   return props.onClickDisplay ? (
     <div className='chat'>
-    <div className="chat-messages">
-      {chatHistory.map((entry, index) => (
-        <div key={`entry-${index}`} className="messageList">
-          <b>{entry.sender}</b>: {entry.message} 
-          <Speech text={entry.message}
-          voice="Jorge"
-          textAsButton={true}    
-          displayText="Text-to-Speech" 
-    />
-        </div>
-      ))}
-    </div>
-    <div className='submit-div'>
-      <div className='class-text'>
-        Habla para traducir:
+      <div className="chat-messages">
+        {chatHistory.map((entry, index) => (
+          <div key={`entry-${index}`} className="messageList">
+            <b>{entry.sender}</b>: {entry.message}
+            <Speech text={entry.message}
+              voice="Jorge"
+              textAsButton={true}
+              displayText="Text-to-Speech"
+            />
+          </div>
+        ))}
       </div>
-      <div class="btn-group d-flex justify-content-center">
-      <form onSubmit={isSpeaking}>
-        <label htmlFor="chatInput"></label>
-        <input type="submit" value="Empezar" class="btn btn-success btn-sm mr-1 empezar" />
-      </form>
-      <form onSubmit={stopSpeaking}>
+      <div className='submit-div'>
+        <div className='class-text'>
+          
+        
+          <form onSubmit={isSpeaking}>
+            <label htmlFor="chatInput"></label>
+            {/* <input type="submit"/> */}
+            <button class="btn btn-secondary mic">Habla para traducir:<i class={`eli ${speaking ? "fas fa-microphone" : "fas fa-microphone-slash"}`}></i></button>
+          </form>
+          
+          {/* <form onSubmit={stopSpeaking}>
         <label htmlFor="chatInput"></label>
         <input type="submit" value="Pausar" class="btn btn-danger btn pausar"/>
-      </form>
-      </div>
-      <div className='espacio'></div>
-      <div class='d-flex justify-content-center'>
-        <select onChange={(e) => setFrom(e.target.value)}>
-          {options.map((opt) => (
-            <option key={opt.code} value={opt.code}>
-              {opt.name}
-            </option>
-          ))}
-        </select>
-         - To - 
-        <select onChange={(e) => setTo(e.target.value)}>
-          {options.map((opt) => (
-            <option key={opt.code} value={opt.code}>
-              {opt.name}
-            </option>
-          ))}
-        </select>
+      </form> */}
         </div>
         <div className='espacio'></div>
-        <div className='centrar'>
+        <div class='d-flex justify-content-center'>
+          <select onChange={(e) => setFrom(e.target.value)}>
+            {options.map((opt) => (
+              <option key={opt.code} value={opt.code}>
+                {opt.name}
+              </option>
+            ))}
+          </select>
+          <i class='fas fa-exchange-alt'></i>
+          <select onChange={(e) => setTo(e.target.value)}>
+            {options.map((opt) => (
+              <option key={opt.code} value={opt.code}>
+                {opt.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className='espacio'></div>
+        {/*  <div className='centrar'>
         <form onSubmit={translate}>
         <label htmlFor="chatInput"></label>
         <input type="submit" value="Translate" className='btn btn-warning traducir'/>
         </form>
-        </div>
+        </div> */}
         <form onSubmit={handleSubmit}>
-        <label htmlFor="chatInput"></label>
-        <input
-          id="chatInput"
-          className="chat-input"
-          type="text"
-          placeholder="Escribe tu mensaje aqui..."
-          value={inputValue}
-          onChange={handleChange}
-          required
-        ></input>
-          <input type="submit" value="Enviar" className='send-chat-button btn btn-secondary' />
-      </form>
-        </div>
+          <label htmlFor="chatInput"></label>
+          <input
+            id="chatInput"
+            className="chat-input"
+            type="text"
+            placeholder="Escribe tu mensaje aqui..."
+            value={inputValue}
+            onChange={handleChange}
+            required
+          ></input>
+          {/* <input type="submit" value="Enviar" className='send-chat-button btn btn-secondary' /> */}
+          <button type='submit' className='send-chat-button btn btn-secondary send'><i class='fas fa-paper-plane'></i></button>
+          <button type='button' onClick={(e) => { translate(e) }} className='send-chat-button btn btn-secondary traducirboton'><i class='fas fa-language'></i></button>
+        </form>
+      </div>
     </div>
   ) : null;
 }

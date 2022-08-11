@@ -87,7 +87,7 @@ export default class SimpleChat extends Component {
 
     render() {
         return (<span>
-            <div style={{height: '450px', width: '750px'}} ref={c => this.container = c}>Loading...</div>
+            <div style={{height: '450px', width: '750px'}} ref={c => this.container = c}>Cargando...</div>
         </span>);
     }
 }

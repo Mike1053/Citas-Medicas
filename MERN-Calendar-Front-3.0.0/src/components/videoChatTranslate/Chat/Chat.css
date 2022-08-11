@@ -105,19 +105,6 @@
   width: 280px;
   background-color: #81abff;
 }
-.empezar{
-  border-radius: 20px;
-  height: 30px;
-  font-size: 12px;
-  text-align: center;
-}
-.pausar{
-  border-radius: 20px;
-  height: 25px;
-  font-size: 12px;
-  text-align: center;
-  padding-bottom: 20px;
-}
 .traducir{
   border-radius: 20px;
   height: 25px;
@@ -125,4 +112,19 @@
   text-align: center;
   padding-bottom: 25px;
   font-family: 'Passion One', cursive;
+}
+.traducirboton{
+  margin-left: 228px;
+}
+.send{
+  margin-left: 188px;
+}
+.mic{
+  height: 0px;
+  width: 190px;
+  border-radius: 20px;
+  padding-bottom: 30px;
+  margin-top: 22px;
+  font-family: 'Passion One', cursive;
+  font-size: 18px;
 }
